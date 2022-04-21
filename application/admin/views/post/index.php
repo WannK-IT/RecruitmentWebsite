@@ -15,7 +15,7 @@
             $linkDeletePost     = URL::addLink('admin', 'post', 'delete', ['pid' => $id]);
 
             $xhtml .=    '<tr>
-                            <td class="text-center">'.$title.'</td>
+                            <td class="text-center"><a class="text-anchor" href="#">'.$title.'</a></td>
                             <td class="text-center">'.$created.'</td>
                             <td class="text-center">'.$expired.'</td>
                             <td class="text-center">'.$applyAmount.'</td>
@@ -44,7 +44,7 @@
                 <form action="" method="post" class="table-responsive" id="form-table-post">
                     <table class="table table-bordered table-hover text-nowrap btn-table mb-0">
                         <thead>
-                            <tr>
+                            <tr class="bg-secondary">
                                 <th class="text-center">Tên tin đăng</th>
                                 <th class="text-center">Ngày đăng</th>
                                 <th class="text-center">Thời hạn</th>
