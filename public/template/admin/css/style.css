@@ -6,3 +6,19 @@ a.text-anchor:hover{
     font-weight: bold;
     color: #17a2b8;
 }
+
+#form-job span.error{
+    position: absolute;
+    display: block;
+    bottom: -27px;
+}
+
+.error{
+    color: red;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.fs-input{
+    font-size: 15px;
+}

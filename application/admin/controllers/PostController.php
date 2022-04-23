@@ -25,5 +25,12 @@ class PostController extends Controller{
 		$this->_model->deletePost($this->_arrParam);
 		$this->redirect('admin', 'post', 'index');
 	}
+
+	public function addAction(){
+		$this->_view->render('post/add', true);
+	}
+
+
+
 	
 }

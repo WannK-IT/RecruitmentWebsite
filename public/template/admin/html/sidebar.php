@@ -1,5 +1,5 @@
 <?php 
-    $createPost = Helper::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'create');
+    $createPost = Helper::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'add');
     $listPost = Helper::createItemSide('Danh sách tin đăng', 'fas fa-list-ul', 'admin', 'post', 'index');
     $arrItemSide = [$createPost, $listPost];
     $group_Post = Helper::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', $arrItemSide);
@@ -9,7 +9,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="<?= $this->_dirImg ?>AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Admin Recruitment</span>
     </a>
 
     <!-- Sidebar -->

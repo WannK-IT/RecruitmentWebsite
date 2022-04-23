@@ -44,8 +44,12 @@ class Helper
         return $xhtml;
     }
 
+    // public static function createInputField()
+
     public static function showEmptyRow($colspan = 6, $message = 'Dữ liệu đang được cập nhật!'){
         return sprintf('<tr><td colspan="%s" style="text-align: center">%s</td></tr>', $colspan, $message);
     }
+
+    
 }
 ?>
