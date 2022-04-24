@@ -63,15 +63,21 @@
   </div>
   <!-- ./wrapper -->
 
-  <!-- REQUIRED SCRIPTS -->
-
-
-  <!-- jQuery Javascript -->
+  <!-- Load jQuery Javascript -->
   <?php echo $this->_jsFiles; ?>
-
+  <!-- jQueryUI v1.12.1 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <!-- Select2 v4.1.0 -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <!-- Ckeditor v4.18 -->
   <script src="https://cdn.ckeditor.com/4.18.0/basic/ckeditor.js"></script>
+
+  <!-- jQuery Validation v1.19.3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
+  
 
 </body>
 
