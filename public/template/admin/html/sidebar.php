@@ -1,5 +1,6 @@
 <?php 
-    $createPost = Helper::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'add');
+    ob_start();
+    $createPost = Helper::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'formPost&task=add');
     $listPost = Helper::createItemSide('Danh sách tin đăng', 'fas fa-list-ul', 'admin', 'post', 'index');
     $arrItemSide = [$createPost, $listPost];
     $group_Post = Helper::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', $arrItemSide);

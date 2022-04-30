@@ -1,3 +1,8 @@
+<?php 
+    $task = ($_GET['task'] == 'add') ? 'Đăng tin' : 'Lưu bài đăng';
+?>
+ <!-- Ckeditor 4.18.0 -->
+<script src="//cdn.ckeditor.com/4.18.0/basic/ckeditor.js"></script>
 <div class="row">
     <div class="col-12">
         <div class="card card-info card-outline my-2">
@@ -5,7 +10,7 @@
                 <h5 class="card-title text-info">Thông tin tuyển dụng</h5>
             </div>
 
-            <form method="post" action="" class="form-job" id="form-add-job">
+            <form method="post" class="form-job" id="form-add-job">
                 <div class="card-body fs-input mx-2">
 
                     <!-- Chức danh -->
@@ -23,15 +28,15 @@
                                 <div class="error-element">
                                     <label for="post-career">Ngành nghề <span class="text-danger">*</span></label>
                                     <select id="post-career" name="post_career" class="form-control" required>
-                                        <option value="" selected disabled>Chọn</option>
-                                        <option value="cntt">Công nghệ thông tin</option>
-                                        <option value="dien-dientu">Điện - điện tử</option>
-                                        <option value="qtkd">Quản trị kinh doanh</option>
-                                        <option value="qtdl">Quản trị du lịch nhà hàng khách sạn</option>
-                                        <option value="kythuat">Kỹ thuật</option>
-                                        <option value="BA">Business Analyst</option>
-                                        <option value="architect">Architect</option>
-                                        <option value="constructor">Constructor</option>
+                                        <option selected disabled>Chọn</option>
+                                        <option>Công nghệ thông tin</option>
+                                        <option>Điện - điện tử</option>
+                                        <option>Quản trị kinh doanh</option>
+                                        <option>Quản trị du lịch nhà hàng khách sạn</option>
+                                        <option>Kỹ thuật</option>
+                                        <option>Business Analyst</option>
+                                        <option>Architect</option>
+                                        <option>Constructor</option>
                                     </select>
                                 </div>
                             </div>
@@ -40,12 +45,12 @@
                                 <div class="error-element">
                                     <label for="post-type-work">Hình thức làm việc <span class="text-danger">*</span></label>
                                     <select id="post-type-work" name="post_type_work" class="form-control" required>
-                                        <option value="" selected disabled>Chọn</option>
-                                        <option value="fulltime">Full-time</option>
-                                        <option value="parttime">Part-time</option>
-                                        <option value="intern">Intern</option>
-                                        <option value="contact">Contract</option>
-                                        <option value="other">Khác</option>
+                                        <option selected disabled>Chọn</option>
+                                        <option>Full-time</option>
+                                        <option>Part-time</option>
+                                        <option>Intern</option>
+                                        <option>Contract</option>
+                                        <option>Khác</option>
                                     </select>
                                 </div>
                             </div>
@@ -54,12 +59,12 @@
                                 <div class="error-element">
                                     <label for="post-address-work">Nơi làm việc <span class="text-danger">*</span></label>
                                     <select id="post-address-work" class="form-control" name="post_address_work" required>
-                                        <option value="" selected disabled>Chọn</option>
-                                        <option value="tphcm">TPHCM</option>
-                                        <option value="hanoi">Hà Nội</option>
-                                        <option value="danang">Đà Nẵng</option>
-                                        <option value="cantho">Cần Thơ</option>
-                                        <option value="haiphong">Hải Phòng</option>
+                                        <option selected disabled>Chọn</option>
+                                        <option>TPHCM</option>
+                                        <option>Hà Nội</option>
+                                        <option>Đà Nẵng</option>
+                                        <option>Cần Thơ</option>
+                                        <option>Hải Phòng</option>
                                     </select>
                                 </div>
                             </div>
@@ -71,19 +76,19 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="error-element">
-                                    <label for="post-level">Cấp bậc <span class="text-danger">*</span></label>
-                                    <select id="post-level" name="post_level" class="form-control" required>
-                                        <option value="" selected disabled>Chọn</option>
-                                        <option value="giamdoc">Giám đốc</option>
-                                        <option value="truongnhom">Trưởng nhóm</option>
-                                        <option value="phogiamdoc">Phó giám đốc</option>
-                                        <option value="truongphong">Trưởng phòng</option>
-                                        <option value="phophong">Phó phòng</option>
-                                        <option value="truongchinhanh">Trưởng chi nhánh</option>
-                                        <option value="nhanvien">Nhân viên</option>
-                                        <option value="thuctapsinh">Thực tập sinh</option>
-                                        <option value="quanly">Quản lý</option>
-                                        <option value="ctv">Cộng tác viên</option>
+                                    <label for="post-rank">Cấp bậc <span class="text-danger">*</span></label>
+                                    <select id="post-rank" name="post_rank" class="form-control" required>
+                                        <option selected disabled>Chọn</option>
+                                        <option>Giám đốc</option>
+                                        <option>Trưởng nhóm</option>
+                                        <option>Phó giám đốc</option>
+                                        <option>Trưởng phòng</option>
+                                        <option>Phó phòng</option>
+                                        <option>Trưởng chi nhánh</option>
+                                        <option>Nhân viên</option>
+                                        <option>Thực tập sinh</option>
+                                        <option>Quản lý</option>
+                                        <option>Cộng tác viên</option>
                                     </select>
                                 </div>
                             </div>
@@ -111,14 +116,14 @@
                                 <div class="error-element">
                                     <label for="post-exp">Kinh nghiệm</label>
                                     <select id="post-exp" name="post_exp" class="form-control">
-                                        <option value="default_exp">Chưa có kinh nghiệm</option>
-                                        <option value="under1">Dưới 1 năm</option>
-                                        <option value="1">1 năm</option>
-                                        <option value="2">2 năm</option>
-                                        <option value="3">3 năm</option>
-                                        <option value="4">4 năm</option>
-                                        <option value="5">5 năm</option>
-                                        <option value="above5">Hơn 5 năm</option>
+                                        <option>Chưa có kinh nghiệm</option>
+                                        <option>Dưới 1 năm</option>
+                                        <option>1 năm</option>
+                                        <option>2 năm</option>
+                                        <option>3 năm</option>
+                                        <option>4 năm</option>
+                                        <option>5 năm</option>
+                                        <option>Hơn 5 năm</option>
                                     </select>
                                 </div>
                             </div>
@@ -137,15 +142,15 @@
                             <div class="col-md-4">
                                 <div class="error-element">
                                     <label for="post-degree">Bằng cấp</label>
-                                    <select id="post-degree" class="form-control">
-                                        <option value="default_degree">Không yêu cầu</option>
-                                        <option value="trenDH">Trên đại học</option>
-                                        <option value="DH">Đại học</option>
-                                        <option value="CD">Cao đẳng</option>
-                                        <option value="TC">Trung cấp</option>
-                                        <option value="TH">Trung học</option>
-                                        <option value="CC">Chứng chỉ</option>
-                                        <option value="Other">Khác</option>
+                                    <select id="post-degree" name="post_degree" class="form-control">
+                                        <option>Không yêu cầu</option>
+                                        <option>Trên đại học</option>
+                                        <option>Đại học</option>
+                                        <option>Cao đẳng</option>
+                                        <option>Trung cấp</option>
+                                        <option>Trung học</option>
+                                        <option>Chứng chỉ</option>
+                                        <option>Khác</option>
                                     </select>
                                 </div>
                             </div>
@@ -159,18 +164,18 @@
                                 <div class="error-element">
                                     <label for="post-salary">Mức lương</label>
                                     <select id="post-salary" name="post_salary" class="form-control">
-                                        <option value="default_salary">Thỏa thuận</option>
-                                        <option value="1to3">1 - 3 triệu</option>
-                                        <option value="3to5">3 - 5 triệu</option>
-                                        <option value="5to7">5 - 7 triệu</option>
-                                        <option value="7to10">7 - 10 triệu</option>
-                                        <option value="10to12">10 - 12 triệu</option>
-                                        <option value="12to15">12 - 15 triệu</option>
-                                        <option value="15to20">15 - 20 triệu</option>
-                                        <option value="20to25">20 - 25 triệu</option>
-                                        <option value="25to30">25 - 30 triệu</option>
-                                        <option value="30to40">30 - 40 triệu</option>
-                                        <option value="above40">Trên 40 triệu</option>
+                                        <option>Thỏa thuận</option>
+                                        <option>1 - 3 triệu</option>
+                                        <option>3 - 5 triệu</option>
+                                        <option>5 - 7 triệu</option>
+                                        <option>7 - 10 triệu</option>
+                                        <option>10 - 12 triệu</option>
+                                        <option>12 - 15 triệu</option>
+                                        <option>15 - 20 triệu</option>
+                                        <option>20 - 25 triệu</option>
+                                        <option>25 - 30 triệu</option>
+                                        <option>30 - 40 triệu</option>
+                                        <option>Trên 40 triệu</option>
                                     </select>
                                 </div>
                             </div>
@@ -191,9 +196,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="error-element">
-                                    <label for="post-work-description">Mô tả công việc <span class="text-danger">*</span></label>
+                                    <label>Mô tả công việc <span class="text-danger">*</span></label>
                                     <p class="text-muted"><span>Thông tin cho vị trí công việc yêu cầu, trách nhiệm mà ứng viên có thể đảm nhận khi làm việc ở công ty</span></p>
-                                    <textarea name="post_description" class="form-control fs-input" autocomplete="off" minlength="50"></textarea>
+                                    <textarea id="post_work_description" name="post_work_description" class="form-control fs-input" autocomplete="off" minlength="50"></textarea>
+                                    <script type="text/javascript">
+                                        CKEDITOR.replace('post_work_description');
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -207,6 +215,9 @@
                                     <label for="post-work-required">Yêu cầu công việc <span class="text-danger">*</span></label>
                                     <p class="text-muted"><span>Kỹ năng chuyên môn hoặc kỹ năng mềm cần thiết với công việc mà ứng viên cần quan tâm</span></p>
                                     <textarea name="post_work_required" class="form-control fs-input" autocomplete="off" minlength="50"></textarea>
+                                    <script type="text/javascript">
+                                        CKEDITOR.replace('post_work_required');
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -220,6 +231,9 @@
                                     <label for="post-work-benefit">Quyền lợi <span class="text-danger">*</span></label>
                                     <p class="text-muted"><span>Những quyền lợi, lợi ích với công việc cho ứng viên với vị trí đăng tuyển</span></p>
                                     <textarea name="post_work_benefit" class="form-control fs-input" autocomplete="off" minlength="50"></textarea>
+                                    <script type="text/javascript">
+                                        CKEDITOR.replace('post_work_benefit');
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -232,6 +246,9 @@
                                 <div class="error-element">
                                     <label for="post-work-apply">Cách thức ứng tuyển <span class="text-danger">*</span></label>
                                     <textarea name="post_work_apply" class="form-control fs-input" autocomplete="off" minlength="50"></textarea>
+                                    <script type="text/javascript">
+                                        CKEDITOR.replace('post_work_apply');
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -282,8 +299,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" id="submit_post" class="btn bg-gradient-info float-right shadow-sm">Đăng tin</button>
-                    <button type="submit" class="btn bg-gradient-secondary float-right shadow-sm mx-3">Hủy bỏ</button>
+                    <input type="hidden" name="post_contact_id" value="1">
+                    
+                    <input type="hidden" name="post_isActive" value="active">
+                    <input type="submit" id="submit_post" name="submit_post" class="btn bg-gradient-info float-right shadow-sm" value="<?= $task?>">
+                    <input type="button" id="cancel-post" class="btn bg-gradient-secondary float-right shadow-sm mx-3" value="Hủy bỏ">
                 </div>
             </form>
         </div>

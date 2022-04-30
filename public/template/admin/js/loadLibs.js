@@ -1,10 +1,5 @@
 $(document).ready(function () {
-    /* ----- Ckeditor 4.18.0 ----- */
-    CKEDITOR.replace('post_description');
-    CKEDITOR.replace('post_work_required');
-    CKEDITOR.replace('post_work_benefit');
-    CKEDITOR.replace('post_work_apply');
-
+    
     /* ----- Select2 library load select box ----- */
     $("#post-career").select2({
         dropdownCssClass: "fs-input"
@@ -15,7 +10,7 @@ $(document).ready(function () {
     $("#post-address-work").select2({
         dropdownCssClass: "fs-input"
     });
-    $("#post-level").select2({
+    $("#post-rank").select2({
         dropdownCssClass: "fs-input"
     });
     $("#post-degree").select2({
@@ -40,7 +35,8 @@ $(document).ready(function () {
             post_position: {
                 required: true,
                 minlength: 5,
-                lettersonly: true
+                maxlength: 200,
+                
             },
             post_amount: {
                 required: true,
@@ -48,9 +44,13 @@ $(document).ready(function () {
                 min: 1,
                 max: 1000
             },
-            post_description: {
+            post_test_work: {
+                maxlength: 100
+            },
+
+            post_work_description: {
                 required: function(){
-                    CKEDITOR.instances.post_description.updateElement();
+                    CKEDITOR.instances.post_work_description.updateElement();
                 }
             },
             post_work_required: {
@@ -68,13 +68,17 @@ $(document).ready(function () {
                     CKEDITOR.instances.post_work_apply.updateElement();
                 }
             },
+
+
             post_contact_name: {
                 required: true,
                 minlength: 5,
-                lettersonly: true
+                maxlength: 100,
+                
             },
             post_contact_email: {
                 required: true,
+                maxlength: 100,
                 email: true
             },
             post_contact_phone: {
@@ -85,6 +89,7 @@ $(document).ready(function () {
             post_contact_address: {
                 required: true,
                 minlength: 5,
+                maxlength: 200
             }
             
         },
@@ -93,21 +98,25 @@ $(document).ready(function () {
             post_position: {
                 required: "Vui lòng nhập chức danh",
                 minlength: "Tối thiểu 5 ký tự",
-                lettersonly: "Chức danh không được chứa ký tự đặc biệt"
+                maxlength: "Tối đa 200 ký tự",
+                 
             },
             post_career: "Vui lòng chọn ngành nghề",
             post_type_work: "Vui lòng chọn hình thức làm việc",
             post_address_work: "Vui lòng chọn nơi làm việc",
-            post_level: "Vui lòng chọn cấp bậc",
+            post_rank: "Vui lòng chọn cấp bậc",
             post_amount: {
                 required: "Vui lòng nhập số lượng tuyển dụng",
                 number: "Chỉ được nhập số",
-                min: "Vui lòng nhập số lượng lớn hơn 0",
-                max: "Vui lòng nhập số lượng nhỏ hơn 1000"
+                min: "Số lượng tối thiểu là 1",
+                max: "Số lượng tối đa 1000"
             },
             post_expired: "Vui lòng chọn hạn nộp hồ sơ",
+            post_test_work: {
+                maxlength: "Tối đa 100 ký tự"
+            },
 
-            post_description: {
+            post_work_description: {
                 required: "Vui lòng nhập mô tả công việc",
                 minlength: "Vui lòng nhập tối thiểu 50 ký tự"
             },
@@ -124,14 +133,17 @@ $(document).ready(function () {
                 minlength: "Vui lòng nhập tối thiểu 50 ký tự"
             },
 
+
             post_contact_name: {
                 required: "Vui lòng nhập họ tên",
                 minlength: "Tối thiểu 5 ký tự",
-                lettersonly: "Họ tên không được chứa ký tự đặc biệt"
+                maxlength: "Tối đa 100 ký tự",
+        
             },
             post_contact_email: {
                 required: "Vui lòng nhập email",
-                email: "Sai định dạng email"
+                email: "Sai định dạng email",
+                maxlength: "Tối đa 100 ký tự"
             },
             post_contact_phone: {
                 required: "Vui lòng nhập số điện thoại",
@@ -140,7 +152,8 @@ $(document).ready(function () {
             },
             post_contact_address: {
                 required: "Vui lòng nhập địa chỉ liên hệ",
-                minlength: "Tối thiểu 5 ký tự"
+                minlength: "Tối thiểu 5 ký tự",
+                maxlength: "Tối đa 200 ký tự"
             }
         },
 
@@ -150,13 +163,6 @@ $(document).ready(function () {
         errorPlacement: function (error, element) {
             error.insertAfter(element.parent("div"));
         },
-    });
-
-    // Check if validate success => submit form
-    $("#submit_post").click( function() {
-        if($("#form-add-job").valid()){
-            $("#form-add-job").submit();
-        }
     });
 
 });

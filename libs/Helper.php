@@ -29,9 +29,9 @@ class Helper
         return $xhtml;
     }
 
-    public static function createStatisticBox($title, $value, $icon){
+    public static function createStatisticBox($title, $value, $icon, $id = ''){
         $xhtml = '<div class="col-md-3 col-3">
-                    <div class="small-box bg-info">
+                    <div class="small-box bg-info" id="'.$id.'">
                         <div class="inner">
                             <h3>'.$value.'</h3>
                             <p>'.$title.'</p>

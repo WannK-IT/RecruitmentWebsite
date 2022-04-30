@@ -14,9 +14,9 @@ class Model{
 			$params['database']	= DB_NAME;
 			$params['table']	= DB_TABLE;
 		}
-		$link = mysqli_connect($params['server'], $params['username'], $params['password']);
+		@$link = mysqli_connect($params['server'], $params['username'], $params['password']);
 		if(!$link){
-			die('Fail connect: ');
+			die('Lỗi kết nối database !');
 		}else{
 			$this->connect 	= $link;
 			$this->database = $params['database'];
@@ -63,15 +63,15 @@ class Model{
 				$this->query($query);
 			}
 		}
-		return $this->lastID();
+		// return $this->lastID();
 	}
 	
 	// CREATE INSERT SQL
 	public function createInsertSQL($data){
 		$cols = $vals = "";
-		$newQuery = array();
+		$newQuery = [];
 		if(!empty($data)){
-			foreach($data as $key=> $value){
+			foreach($data as $key => $value){
 				$cols .= ", `$key`";
 				$vals .= ", '$value'";
 			}

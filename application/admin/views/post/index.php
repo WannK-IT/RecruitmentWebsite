@@ -1,38 +1,44 @@
-<?php require_once "elements/statistic.php";?>
-<?php 
-    $xhtml = '';
-    if(!empty($this->listPost)){
-        foreach($this->listPost as $post){
-            $id             = $post['post_id'];
-            $title          = $post['post_title'];
-            $created        = $post['post_created_date'];
-            $expired        = $post['post_expired_date'];
-            $applyAmount    = $post['applyAmount'];
-            $status         = $post['post_isActive'];
-            $classStatus    = ($status == 'active') ? 'fa-check text-success' : 'fa-minus text-danger';
-            
-            $linkChangeStatus   = URL::addLink('admin', 'post', 'changeStatus', ['status' => $status, 'pid' => $id]);
-            $linkDeletePost     = URL::addLink('admin', 'post', 'delete', ['pid' => $id]);
+<?php require_once "elements/statistic.php"; ?>
 
-            $xhtml .=    '<tr>
-                            <td class="text-center"><a class="text-anchor" href="#">'.$title.'</a></td>
-                            <td class="text-center">'.$created.'</td>
-                            <td class="text-center">'.$expired.'</td>
-                            <td class="text-center">'.$applyAmount.'</td>
-                            <td class="text-center position-relative"><a href="'.$linkChangeStatus.'"><i class="fa-lg fas '.$classStatus.'"></i></a></td>
+<?php
+$xhtml = '';
+if (!empty($this->listPost)) {
+    foreach ($this->listPost as $post) {
+        $id             = $post['post_id'];
+        $position       = $post['post_position'];
+        $created        = date('d/m/Y H:i:s', strtotime($post['post_createdDate']));
+        $expired        = date('d/m/Y', strtotime($post['post_expired']));
+        $applyAmount    = 'Default';
+        $status         = $post['post_isActive'];
+        $classStatus    = ($status == 'active') ? 'fa-check text-success' : 'fa-minus text-danger';
+
+        $linkChangeStatus   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'changeStatus', ['status' => $status, 'pid' => $id]);
+        $linkDeletePost     = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'ajaxDelete', ['pid' => $id]);
+        $linkEditPost       = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'formPost', ['task' => 'edit', 'pid' => $id]);
+
+        $xhtml .=    '<tr id="post-' . $id . '">
+                            <td class="text-center"><a class="text-anchor" href="#">' . $position . '</a></td>
+                            <td class="text-center">' . $created . '</td>
+                            <td class="text-center">' . $expired . '</td>
+                            <td class="text-center">' . $applyAmount . '</td>
+                            <td class="text-center position-relative">
+                                <a id="status-post-' . $id . '" href="javascript:ajaxStatus(\'' . $linkChangeStatus . '\')">
+                                    <span class="fa-lg fas ' . $classStatus . '"></span>
+                                </a>
+                            </td>
                             <td class="text-center">
-                                <a href="#" class="px-1" title="Edit">
+                                <a href="' . $linkEditPost . '" class="px-1" title="Edit">
                                     <i class="fas fa-cog fa-lg text-info"></i>
                                 </a>
-                                <a href="'.$linkDeletePost.'" class="px-1" title="Delete">
-                                    <i class="btn-delete fas fa-trash-alt fa-lg text-danger"></i>
+                                <a href="javascript:ajaxDelete(\'' . $linkDeletePost . '\')" class="px-1" title="Delete">
+                                    <span class="fas fa-trash-alt fa-lg text-danger"></span>
                                 </a>
                             </td>
                         </tr>';
-        }
-    }else{
-        $xhtml = Helper::showEmptyRow('6', 'Dữ liệu đang được cập nhật');
     }
+} else {
+    $xhtml = Helper::showEmptyRow('6', 'Dữ liệu đang được cập nhật');
+}
 ?>
 <!-- List -->
 <div class="row">
@@ -54,17 +60,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?= $xhtml?>
+                            <?= $xhtml ?>
                         </tbody>
                     </table>
-                    <div>
-                        <input type="hidden" name="sort_field" value="">
-                        <input type="hidden" name="sort_order" value="">
-                    </div>
                 </form>
             </div>
-            
-            <!-- <?php require_once "elements/pagination.php"?> -->
+            <!-- <?php require_once "elements/pagination.php" ?> -->
 
         </div>
         <!-- /.card -->
