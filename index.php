@@ -5,5 +5,6 @@
 		require_once LIBRARY_PATH . "{$class_name}.php";
 	});
 	
+	session_start();
 	$bootstrap = new Bootstrap();
 	$bootstrap->init();

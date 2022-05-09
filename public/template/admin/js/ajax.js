@@ -53,5 +53,16 @@ function ajaxStatus(link) {
         }
         $(anchorTag).attr('href', "javascript:ajaxStatus('" + data[2] + "')");
         $(anchorTag + ' span').removeClass(classActive).addClass(classInactive);
+        Toast.fire({
+            icon: 'success',
+            title: 'Trạng thái đã được thay đổi !'
+        })
     }, 'json')
 }
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+})

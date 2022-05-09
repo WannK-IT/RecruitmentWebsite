@@ -8,9 +8,9 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link"><i class="fas fa-eye"></i>&nbsp;View site</a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 <img src="<?= $this->_dirImg?>admin2.png" class="user-image img-circle elevation-2" alt="User Image">

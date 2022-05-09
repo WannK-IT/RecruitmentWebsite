@@ -8,35 +8,6 @@ $(document).ready(function () {
     }
   });
 
-  // Button add more phones
-  $("#add-more-phone").show();
-  var max_append_phone = 3;
-  var start = 1;
-  $(document).on('click', '#add-more-phone', function (e) {
-
-    let html = "";
-    if (start < max_append_phone) {
-      start += 1;
-      html += '<div id="form-append-phone" class="input-group my-2">';
-      html += '<input type="text" class="form-control fs-input border-right-0 border" autocomplete="off" id="post-contact-phone' + start + '" name="post_contact_phone' + start + '" placeholder="Vui lòng nhập">';
-      html += '<span class="input-group-append">';
-      html += '<button type="button" class="input-group-text bg-transparent" id="remove-phone">';
-      html += '<i class="fas fa-times"></i>';
-      html += '</button></span></div>';
-      html += '';
-
-      $(".append-phone").append(html);
-    } else {
-      alert("Chỉ được thêm tối đa 2 số điện thoại !");
-      e.preventDefault();
-    }
-  });
-
-  // Button remove phone
-  $(document).on('click', '#remove-phone', function () {
-    $(this).closest('#form-append-phone').remove();
-    start -= 1;
-  });
 
   $("#cancel-post").click(function () {
     location.replace('index.php?module=admin&controller=post&action=index');
@@ -62,3 +33,4 @@ $(document).ready(function () {
   });
 
 });
+

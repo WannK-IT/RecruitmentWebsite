@@ -1,6 +1,8 @@
 <?php
 class PostModel extends Model
 {
+	private $columns = ['post_id', 'post_position', 'post_career', 'post_type_work', 'post_address_work', 'post_rank', 'post_amount', 'post_expired', 'post_exp', 'post_gender', 'post_degree', 'post_salary', 'post_test_work', 'post_work_description', 'post_work_required', 'post_work_benefit', 'post_work_apply', 'post_contact_id', 'post_contact_name', 'post_contact_email', 'post_contact_phone', 'post_contact_address', 'post_createdDate', 'post_isActive',];
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,6 +16,17 @@ class PostModel extends Model
 		$query[]	= "FROM `{$this->table}`";
 		$query		= implode(" ", $query);
 		$result		= $this->listRecord($query);
+		return $result;
+	}
+
+	// Fetch single data table Post
+	public function fetchSingle($params)
+	{
+		$query[]	= "SELECT *";
+		$query[]	= "FROM `{$this->table}`";
+		$query[]	= "WHERE `post_id` = '{$params['pid']}'";
+		$query		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
 		return $result;
 	}
 
@@ -48,31 +61,13 @@ class PostModel extends Model
 
 	public function savePost($params, $option)
 	{
-		$data = $params;
-		unset($data['pid']);
-		unset($data['module']);
-		unset($data['controller']);
-		unset($data['action']);
-		unset($data['submit_post']);
-		unset($data['task']);
-
-		
-		$cols = $vals = "";
+		$data = array_intersect_key($params, array_flip($this->columns));
 		if (!empty($data)) {
-			foreach ($data as $key => $value) {
-				$cols .= ",`{$key}`";
-				$vals .= ",'$value'";
+			if ($option == 'add') {
+				$this->insert($data);
+			} elseif ($option == 'edit') {
+				$this->update($data, [['post_id', $params['pid'], '']]);
 			}
-			$cols = substr($cols, 1);
-			$vals = substr($vals, 1);
-			if($option == 'add'){
-				$query = "INSERT INTO `{$this->table}` ({$cols}) VALUES ({$vals})";
-			}elseif($option == 'edit'){
-				$query = "UPDATE `{$this->table}` SET ({$cols}) = ({$vals}) WHERE `post_id` = '{$params['pid']}'";
-			}
-			$this->query($query);
-			
 		}
-		
 	}
 }

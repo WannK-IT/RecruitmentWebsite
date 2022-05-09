@@ -14,8 +14,8 @@
   <!-- select2 library - replace select box -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
 
-
   <?php echo $this->_cssFiles; ?>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -71,6 +71,29 @@
   <!-- jQuery Validation v1.19.3 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
+
+  <!-- Toast message when edit or add form -->
+  <?php
+  if (@$_SESSION['add_success'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Thêm tin đăng tuyển thành công !")
+          </script>';
+    unset($_SESSION['add_success']);
+  } elseif (@$_SESSION['edit_success'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Chỉnh sửa tin đăng tuyển thành công !")
+          </script>';
+    unset($_SESSION['edit_success']);
+  }
+  ?>
 
 </body>
 

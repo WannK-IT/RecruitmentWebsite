@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     /* ----- Select2 library load select box ----- */
     $("#post-career").select2({
         dropdownCssClass: "fs-input"
@@ -32,14 +32,12 @@ $(document).ready(function () {
         ignore: [],
         debug: false,
         rules: {
+            // add rules to validate
             post_position: {
-                required: true,
                 minlength: 5,
                 maxlength: 200,
-                
             },
             post_amount: {
-                required: true,
                 number: true,
                 min: 1,
                 max: 1000
@@ -49,57 +47,54 @@ $(document).ready(function () {
             },
 
             post_work_description: {
-                required: function(){
+                required: function () {
                     CKEDITOR.instances.post_work_description.updateElement();
                 }
             },
             post_work_required: {
-                required: function(){
+                required: function () {
                     CKEDITOR.instances.post_work_required.updateElement();
                 }
             },
             post_work_benefit: {
-                required: function(){
+                required: function () {
                     CKEDITOR.instances.post_work_benefit.updateElement();
                 }
             },
             post_work_apply: {
-                required: function(){
+                required: function () {
                     CKEDITOR.instances.post_work_apply.updateElement();
                 }
             },
 
-
+            
+            // Validate if error
             post_contact_name: {
-                required: true,
                 minlength: 5,
                 maxlength: 100,
-                
+
             },
             post_contact_email: {
-                required: true,
                 maxlength: 100,
                 email: true
             },
             post_contact_phone: {
-                required: true,
                 number: true,
                 rangelength: [10, 11]
             },
             post_contact_address: {
-                required: true,
                 minlength: 5,
                 maxlength: 200
             }
-            
+
         },
-        
+
         messages: {
             post_position: {
                 required: "Vui lòng nhập chức danh",
                 minlength: "Tối thiểu 5 ký tự",
                 maxlength: "Tối đa 200 ký tự",
-                 
+
             },
             post_career: "Vui lòng chọn ngành nghề",
             post_type_work: "Vui lòng chọn hình thức làm việc",
@@ -138,7 +133,7 @@ $(document).ready(function () {
                 required: "Vui lòng nhập họ tên",
                 minlength: "Tối thiểu 5 ký tự",
                 maxlength: "Tối đa 100 ký tự",
-        
+
             },
             post_contact_email: {
                 required: "Vui lòng nhập email",

@@ -4,20 +4,21 @@
 $xhtml = '';
 if (!empty($this->listPost)) {
     foreach ($this->listPost as $post) {
-        $id             = $post['post_id'];
-        $position       = $post['post_position'];
-        $created        = date('d/m/Y H:i:s', strtotime($post['post_createdDate']));
-        $expired        = date('d/m/Y', strtotime($post['post_expired']));
-        $applyAmount    = 'Default';
-        $status         = $post['post_isActive'];
-        $classStatus    = ($status == 'active') ? 'fa-check text-success' : 'fa-minus text-danger';
+        $id                 = $post['post_id'];
+        $position           = $post['post_position'];
+        $created            = date('d/m/Y H:i:s', strtotime($post['post_createdDate']));
+        $expired            = date('d/m/Y', strtotime($post['post_expired']));
+        $applyAmount        = 'Default';
+        $status             = $post['post_isActive'];
+        $classStatus        = ($status == 'active') ? 'fa-check text-success' : 'fa-minus text-danger';
 
         $linkChangeStatus   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'changeStatus', ['status' => $status, 'pid' => $id]);
         $linkDeletePost     = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'ajaxDelete', ['pid' => $id]);
         $linkEditPost       = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'formPost', ['task' => 'edit', 'pid' => $id]);
+        $linkViewPost       = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'previewPost', ['pid' => $id]);
 
         $xhtml .=    '<tr id="post-' . $id . '">
-                            <td class="text-center"><a class="text-anchor" href="#">' . $position . '</a></td>
+                            <td class="text-center"><a class="text-anchor" href="' . $linkViewPost . '">' . $position . '</a></td>
                             <td class="text-center">' . $created . '</td>
                             <td class="text-center">' . $expired . '</td>
                             <td class="text-center">' . $applyAmount . '</td>
@@ -37,8 +38,10 @@ if (!empty($this->listPost)) {
                         </tr>';
     }
 } else {
-    $xhtml = Helper::showEmptyRow('6', 'Dữ liệu đang được cập nhật');
+    $xhtml = Helper::showEmptyRow('6', 'Bạn chưa có tin tuyển dụng nào !');
+    $xhtml = Helper::showEmptyRow('6', 'Bạn chưa có tin tuyển dụng nào !');
 }
+
 ?>
 <!-- List -->
 <div class="row">
