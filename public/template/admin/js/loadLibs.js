@@ -1,34 +1,11 @@
 $(document).ready(function () {
 
     /* ----- Select2 library load select box ----- */
-    $("#post-career").select2({
-        dropdownCssClass: "fs-input"
-    });
-    $("#post-type-work").select2({
-        dropdownCssClass: "fs-input"
-    });
-    $("#post-address-work").select2({
-        dropdownCssClass: "fs-input"
-    });
-    $("#post-rank").select2({
-        dropdownCssClass: "fs-input"
-    });
-    $("#post-degree").select2({
-        dropdownCssClass: "fs-input"
-    });
-    $("#post-exp").select2({
-        dropdownCssClass: "fs-input"
-    });
-    $("#post-gender").select2({
-        dropdownCssClass: "fs-input"
-    });
-    $("#post-salary").select2({
-        dropdownCssClass: "fs-input"
-    });
+    $("#post-career, #post-type-work, #post-address-work, #post-rank, #post-degree, #post-exp, #post-gender, #post-salary, #comp_location, #comp_size, #comp_field").select2();
 
     /* ----- jQuery Validation ----- */
     // Validate form add recruitment form
-    $("#form-add-job").validate({
+    $("#form-add-job, #form-emp-account, #form-emp-company").validate({
         ignore: [],
         debug: false,
         rules: {
@@ -69,20 +46,20 @@ $(document).ready(function () {
 
             
             // Validate if error
-            post_contact_name: {
+            emp_fullname: {
                 minlength: 5,
                 maxlength: 100,
 
             },
-            post_contact_email: {
+            emp_email: {
                 maxlength: 100,
                 email: true
             },
-            post_contact_phone: {
+            emp_phone: {
                 number: true,
                 rangelength: [10, 11]
             },
-            post_contact_address: {
+            emp_address: {
                 minlength: 5,
                 maxlength: 200
             }
@@ -129,27 +106,46 @@ $(document).ready(function () {
             },
 
 
-            post_contact_name: {
+            emp_fullname: {
                 required: "Vui lòng nhập họ tên",
                 minlength: "Tối thiểu 5 ký tự",
                 maxlength: "Tối đa 100 ký tự",
 
             },
-            post_contact_email: {
+            emp_email: {
                 required: "Vui lòng nhập email",
                 email: "Sai định dạng email",
                 maxlength: "Tối đa 100 ký tự"
             },
-            post_contact_phone: {
+            emp_phone: {
                 required: "Vui lòng nhập số điện thoại",
                 number: "Chỉ được nhập số",
                 rangelength: "Số điện thoại phải từ 10-11 số theo đầu số mới",
             },
-            post_contact_address: {
+            emp_address: {
                 required: "Vui lòng nhập địa chỉ liên hệ",
                 minlength: "Tối thiểu 5 ký tự",
                 maxlength: "Tối đa 200 ký tự"
-            }
+            },
+
+            comp_name: {
+                required : "Vui lòng nhập tên công ty"
+            },
+            comp_tax_id: {
+                required : "Vui lòng nhập mã số thuế"
+            },
+            comp_size: {
+                required : "Vui lòng chọn quy mô nhân sự"
+            },
+            comp_location: {
+                required : "Vui lòng nhập địa điểm công ty. Vd: TPHCM, Hà Nội, ... "
+            },
+            comp_address: {
+                required : "Vui lòng nhập địa chỉ công ty. Vd: Số 3x, Đường A, TPHCM, ... "
+            },
+            comp_field: {
+                required : "Vui lòng chọn lĩnh vực hoạt động"
+            },
         },
 
         // Method Error

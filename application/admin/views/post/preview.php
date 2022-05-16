@@ -10,7 +10,7 @@ if (!empty($this->previewPost)) {
         <!-- Default box -->
         <div class="card card-info card-outline my-3">
             <div class="card-header">
-                <div class="h5 font-weight-bold m-0"><a href="<?= URL::addLink('admin', 'post', 'index') ?>" class="text-anchor"><i class="pr-2 fas fa-arrow-left fa-sm"></i></a>Thông tin đăng tuyển</div>
+                <div class="h5 font-weight-bold m-0"><a href="<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'index') ?>" class="text-anchor"><i class="pr-2 fas fa-arrow-left fa-sm"></i></a>Thông tin đăng tuyển</div>
             </div>
             <div class="card-body">
                 <!-- Input field -->
@@ -114,22 +114,22 @@ if (!empty($this->previewPost)) {
                     <div class="my-1 row">
 
                         <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Người liên hệ:</p>
-                        <p class="col-md-6 h6 list-inline-item"><?= $data['post_contact_name'] ?></p>
+                        <p class="col-md-6 h6 list-inline-item"><?= $data['emp_fullname'] ?></p>
                     </div>
 
                     <div class="my-1 row">
                         <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Email liên hệ:</p>
-                        <p class="col-md-6 h6 list-inline-item"><?= $data['post_contact_email'] ?></p>
+                        <p class="col-md-6 h6 list-inline-item"><?= $data['emp_email'] ?></p>
                     </div>
 
                     <div class="my-1 row">
                         <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Số điện thoại:</p>
-                        <p class="col-md-6 h6 list-inline-item"><?= $data['post_contact_phone'] ?></p>
+                        <p class="col-md-6 h6 list-inline-item"><?= $data['emp_phone'] ?></p>
                     </div>
 
                     <div class="my-1 row">
                         <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Địa chỉ:</p>
-                        <p class="col-md-6 h6 list-inline-item"><?= $data['post_contact_address'] ?></p>
+                        <p class="col-md-6 h6 list-inline-item"><?= $data['emp_address'] ?></p>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 <?php
 $xhtml = '';
 if (!empty($this->listPost)) {
+    $index = 1;
     foreach ($this->listPost as $post) {
         $id                 = $post['post_id'];
         $position           = $post['post_position'];
@@ -17,61 +18,68 @@ if (!empty($this->listPost)) {
         $linkEditPost       = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'formPost', ['task' => 'edit', 'pid' => $id]);
         $linkViewPost       = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'previewPost', ['pid' => $id]);
 
-        $xhtml .=    '<tr id="post-' . $id . '">
-                            <td class="text-center"><a class="text-anchor" href="' . $linkViewPost . '">' . $position . '</a></td>
-                            <td class="text-center">' . $created . '</td>
-                            <td class="text-center">' . $expired . '</td>
-                            <td class="text-center">' . $applyAmount . '</td>
-                            <td class="text-center position-relative">
-                                <a id="status-post-' . $id . '" href="javascript:ajaxStatus(\'' . $linkChangeStatus . '\')">
-                                    <span class="fa-lg fas ' . $classStatus . '"></span>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="' . $linkEditPost . '" class="px-1" title="Edit">
-                                    <i class="fas fa-cog fa-lg text-info"></i>
-                                </a>
-                                <a href="javascript:ajaxDelete(\'' . $linkDeletePost . '\')" class="px-1" title="Delete">
-                                    <span class="fas fa-trash-alt fa-lg text-danger"></span>
-                                </a>
-                            </td>
-                        </tr>';
+       
+
+        $xhtml .= '<tr id="post-' . $id . '">
+                        <td>'.$index.'</td>
+                        <td>
+                            <a>' . $position . '</a><br>
+                            <small> Ngày tạo ' . $created . '</small>
+                        </td>
+                        <td class="text-center">' . $expired . '</td>
+                        <td class="text-center">' . $applyAmount . '</td>
+                        <td class="project-state">
+                            <a id="status-post-' . $id . '" href="javascript:ajaxStatus(\'' . $linkChangeStatus . '\')">
+                                <span class="fa-lg fas ' . $classStatus . '"></span>
+                            </a>
+                        </td>
+                        <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="' . $linkViewPost . '">
+                                <i class="fas fa-eye"></i>
+                                Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="'.$linkEditPost.'">
+                                <i class="fas fa-pencil-alt"></i>
+                                Sửa
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="javascript:ajaxDelete(\'' . $linkDeletePost . '\')">
+                                <i class="fas fa-trash"></i>
+                                Xóa
+                            </a>
+                        </td>
+                    </tr>';
+        $index ++;
     }
 } else {
-    $xhtml = Helper::showEmptyRow('6', 'Bạn chưa có tin tuyển dụng nào !');
     $xhtml = Helper::showEmptyRow('6', 'Bạn chưa có tin tuyển dụng nào !');
 }
 
 ?>
-<!-- List -->
-<div class="row">
-    <div class="col-12">
-        <!-- Default box -->
-        <div class="card card-info card-outline my-3">
-            <div class="card-body">
-                <!-- Post Content -->
-                <form action="" method="post" class="table-responsive" id="form-table-post">
-                    <table class="table table-bordered table-hover text-nowrap btn-table mb-0">
-                        <thead>
-                            <tr class="bg-secondary">
-                                <th class="text-center">Tên tin đăng</th>
-                                <th class="text-center">Ngày đăng</th>
-                                <th class="text-center">Thời hạn</th>
-                                <th class="text-center">Lượt ứng tuyển</th>
-                                <th class="text-center">Trạng thái</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?= $xhtml ?>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-            <!-- <?php require_once "elements/pagination.php" ?> -->
 
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Danh sách tin đăng tuyển</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
         </div>
-        <!-- /.card -->
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th style="width: 3%">#</th>
+                    <th style="width: 25%">Tên tin đăng</th>
+                    <th style="width: 20%" class="text-center">Thời hạn</th>
+                    <th style="width: 20%" class="text-center">Lượt ứng tuyển</th>
+                    <th style="width: 10%" class="text-center">Trạng thái</th>
+                    <th style="width: 20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?= $xhtml?>
+            </tbody>
+        </table>
     </div>
 </div>
-<!-- End List -->

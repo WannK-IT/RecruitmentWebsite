@@ -2,8 +2,11 @@
     ob_start();
     $createPost = Helper::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'formPost&task=add');
     $listPost = Helper::createItemSide('Danh sách tin đăng', 'fas fa-list-ul', 'admin', 'post', 'index');
-    $arrItemSide = [$createPost, $listPost];
-    $group_Post = Helper::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', $arrItemSide);
+
+    $infoEmployer = Helper::createItemSide('Tài khoản NTD', 'fas fa-user', 'admin', 'employer', 'account');
+
+    $group_Post = Helper::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', [$createPost, $listPost], 'post');
+    $group_Employer = Helper::createGroupSide('Quản lý tài khoản NTD', 'fas fa-user-circle', [$infoEmployer], 'user');
 ?>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -29,20 +32,10 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                <?php 
-                    echo $group_Post;
-                ?>
-
-                <!-- Form -->
-                <li class="nav-item">
-                    <a href="index.php?module=admin&controller=form&action=index" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>Form</p>
-                    </a>
-                </li>
+                <?= $group_Post . $group_Employer ?>
 
                 <!-- User -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -100,10 +93,10 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
                 <!-- Category -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-clipboard"></i>
                         <p>
@@ -161,10 +154,10 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
                 <!-- Book -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -222,7 +215,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

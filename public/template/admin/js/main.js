@@ -9,10 +9,6 @@ $(document).ready(function () {
   });
 
 
-  $("#cancel-post").click(function () {
-    location.replace('index.php?module=admin&controller=post&action=index');
-  });
-
   // Disable past days in input[type=date]
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -31,6 +27,14 @@ $(document).ready(function () {
       e.preventDefault();
     }
   });
+
+  // Active menu sidebars
+  var paramsUrl = location.search;
+  var valController = paramsUrl.split('&')[1].split('=')[1];
+  // if($('data-controller').val() == valController){
+
+  // }
+ 
 
 });
 

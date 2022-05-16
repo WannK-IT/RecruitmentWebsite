@@ -1,21 +1,33 @@
 <?php
-class PostModel extends Model
+class EmployerModel extends Model
 {
-	private $columns = ['post_id', 'post_position', 'post_career', 'post_type_work', 'post_address_work', 'post_rank', 'post_amount', 'post_expired', 'post_exp', 'post_gender', 'post_degree', 'post_salary', 'post_test_work', 'post_work_description', 'post_work_required', 'post_work_benefit', 'post_work_apply', 'contact_id', 'contact_name', 'contact_email', 'contact_phone', 'contact_address', 'post_createdDate', 'post_isActive',];
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->setTable('post');
+		$this->setTable('employer');
 	}
 
-	// Show list post
-	public function listPosts()
+	
+	// Show list Employer
+	public function listEmployer()
 	{
-		$query[]	= "SELECT `post_id`, `post_position`, `post_createdDate`, `post_expired`, `post_amount`, `post_isActive`";
+		$query[]	= "SELECT `emp_id`, `emp_email`, `emp_fullname`, `emp_user`, `emp_password`, `emp_phone`, `emp_address`, `comp_id`";
 		$query[]	= "FROM `{$this->table}`";
+		$query[]	= "WHERE `emp_id` = 1";
 		$query		= implode(" ", $query);
-		$result		= $this->listRecord($query);
+		$result		= $this->singleRecord($query);
+		return $result;
+	}
+
+	// Show list Company
+	public function listCompany()
+	{
+		$query[]	= "SELECT `c`.`comp_name`, `c`.`comp_location`, `c`.`comp_address`, `c`.`comp_description`, `c`.`comp_logo`, `c`.`comp_tax_id`, `c`.`comp_size`, `c`.`comp_field`, `c`.`comp_id`";
+		$query[]	= "FROM `{$this->table}` AS `e`, `company` AS `c`";
+		$query[]	= "WHERE `e`.`comp_id` = `c`.`comp_id` AND `emp_id` = 1";
+		$query		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
 		return $result;
 	}
 

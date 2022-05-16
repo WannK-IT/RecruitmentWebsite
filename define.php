@@ -13,7 +13,7 @@
 	define	('TEMPLATE_URL'		, PUBLIC_URL . 'template' . DS);
 	
 	define	('DEFAULT_MODULE'		, 'admin');
-	define	('DEFAULT_CONTROLLER'	, 'index');
+	define	('DEFAULT_CONTROLLER'	, 'post');
 	define	('DEFAULT_ACTION'		, 'index');
 
 	// ====================== DATABASE ===========================
@@ -22,3 +22,4 @@
 	define ('DB_PASS'			, '');						
 	define ('DB_NAME'			, 'recruitment');						
 	define ('DB_TABLE'			, 'post');						
+	define ('DB_TBL_EMPLOYER'	, 'employer');						
