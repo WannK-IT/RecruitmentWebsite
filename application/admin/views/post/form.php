@@ -10,7 +10,7 @@ $position = Form::createInputField('Chức danh', 'text', 'post-position', 'post
 
 // Ngành nghề
 $arrCareer = ['default' => 'Chọn ngành nghề', 'Công nghệ thông tin', 'Điện - điện tử', 'Quản trị kinh doanh', 'Quản trị du lịch nhà hàng khách sạn', 'Kỹ thuật', 'Business Analyst', 'Architect'];
-$career = Form::createSelectBox('Ngành nghề', 'post-career', 'post_career[]', $arrCareer, @$data['post_career'], true, true);
+$career = Form::createSelectBox('Ngành nghề', 'post-career', 'post_career', $arrCareer, @$data['post_career'], true);
 
 // Hình thức làm việc
 $arrTypeWork = ['default' => 'Chọn hình thức làm việc', 'Full-time', 'Part-time', 'Intern', 'Contract', 'Khác'];

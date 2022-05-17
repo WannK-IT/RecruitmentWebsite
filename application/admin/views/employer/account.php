@@ -1,7 +1,7 @@
 <?php
 
-if(!empty($this->listEmployer)){
-    $dataEmp = $this->listEmployer;
+if(!empty($this->employer)){
+    $dataEmp = $this->employer;
 }
 
 $arrAccount = [

@@ -20,9 +20,7 @@ function ajaxDelete(link) {
                 'Thành công !',
                 'Tin đăng tuyển dụng của bạn đã được xóa',
                 'success'
-            ).then(function () {
-                location.reload();
-            });
+            )
         }
     })
 }
@@ -60,9 +58,38 @@ function ajaxStatus(link) {
     }, 'json')
 }
 
+function loginForm(link, direct) {
+
+    // Check empty input field
+    if (!$('#emp_user').val() || !$('#emp_password').val()) {
+        toastMsg('warning', 'Vui lòng nhập tên tài khoản và mật khẩu !');
+    } else {
+        $.ajax({
+            type: 'post',
+            url: link,
+            data: $('#login_form_employer').serialize(),
+            success: function (data) {
+                if (data == 'failed') {
+                    toastMsg('error', 'Tên tài khoản và mật khẩu chưa đúng !');
+                }else{
+                    location.href = direct;
+                }
+            }
+        })
+    }
+
+}
+
+function toastMsg(icon, message) {
+    Toast.fire({
+        icon: icon,
+        title: message
+    })
+}
+
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 2000,
+    timer: 3000,
 })

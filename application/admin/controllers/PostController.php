@@ -23,14 +23,12 @@ class PostController extends Controller
 	{
 		$result = $this->_model->changeStatus($this->_arrParam);
 		echo json_encode($result);
-		// $this->redirect('admin', 'post', 'index');
 	}
 
 	public function ajaxDeleteAction()
 	{
 		$result  = $this->_model->deletePost($this->_arrParam);
 		echo json_encode($result);
-		// $this->redirect('admin', 'post', 'index');
 	}
 
 	public function formPostAction()

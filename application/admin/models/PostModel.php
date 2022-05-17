@@ -1,7 +1,7 @@
 <?php
 class PostModel extends Model
 {
-	private $columns = ['post_id', 'post_position', 'post_career', 'post_type_work', 'post_address_work', 'post_rank', 'post_amount', 'post_expired', 'post_exp', 'post_gender', 'post_degree', 'post_salary', 'post_test_work', 'post_work_description', 'post_work_required', 'post_work_benefit', 'post_work_apply', 'contact_id', 'contact_name', 'contact_email', 'contact_phone', 'contact_address', 'post_createdDate', 'post_isActive',];
+	private $columns = ['post_id', 'post_position', 'post_career', 'post_type_work', 'post_address_work', 'post_rank', 'post_amount', 'post_expired', 'post_exp', 'post_gender', 'post_degree', 'post_salary', 'post_test_work', 'post_work_description', 'post_work_required', 'post_work_benefit', 'post_work_apply', 'emp_id', 'emp_fullname', 'emp_email', 'emp_phone', 'emp_address', 'post_createdDate', 'post_isActive',];
 
 	public function __construct()
 	{

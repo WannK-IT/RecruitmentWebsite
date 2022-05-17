@@ -8,23 +8,25 @@ class EmployerController extends Controller
 		$this->_templateObj->setFileTemplate('index.php');
 		$this->_templateObj->setFileConfig('template.ini');
 		$this->_templateObj->load();
+		Session::init();
 	}
 
 	public function accountAction()
 	{
 		$this->_view->setTitle('Quản lý tài khoản');
-		$this->_view->listEmployer = $this->_model->listEmployer();
+		$this->_view->employer = $this->_model->singleEmployer();
 		$this->_view->render('employer/account', true);
 	}
 
 	public function companyAction()
 	{
-		$this->_view->setTitle('Quản lý tài khoản');
-		$this->_view->listCompany = $this->_model->listCompany();
+		$this->_view->setTitle('Quản lý công ty');
+		$this->_view->company = $this->_model->singleCompany();
 		$this->_view->render('employer/company', true);
 	}
 
-	public function loginAction(){
+	public function loginAction()
+	{
 		$this->_templateObj->setFolderTemplate('admin/');
 		$this->_templateObj->setFileTemplate('login.php');
 		$this->_templateObj->setFileConfig('template.ini');
@@ -32,6 +34,17 @@ class EmployerController extends Controller
 
 		$this->_view->setTitle('Đăng nhập');
 		$this->_view->render('employer/login', true);
+	}
+
+	public function loginAccountAction()
+	{
+		$result =  $this->_model->login($this->_arrParam);
+		echo $result;
+	}
+
+	public function logoutAccountAction(){
+		Session::delete('loginSuccess');
+		URL::direct('admin', 'employer', 'login');
 	}
 
 	// public function changeStatusAction()
@@ -55,7 +68,7 @@ class EmployerController extends Controller
 	// 		$this->_view->dataPost = $this->_model->fetchSingle($this->_arrParam);
 	// 		$this->_view->setTitle('Chỉnh sửa tin đăng tuyển');
 	// 	}
-		
+
 	// 	if (isset($this->_arrParam['submit_post'])) {
 	// 		if ($this->_arrParam['task'] == 'add') {
 	// 			$this->_model->savePost($this->_arrParam, $option = 'add');

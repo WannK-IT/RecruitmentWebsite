@@ -28,13 +28,5 @@ $(document).ready(function () {
     }
   });
 
-  // Active menu sidebars
-  var paramsUrl = location.search;
-  var valController = paramsUrl.split('&')[1].split('=')[1];
-  // if($('data-controller').val() == valController){
-
-  // }
  
-
 });
-

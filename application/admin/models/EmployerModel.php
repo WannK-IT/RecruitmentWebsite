@@ -8,9 +8,8 @@ class EmployerModel extends Model
 		$this->setTable('employer');
 	}
 
-	
 	// Show list Employer
-	public function listEmployer()
+	public function singleEmployer()
 	{
 		$query[]	= "SELECT `emp_id`, `emp_email`, `emp_fullname`, `emp_user`, `emp_password`, `emp_phone`, `emp_address`, `comp_id`";
 		$query[]	= "FROM `{$this->table}`";
@@ -21,13 +20,33 @@ class EmployerModel extends Model
 	}
 
 	// Show list Company
-	public function listCompany()
+	public function singleCompany()
 	{
 		$query[]	= "SELECT `c`.`comp_name`, `c`.`comp_location`, `c`.`comp_address`, `c`.`comp_description`, `c`.`comp_logo`, `c`.`comp_tax_id`, `c`.`comp_size`, `c`.`comp_field`, `c`.`comp_id`";
 		$query[]	= "FROM `{$this->table}` AS `e`, `company` AS `c`";
 		$query[]	= "WHERE `e`.`comp_id` = `c`.`comp_id` AND `emp_id` = 1";
 		$query		= implode(" ", $query);
 		$result		= $this->singleRecord($query);
+		return $result;
+	}
+
+	public function login($params){
+		$query[]	= "SELECT `emp_user`, `emp_password`, `emp_fullname`";
+		$query[]	= "FROM `{$this->table}`";
+		$query[]	= "WHERE `emp_user` = '{$params['emp_user']}' AND `emp_password` = '{$params['emp_password']}'";
+		$query		= implode(" ", $query);
+
+		// Query to load information of employer
+		$loadInfo	= $this->singleRecord($query);
+
+		// Check username & password exist
+		if($this->isExist($query) == true){
+			$result = 'success';
+			Session::set('loginSuccess', true);
+			Session::set('loginFullname', $loadInfo['emp_fullname']);
+		}else{
+			$result = 'failed';
+		}
 		return $result;
 	}
 

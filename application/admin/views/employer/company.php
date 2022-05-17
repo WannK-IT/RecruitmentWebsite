@@ -1,6 +1,6 @@
 <?php
-if(!empty($this->listCompany)){
-    $dataComp = $this->listCompany;
+if(!empty($this->company)){
+    $dataComp = $this->company;
 }
 $arrLocation    = ['TP Hồ Chí Minh', 'Hà Nội', 'Đà Nẵng', 'Cần thơ', 'Hải Phòng'];
 $arrSize        = ['Dưới 10 người', '10 - 50 người', '50 - 200 người', '200 - 500 người', '500 - 1000 người', '1000 - 3000 người', 'Trên 3000 người'];

@@ -24,7 +24,7 @@
                 <img src="<?= $this->_dirImg ?>admin2.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Quang Nguyễn</a>
+                <a href="#" class="d-block"><?= Session::get('loginFullname')?></a>
             </div>
         </div>
 
