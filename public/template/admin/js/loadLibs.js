@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     /* ----- jQuery Validation ----- */
     // Validate form add recruitment form
-    $("#form-add-job, #form-emp-account, #form-emp-company").validate({
+    $("#form-add-job, #form-emp-account, #form-emp-company, #register_form_employer").validate({
         ignore: [],
         debug: false,
         rules: {
@@ -46,6 +46,9 @@ $(document).ready(function () {
 
             
             // Validate if error
+            emp_user: function(){
+                
+            },
             emp_fullname: {
                 minlength: 5,
                 maxlength: 100,
@@ -62,10 +65,14 @@ $(document).ready(function () {
             emp_address: {
                 minlength: 5,
                 maxlength: 200
+            },
+            comp_tax_id: {
+                number: true,
             }
 
         },
 
+        // -------- SHOW ERROR MESSAGE --------
         messages: {
             post_position: {
                 required: "Vui lòng nhập chức danh",
@@ -127,6 +134,13 @@ $(document).ready(function () {
                 minlength: "Tối thiểu 5 ký tự",
                 maxlength: "Tối đa 200 ký tự"
             },
+            emp_user:{
+                required: "Vui lòng nhập tên tài khoản Nhà tuyển dụng"
+            },
+            emp_password:{
+                required: "Vui lòng nhập mật khẩu Nhà tuyển dụng"
+            },
+
 
             comp_name: {
                 required : "Vui lòng nhập tên công ty"
@@ -146,6 +160,12 @@ $(document).ready(function () {
             comp_field: {
                 required : "Vui lòng chọn lĩnh vực hoạt động"
             },
+            comp_size: {
+                required : "Vui lòng chọn quy mô nhân sự"
+            },
+            comp_tax_id: {
+                number: "MST chứa kí tự không hợp lệ !",
+            }
         },
 
         // Method Error

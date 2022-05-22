@@ -23,8 +23,6 @@ class Form
                         <label for="' . $id . '">' . $title . $important . '</label>
                         <select id="' . $id . '" name="' . $name . '" class="form-control" ' . $required . '>';
         foreach ($arrValue as $key => $value) {
-            // $default = ($key == 'default') ? 'selected disabled' : '';
-            // $selected = ($value == $keySelected) ? 'selected' : '';
             if ($key == 'default') {
                 $selected = 'selected disabled';
             } elseif ($keySelected == $value) {
@@ -72,10 +70,10 @@ class Form
 
 
     // ------------------- Form inline row -------------------
-    public static function labelRow($forName, $title, $col, $important = false)
+    public static function labelRow($forName, $title, $col, $required = false)
     {
-        $important = ($important == true) ? ' <span class="text-danger">*</span>' : '';
-        return sprintf('<label for="%s" class="col-sm-%s col-form-label">%s %s</label>', $forName, $col, $title, $important);
+        $required = ($required == true) ? ' <span class="text-danger">*</span>' : '';
+        return sprintf('<label for="%s" class="col-sm-%s col-form-label">%s %s</label>', $forName, $col, $title, $required);
     }
 
     public static function inputRow($type, $name, $col, $value, $required = false, $disable = false, $placeHolder = null)
@@ -92,13 +90,24 @@ class Form
     public static function selectBox($name, $arrOptions, $col, $selected, $disable = false)
     {
         $disable = ($disable == true) ? 'disabled' : '';
-        $xhtml = '<div class="col-sm-'.$col.'">';
-        $xhtml .= '<select id="' . $name . '" name="' . $name . '" class="form-control" '.$disable.'>';
+        $xhtml = '<div class="col-sm-' . $col . '">';
+        $xhtml .= '<div class="error-element">';
+        $xhtml .= '<select id="' . $name . '" name="' . $name . '" class="form-control" ' . $disable . '>';
         foreach ($arrOptions as $value) {
             $keySelected = ($value == $selected) ? 'selected' : '';
             $xhtml .= '<option ' . $keySelected . '>' . $value . '</option>';
         }
-        $xhtml .= '</select></div>';
+        $xhtml .= '</select></div></div>';
+        return $xhtml;
+    }
+
+    public static function textArea($name, $col, $value, $rows)
+    {
+        $xhtml = '';
+        $xhtml .= '<div class="col-sm-' . $col . '">';
+        $xhtml .= '  <div class="error-element">
+                        <textarea id="' . $name . '" name="' . $name . '" rows="'.$rows.'" class="form-control" style="font-size: 1rem" autocomplete="off">' . $value . '</textarea>
+                    </div></div>';
         return $xhtml;
     }
 
@@ -117,6 +126,63 @@ class Form
         if (!empty($arrElement)) {
             foreach ($arrElement as $element) {
                 $xhtml .= self::formRow($element);
+            }
+        }
+        return $xhtml;
+    }
+
+    // Form account
+    public static function labelAccount($forName, $title, $required = false)
+    {
+        $required = ($required == true) ? ' <span class="text-danger">*</span>' : '';
+        return sprintf('<label class="form-label" for="%s">%s %s</label>', $forName, $title, $required);
+    }
+
+    public static function inputAccount($type, $name, $placeHolder, $value, $required = false)
+    {
+        $required = ($required == true) ? 'required' : '';
+        return sprintf('<input type="%s" id="%s" name="%s" class="form-control form-control" placeholder="%s" autocomplete="off" style="font-size:1rem" value="%s" %s/>', $type, $name, $name, $placeHolder, $value, $required);
+    }
+
+    public static function selectBoxAccount($name, $arrOptions, $selected, $required = false)
+    {
+        $xhtml = '';
+        $required = ($required == true) ? 'required' : '';
+        $xhtml .= '<select name="' . $name . '" id="' . $name . '" class="form-control" ' . $required . '>';
+        if (!empty($arrOptions)) {
+            foreach ($arrOptions as $key => $value) {
+                if ($key == 'default') {
+                    $keySelected = 'selected disabled';
+                } elseif ($selected == $value) {
+                    $keySelected = 'selected';
+                } else {
+                    $keySelected = '';
+                }
+                $xhtml .= '<option ' . $keySelected . '>' . $value . '</option>';
+            }
+        }
+        $xhtml .=  '</select>';
+        return $xhtml;
+    }
+
+    public static function formRowAccount($element)
+    {
+        return sprintf('
+            <div class="form-outline mb-4">
+                <div class="error-element">
+                    %s
+                    %s
+                </div>
+            </div>
+        ', $element['label'], $element['input']);
+    }
+
+    public static function showFormAccount($arrElement)
+    {
+        $xhtml = '';
+        if (!empty($arrElement)) {
+            foreach ($arrElement as $element) {
+                $xhtml .= self::formRowAccount($element);
             }
         }
         return $xhtml;

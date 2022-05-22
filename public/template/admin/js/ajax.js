@@ -59,7 +59,6 @@ function ajaxStatus(link) {
 }
 
 function loginForm(link, direct) {
-
     // Check empty input field
     if (!$('#emp_user').val() || !$('#emp_password').val()) {
         toastMsg('warning', 'Vui lòng nhập tên tài khoản và mật khẩu !');
@@ -70,15 +69,35 @@ function loginForm(link, direct) {
             data: $('#login_form_employer').serialize(),
             success: function (data) {
                 if (data == 'failed') {
-                    toastMsg('error', 'Tên tài khoản và mật khẩu chưa đúng !');
+                    toastMsg('error', 'Tên tài khoản và mật khẩu chưa chính xác !');
                 }else{
                     location.href = direct;
                 }
             }
         })
     }
-
 }
+
+$('#registerForm').click(function(e){
+    e.preventDefault();
+    if($('#emp_user').val()){
+        let link = 'index.php?module=admin&controller=account&action=checkExistAccount'
+        $.ajax({
+            type: 'post',
+            url: link,
+            data: $('#register_form_employer').serialize(),
+            success: function (data) {
+                if(data == 'exist'){
+                    toastMsg('warning', 'Tên tài khoản đã được sử dụng !')
+                }else{
+                    $('#register_form_employer').submit();
+                }   
+            }
+        })
+    }else{
+        $('#register_form_employer').submit();
+    }
+});
 
 function toastMsg(icon, message) {
     Toast.fire({

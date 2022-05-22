@@ -191,4 +191,18 @@ class Model{
 		if(mysqli_num_rows($this->resultQuery ) > 0) return true;
 		return false;
 	}
+
+	public function insertOtherTable($arrData, $table){
+		$cols = $vals = '';
+		if(!empty($arrData)){
+			foreach($arrData as $key => $value){
+				$cols .= ", `$key`";
+				$vals .= ", '$value'";
+			}
+		}
+        $cols = substr($cols, 2);
+        $vals = substr($vals, 2);
+        $query = "INSERT INTO `{$table}`({$cols}) VALUES ({$vals})";
+        $this->query($query);
+	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gradient-info">
 
 <head>
   <?php echo $this->_metaHTTP; ?>
@@ -18,14 +18,12 @@
 </head>
 
 <body>
-  <div class="vh-100 bg-gradient-info text-dark">
+  <div class="bg-gradient-info text-dark">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-xl-10">
-          <?php
-          require_once APPLICATION_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php';
-          ?>
-        </div>
+        <?php
+        require_once APPLICATION_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php';
+        ?>
       </div>
     </div>
   </div>

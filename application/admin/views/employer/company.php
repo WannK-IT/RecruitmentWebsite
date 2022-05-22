@@ -2,21 +2,21 @@
 if(!empty($this->company)){
     $dataComp = $this->company;
 }
-$arrLocation    = ['TP Hồ Chí Minh', 'Hà Nội', 'Đà Nẵng', 'Cần thơ', 'Hải Phòng'];
-$arrSize        = ['Dưới 10 người', '10 - 50 người', '50 - 200 người', '200 - 500 người', '500 - 1000 người', '1000 - 3000 người', 'Trên 3000 người'];
-$arrField       = ['IT', 'Marketing', 'Logistics', 'Business Management', 'Education', 'Personal Trainer'];
+$arrLocation    = $this->listLocation;
+$arrSize        = $this->listSize;
+$arrField       = $this->listField;
 $arrInfoCompany = [
     [
         'label'     => Form::labelRow('comp_name', 'Tên công ty', 4, true),
-        'input'     => Form::inputRow('text', 'comp_name', 8, $dataComp['comp_name'], true)
+        'input'     => Form::inputRow('text', 'comp_name', 8, $dataComp['comp_name'], true, true)
     ],
     [
-        'label'     => Form::labelRow('comp_tax_id', 'Mã số thuế', 4, true),
-        'input'     => Form::inputRow('number', 'comp_tax_id', 8, $dataComp['comp_tax_id'], true, true)
+        'label'     => Form::labelRow('comp_tax_id', 'Mã số thuế', 4),
+        'input'     => Form::inputRow('number', 'comp_tax_id', 8, $dataComp['comp_tax_id'], false, true)
     ],
     [
         'label'     => Form::labelRow('comp_size', 'Quy mô nhân sự', 4, true),
-        'input'     => Form::selectBox('comp_size', $arrSize, 8, $dataComp['comp_size'], true)
+        'input'     => Form::selectBox('comp_size', $arrSize, 8, $dataComp['comp_size'])
     ],
     [
         'label'     => Form::labelRow('comp_location', 'Địa điểm', 4, true),
@@ -30,10 +30,14 @@ $arrInfoCompany = [
         'label'     => Form::labelRow('comp_field', 'Lĩnh vực hoạt động', 4, true),
         'input'     => Form::selectBox('comp_field', $arrField, 8, $dataComp['comp_field'])
     ],
-
+    [
+        'label'     => Form::labelRow('comp_description', 'Giới thiệu công ty', 4),
+        'input'     => Form::textArea('comp_description', 8, $dataComp['comp_description'], 10)
+    ],
+    
 ];
 
-$infoCompany = Form::showForm($arrInfoCompany);
+$infoCompany    = Form::showForm($arrInfoCompany);
 ?>
 
 <div class="row">

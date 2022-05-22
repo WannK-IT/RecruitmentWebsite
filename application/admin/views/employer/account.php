@@ -29,8 +29,8 @@ $arrContact = [
         'input'     => Form::inputRow('email', 'emp_email', 8, $dataEmp['emp_email'], true)
     ],
     [
-        'label'     => Form::labelRow('emp_address', 'Địa chỉ', 4, true),
-        'input'     => Form::inputRow('text', 'emp_address', 8, $dataEmp['emp_address'], true)
+        'label'     => Form::labelRow('emp_address', 'Địa chỉ', 4),
+        'input'     => Form::inputRow('text', 'emp_address', 8, $dataEmp['emp_address'])
     ]
 ];
 
@@ -54,7 +54,7 @@ $contact = Form::showForm($arrContact);
                 </div>
             </div>
 
-            <form class="form-horizontal" method="post" id="form-emp-account">
+            <form class="form-horizontal" method="post" id="form-emp-account" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -76,7 +76,7 @@ $contact = Form::showForm($arrContact);
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <input type="file" name="comp_logo" id="logo_company" style="display: none;">
+                                        <input type="file" name="comp_logo" id="logo_employer" style="display: none;">
                                         <label role="button" class="border border-2 p-2 text-info font-weight-normal" for="logo_employer">Thay đổi hình ảnh</label>
                                         <p class="card-text"><small class="text-muted">Dạng file .jpg, .jpeg, .png,</small></p>
                                     </div>
