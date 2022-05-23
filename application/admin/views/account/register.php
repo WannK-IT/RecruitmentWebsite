@@ -62,6 +62,7 @@ $arrRegCompany  = [
 $formAccount = Form::showFormAccount($arrRegAccount);
 $formContact = Form::showFormAccount($arrRegContact);
 $formCompany = Form::showFormAccount($arrRegCompany);
+
 ?>
 
 <div class="col col-xl-7">
@@ -87,6 +88,7 @@ $formCompany = Form::showFormAccount($arrRegCompany);
                         <?= $formCompany ?>
 
                         <div class="pt-1 mb-4">
+                            <input type="hidden" name="token" value="123456789">
                             <input type="submit" class="btn bg-gradient-dark btn-lg btn-block" id="registerForm" name="btn_register" value="Đăng ký">
                         </div>
 

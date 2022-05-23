@@ -1,6 +1,8 @@
 <?php
 class EmployerModel extends Model
 {
+	private $columnsAccount = ['emp_fullname', 'emp_phone', 'emp_email', 'emp_address'];
+	private $columnsCompany = ['comp_location', 'comp_address', 'comp_field', 'comp_description'];
 
 	public function __construct()
 	{
@@ -9,8 +11,11 @@ class EmployerModel extends Model
 	}
 
 	// Show list Employer
-	public function singleEmployer()
+	public function singleEmployer($arrParams)
 	{
+		// require_once LIBRARY_EXT_PATH . 'Upload.php';
+		// $fileUpload = new Upload();
+		// $fileUpload->uploadFile(@$arrParams['comp_logo'], $_SESSION['login']['idUser']);
 		$query[]	= "SELECT `emp_id`, `emp_email`, `emp_fullname`, `emp_user`, `emp_password`, `emp_phone`, `emp_address`, `comp_id`";
 		$query[]	= "FROM `{$this->table}`";
 		$query[]	= "WHERE `emp_id` = {$_SESSION['login']['idUser']}";
@@ -31,55 +36,23 @@ class EmployerModel extends Model
 		return $result;
 	}
 
-	// Fetch single data table Post
-	public function fetchSingle($params)
-	{
-		$query[]	= "SELECT *";
-		$query[]	= "FROM `{$this->table}`";
-		$query[]	= "WHERE `post_id` = '{$params['pid']}'";
-		$query		= implode(" ", $query);
-		$result		= $this->singleRecord($query);
-		return $result;
+	// Update info account
+	public function updateAccount($arrParams){
+		$dataAccount = array_intersect_key($arrParams, array_flip($this->columnsAccount));
+		$this->update($dataAccount, [['emp_id', $_SESSION['login']['idUser']]]);
 	}
 
-	// Count total post
-	public function totalPost()
-	{
-		$query[] = "SELECT COUNT(`post_id`) AS 'total'";
-		$query[] = "FROM `{$this->table}`";
-		$query		= implode(" ", $query);
 
-		$result		= $this->singleRecord($query);
-		return $result;
+	// Update info company
+	public function updateCompany($arrParams){
+		$dataCompany = array_intersect_key($arrParams, array_flip($this->columnsCompany));
+		$this->updateOtherTable($dataCompany, 'company',[['comp_id', $_SESSION['login']['idCompany']]]);
 	}
 
-	public function changeStatus($params)
-	{
-		$id = $params['pid'];
-		$status = ($params['status'] == 'inactive') ? 'active' : 'inactive';
-		$query = "UPDATE `{$this->table}` SET `post_isActive` = '{$status}' WHERE `post_id` = '{$id}'";
+
+	// Change password account
+	public function changePassword($arrParams){
+		$query = "UPDATE `{$this->table}` SET `emp_password` = '".md5($arrParams['new_password'])."' WHERE `emp_id` = {$_SESSION['login']['idUser']}";
 		$this->query($query);
-
-		return [$id, $status, URL::addLink('admin', 'post', 'changeStatus', ['status' => $status, 'pid' => $id])];
-	}
-
-	public function deletePost($params)
-	{
-		$id = ($params['pid']) ?? 0;
-		$query = "DELETE FROM `{$this->table}` WHERE `post_id` IN ('" . $id . "')";
-		$this->query($query);
-		return $id;
-	}
-
-	public function savePost($params, $option)
-	{
-		$data = array_intersect_key($params, array_flip($this->columns));
-		if (!empty($data)) {
-			if ($option == 'add') {
-				$this->insert($data);
-			} elseif ($option == 'edit') {
-				$this->update($data, [['post_id', $params['pid'], '']]);
-			}
-		}
 	}
 }

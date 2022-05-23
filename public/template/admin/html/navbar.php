@@ -10,13 +10,13 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <img src="<?= $this->_dirImg?>admin2.png" class="user-image img-circle elevation-2" alt="User Image">
+                <img src="<?= $this->_dirImg?>admin.png" class="user-image img-circle elevation-2" alt="User Image">
                 <span class="d-none d-md-inline"><b><?= $_SESSION['login']['loginFullname']?></b></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header bg-gradient-info">
-                    <img src="<?= $this->_dirImg?>admin2.png" class="img-circle elevation-2" alt="User Image">
+                    <img src="<?= $this->_dirImg?>admin.png" class="img-circle elevation-2" alt="User Image">
                     <p><b><?= $_SESSION['login']['loginFullname']?></b><small>Admin</small></p>
                 </li>
 

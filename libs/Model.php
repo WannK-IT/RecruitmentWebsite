@@ -119,7 +119,7 @@ class Model{
 		if(!empty($data)){
 			foreach($data as $value){
 				$newWhere[] = "`$value[0]` = '$value[1]'";
-				$newWhere[] = $value[2];
+				@$newWhere[] = $value[2];
 			}
 			$newWhere = implode(" ", $newWhere);
 		}
@@ -192,6 +192,7 @@ class Model{
 		return false;
 	}
 
+	// INSERT OTHER TABLE
 	public function insertOtherTable($arrData, $table){
 		$cols = $vals = '';
 		if(!empty($arrData)){
@@ -204,5 +205,14 @@ class Model{
         $vals = substr($vals, 2);
         $query = "INSERT INTO `{$table}`({$cols}) VALUES ({$vals})";
         $this->query($query);
+	}
+
+	// UPDATE OTHER TABLE
+	public function updateOtherTable($data, $table, $where){
+		$newSet 	= $this->createUpdateSQL($data);
+		$newWhere 	= $this->createWhereUpdateSQL($where);
+		$query = "UPDATE `$table` SET " . $newSet . " WHERE $newWhere";
+		$this->query($query);
+		// return $this->affectedRows();
 	}
 }

@@ -58,4 +58,8 @@ class Helper
                             </td>
                         </tr>', $colspan, $message, URL::addLink('admin', 'post', 'formPost', ['task' => 'add']));
     }
+
+    public static function createFolder($dir, $name){
+        
+    }
 }

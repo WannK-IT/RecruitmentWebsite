@@ -1,6 +1,6 @@
 <?php
 
-if(!empty($this->employer)){
+if (!empty($this->employer)) {
     $dataEmp = $this->employer;
 }
 
@@ -62,25 +62,36 @@ $contact = Form::showForm($arrContact);
                             <div class="card-body p-0">
                                 <p class="text-muted font-weight-bold h6 mb-3">Thông tin đăng nhập</p>
                                 <?= $account ?>
-                                <a href="" class="text-info">
-                                    <p class="float-right">Thay đổi mật khẩu</p>
-                                </a>
+                                <div id="changePassword" style="cursor: pointer" class="text-info float-right">
+                                    <p>Thay đổi mật khẩu</p>
+                                </div>
+
+                                <div id="changePass" title="Đổi mật khẩu">
+                                    <form method="post" id="formChangePassword">
+                                        <label for="new_password">Nhập mật khẩu mới</label>
+                                        <input type="text" id="new_password" class="form-control mb-3" name="new_password">
+                                        <label for="re_password">Nhập lại mật khẩu</label>
+                                        <input type="text" id="re_password" class="form-control mb-3">
+                                        <!-- <input type="submit" id="changePassword" class="btn bg-gradient-info float-right" value="Thay đổi"> -->
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-6 pl-5">
                             <div class="card-body p-0">
                                 <p class="text-muted font-weight-bold h6 mb-3">Ảnh đại diện</p>
                                 <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="<?= $this->_dirImg?>admin.png" width="150" height="200" class="card-img" alt="Image_account_employer">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <input type="file" name="comp_logo" id="logo_employer" style="display: none;">
-                                        <label role="button" class="border border-2 p-2 text-info font-weight-normal" for="logo_employer">Thay đổi hình ảnh</label>
-                                        <p class="card-text"><small class="text-muted">Dạng file .jpg, .jpeg, .png,</small></p>
+                                    <div class="col-md-4">
+                                        <img src="<?= $this->_dirImg ?>admin.png" width="150" height="200" class="card-img" alt="Image_account_employer">
                                     </div>
-                                </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <input type="file" name="comp_logo" id="logo_employer" style="display: none;">
+                                            <label role="button" class="border border-2 p-2 text-info font-weight-normal" for="logo_employer">Thay đổi hình ảnh</label>
+                                            <p class="card-text"><small class="text-muted">Dạng file .jpg, .jpeg, .png,</small></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -99,8 +110,7 @@ $contact = Form::showForm($arrContact);
                 </div>
 
                 <div class="card-footer">
-                    <input type="hidden" name="emp_id" value="">
-                    <input type="submit" name="update_account" class="btn bg-gradient-info float-right" value="Cập nhật">
+                    <a href="javascript:updateAccount('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'updateAccount') ?>')" id="updateAccount" name="update_account" class="btn bg-gradient-info float-right">Cập nhật</a>
                 </div>
             </form>
         </div>

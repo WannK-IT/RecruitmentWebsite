@@ -46,9 +46,6 @@ $(document).ready(function () {
 
             
             // Validate if error
-            emp_user: function(){
-                
-            },
             emp_fullname: {
                 minlength: 5,
                 maxlength: 100,

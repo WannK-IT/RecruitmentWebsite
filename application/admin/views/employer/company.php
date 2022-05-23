@@ -1,5 +1,5 @@
 <?php
-if(!empty($this->company)){
+if (!empty($this->company)) {
     $dataComp = $this->company;
 }
 $arrLocation    = $this->listLocation;
@@ -16,7 +16,7 @@ $arrInfoCompany = [
     ],
     [
         'label'     => Form::labelRow('comp_size', 'Quy mô nhân sự', 4, true),
-        'input'     => Form::selectBox('comp_size', $arrSize, 8, $dataComp['comp_size'])
+        'input'     => Form::selectBox('comp_size', $arrSize, 8, $dataComp['comp_size'], true)
     ],
     [
         'label'     => Form::labelRow('comp_location', 'Địa điểm', 4, true),
@@ -34,7 +34,7 @@ $arrInfoCompany = [
         'label'     => Form::labelRow('comp_description', 'Giới thiệu công ty', 4),
         'input'     => Form::textArea('comp_description', 8, $dataComp['comp_description'], 10)
     ],
-    
+
 ];
 
 $infoCompany    = Form::showForm($arrInfoCompany);
@@ -68,7 +68,7 @@ $infoCompany    = Form::showForm($arrInfoCompany);
                 </div>
 
                 <div class="card-footer">
-                    <input type="submit" name="update_company" class="btn bg-gradient-info float-right" value="Cập nhật">
+                    <a href="javascript:updateCompany('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'updateCompany') ?>')" id="updateCompany" name="update_Company" class="btn bg-gradient-info float-right">Cập nhật</a>
                 </div>
             </form>
         </div>

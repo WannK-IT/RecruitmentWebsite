@@ -70,7 +70,7 @@ function loginForm(link, direct) {
             success: function (data) {
                 if (data == 'failed') {
                     toastMsg('error', 'Tên tài khoản và mật khẩu chưa chính xác !');
-                }else{
+                } else {
                     location.href = direct;
                 }
             }
@@ -78,26 +78,56 @@ function loginForm(link, direct) {
     }
 }
 
-$('#registerForm').click(function(e){
-    e.preventDefault();
-    if($('#emp_user').val()){
+// register account
+$('#registerForm').click(function (event) {
+    event.preventDefault();
+    if ($('#emp_user').val()) {
         let link = 'index.php?module=admin&controller=account&action=checkExistAccount'
         $.ajax({
             type: 'post',
             url: link,
             data: $('#register_form_employer').serialize(),
             success: function (data) {
-                if(data == 'exist'){
+                if (data == 'exist') {
                     toastMsg('warning', 'Tên tài khoản đã được sử dụng !')
-                }else{
+                } else {
                     $('#register_form_employer').submit();
-                }   
+                }
             }
         })
-    }else{
+    } else {
         $('#register_form_employer').submit();
     }
+
 });
+
+
+// update account
+function updateAccount(link) {
+    $.ajax({
+        type: 'post',
+        url: link,
+        data: $('#form-emp-account').serialize(),
+        success: function (data) {
+            toastMsg('success', 'Cập nhật thông tin tài khoản thành công !');
+        }
+    });
+}
+
+// update company
+function updateCompany(link) {
+    $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: link,
+        data: $('#form-emp-company').serialize(),
+        success: function (data) {
+            console.log(data);
+            toastMsg('success', 'Cập nhật thông tin công ty thành công !');
+        }
+    });
+}
+
 
 function toastMsg(icon, message) {
     Toast.fire({

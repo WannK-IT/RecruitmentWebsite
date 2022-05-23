@@ -1,11 +1,15 @@
 <?php
 	// ====================== PATHS ===========================
-	define ('DS'				, '/');
-	define ('ROOT_PATH'			, dirname(__FILE__));						
-	define ('LIBRARY_PATH'		, ROOT_PATH . DS . 'libs' . DS);			
-	define ('PUBLIC_PATH'		, ROOT_PATH . DS . 'public' . DS);							
-	define ('APPLICATION_PATH'	, ROOT_PATH . DS . 'application' . DS);									
-	define ('TEMPLATE_PATH'		, PUBLIC_PATH . 'template' . DS);								
+	define ('DS'					, '/');
+	define ('ROOT_PATH'				, dirname(__FILE__));						
+	define ('LIBRARY_PATH'			, ROOT_PATH . DS . 'libs' . DS);			
+	define ('LIBRARY_EXT_PATH'		, LIBRARY_PATH . DS . 'extends' . DS);			
+	define ('PUBLIC_PATH'			, ROOT_PATH . DS . 'public' . DS);							
+	define ('APPLICATION_PATH'		, ROOT_PATH . DS . 'application' . DS);									
+	define ('TEMPLATE_PATH'			, PUBLIC_PATH . 'template' . DS);	
+	define ('UPLOAD_PATH_ADMIN'		, PUBLIC_PATH . 'uploads' . DS . 'admin' . DS);	
+	define ('UPLOAD_PATH_DEFAULT'	, PUBLIC_PATH . 'uploads' . DS . 'default' . DS);	
+								
 	
 	define	('ROOT_URL'			, DS . 'RecruitmentWebsite' . DS);
 	define	('APPLICATION_URL'	, ROOT_URL . 'application' . DS);

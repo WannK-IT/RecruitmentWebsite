@@ -15,10 +15,32 @@ class EmployerController extends Controller
 	public function accountAction()
 	{
 		$this->_view->setTitle('Quản lý thông tin tài khoản');
-		$this->_view->employer = $this->_model->singleEmployer();
+		if(!empty($_FILES)) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
+		// echo '<pre style="color: blue;">';
+		// print_r($this->_arrParam);
+		// echo '</pre>';
+		// echo '<pre style="color: blue;">';
+		// print_r($_SESSION);
+		// echo '</pre>';
+		$this->_view->employer = $this->_model->singleEmployer($this->_arrParam);
+		
 		$this->_view->render('employer/account', true);
 	}
 
+	public function updateAccountAction(){
+        $this->_model->updateAccount($this->_arrParam);
+	}
+
+	public function updateCompanyAction(){
+        $this->_model->updateCompany($this->_arrParam);
+	}
+
+	public function changePasswordAction(){
+		$this->_model->changePassword($this->_arrParam);
+	}
+
+
+	// COMPANY
 	public function companyAction()
 	{
 		$this->_view->setTitle('Quản lý thông tin công ty');
