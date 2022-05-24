@@ -2,7 +2,7 @@
 class EmployerModel extends Model
 {
 	private $columnsAccount = ['emp_fullname', 'emp_phone', 'emp_email', 'emp_address'];
-	private $columnsCompany = ['comp_location', 'comp_address', 'comp_field', 'comp_description'];
+	private $columnsCompany = ['comp_location', 'comp_address', 'comp_field', 'comp_description', 'comp_website'];
 
 	public function __construct()
 	{
@@ -16,18 +16,20 @@ class EmployerModel extends Model
 		// require_once LIBRARY_EXT_PATH . 'Upload.php';
 		// $fileUpload = new Upload();
 		// $fileUpload->uploadFile(@$arrParams['comp_logo'], $_SESSION['login']['idUser']);
-		$query[]	= "SELECT `emp_id`, `emp_email`, `emp_fullname`, `emp_user`, `emp_password`, `emp_phone`, `emp_address`, `comp_id`";
-		$query[]	= "FROM `{$this->table}`";
-		$query[]	= "WHERE `emp_id` = {$_SESSION['login']['idUser']}";
+		$query[]	= "SELECT `e`.`emp_id`, `e`.`emp_email`, `e`.`emp_fullname`, `e`.`emp_user`, `e`.`emp_password`, `e`.`emp_phone`, `e`.`emp_address`, `e`.`comp_id`, `c`.`comp_logo`";
+		$query[]	= "FROM `{$this->table}` AS `e`, `company` AS `c`";
+		$query[]	= "WHERE `e`.`comp_id` = `c`.`comp_id`";
+		$query[]	= "AND `emp_id` = {$_SESSION['login']['idUser']}";
 		$query		= implode(" ", $query);
 		$result		= $this->singleRecord($query);
+
 		return $result;
 	}
 
 	// Show list Company
 	public function singleCompany()
 	{
-		$query[]	= "SELECT `c`.`comp_name`, `c`.`comp_location`, `c`.`comp_address`, `c`.`comp_description`, `c`.`comp_logo`, `c`.`comp_tax_id`, `c`.`comp_size`, `c`.`comp_field`, `c`.`comp_id`";
+		$query[]	= "SELECT `c`.`comp_name`, `c`.`comp_location`, `c`.`comp_address`, `c`.`comp_description`, `c`.`comp_logo`, `c`.`comp_tax_id`, `c`.`comp_size`, `c`.`comp_field`, `c`.`comp_website`, `c`.`comp_id`";
 		$query[]	= "FROM `{$this->table}` AS `e`, `company` AS `c`";
 		$query[]	= "WHERE `e`.`comp_id` = `c`.`comp_id`";
 		$query[]	= "AND `c`.`comp_id` = {$_SESSION['login']['idCompany']}";
@@ -54,5 +56,27 @@ class EmployerModel extends Model
 	public function changePassword($arrParams){
 		$query = "UPDATE `{$this->table}` SET `emp_password` = '".md5($arrParams['new_password'])."' WHERE `emp_id` = {$_SESSION['login']['idUser']}";
 		$this->query($query);
+	}
+
+	// Avatar
+	public function getAvatar(){
+		$query[] = "SELECT `comp_logo`";
+		$query[] = "FROM `company`";
+		$query[] = "WHERE `comp_id` = '{$_SESSION['login']['idCompany']}'";
+		$query		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
+
+		return $result;
+	}
+
+	// Full name employer
+	public function getFullName(){
+		$query[] = "SELECT `emp_fullname`";
+		$query[] = "FROM `{$this->table}`";
+		$query[] = "WHERE `emp_id` = '{$_SESSION['login']['idUser']}'";
+		$query		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
+
+		return $result;
 	}
 }

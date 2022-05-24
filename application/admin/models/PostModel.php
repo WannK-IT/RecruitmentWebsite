@@ -70,4 +70,15 @@ class PostModel extends Model
 			}
 		}
 	}
+
+	// Avatar
+	public function getAvatar(){
+		$query[] = "SELECT `comp_logo`";
+		$query[] = "FROM `company`";
+		$query[] = "WHERE `comp_id` = '{$_SESSION['login']['idCompany']}'";
+		$query		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
+
+		return $result;
+	}
 }

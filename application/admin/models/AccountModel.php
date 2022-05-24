@@ -3,7 +3,7 @@ class AccountModel extends Model
 {
 
     private $columnsEmployer = ['emp_email', 'emp_fullname', 'emp_user', 'emp_password', 'emp_phone', 'emp_address', 'comp_id'];
-    private $columnsCompany = ['comp_name', 'comp_location', 'comp_address', 'comp_tax_id', 'comp_size', 'comp_field'];
+    private $columnsCompany = ['comp_name', 'comp_location', 'comp_address', 'comp_tax_id', 'comp_size', 'comp_field', 'comp_website'];
 
     public function __construct()
     {
@@ -26,7 +26,6 @@ class AccountModel extends Model
         if ($this->isExist($query) == true) {
             $result = 'success';
             $_SESSION['login']['loginSuccess'] = true;
-            $_SESSION['login']['loginFullname'] = $loadInfo['emp_fullname'];
             $_SESSION['login']['idUser'] = $loadInfo['emp_id'];
             $_SESSION['login']['idCompany'] = $loadInfo['comp_id'];
         } else {
@@ -51,7 +50,8 @@ class AccountModel extends Model
 
         $query = "SELECT `emp_id` FROM `{$this->table}` WHERE `emp_user` = '".$dataEmployer['emp_user']."' AND `emp_password` = '".$dataEmployer['emp_password']."'";
         $getID  = $this->singleRecord($query);
-        // create a folder storage
+
+        // create a folder storage images
         mkdir(UPLOAD_PATH_ADMIN . 'img' . DS . $getID['emp_id']);
     }
 

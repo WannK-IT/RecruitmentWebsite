@@ -10,12 +10,23 @@ class EmployerController extends Controller
 		$this->_templateObj->load();
 		Session::init();
 		Authentication::checkLogin();
+
+		// AVATAR 
+		$avatar = $this->_model->getAvatar();
+		if(empty($avatar['comp_logo'])){
+			$avatar['comp_logo'] = $this->_view->_dirImg . 'logoAdmin.png';
+		}else{
+			
+		}
+		$this->_view->avatarLogo = $avatar['comp_logo'];
+
+		$this->_view->fullNameEmployer = $this->_model->getFullName();
 	}
 
 	public function accountAction()
 	{
 		$this->_view->setTitle('Quản lý thông tin tài khoản');
-		if(!empty($_FILES)) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
+		// if(!empty($_FILES)) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
 		// echo '<pre style="color: blue;">';
 		// print_r($this->_arrParam);
 		// echo '</pre>';
@@ -23,16 +34,11 @@ class EmployerController extends Controller
 		// print_r($_SESSION);
 		// echo '</pre>';
 		$this->_view->employer = $this->_model->singleEmployer($this->_arrParam);
-		
 		$this->_view->render('employer/account', true);
 	}
 
 	public function updateAccountAction(){
         $this->_model->updateAccount($this->_arrParam);
-	}
-
-	public function updateCompanyAction(){
-        $this->_model->updateCompany($this->_arrParam);
 	}
 
 	public function changePasswordAction(){
@@ -49,5 +55,9 @@ class EmployerController extends Controller
 		$this->_view->listSize		= ['Dưới 10 người', '10 - 50 người', '50 - 200 người', '200 - 500 người', '500 - 1000 người', '1000 - 3000 người', 'Trên 3000 người'];
 		$this->_view->listField		= ['IT', 'Marketing', 'Logistics', 'Business Management', 'Education', 'Personal Trainer'];
 		$this->_view->render('employer/company', true);
+	}
+
+	public function updateCompanyAction(){
+        $this->_model->updateCompany($this->_arrParam);
 	}
 }

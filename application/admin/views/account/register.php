@@ -54,8 +54,12 @@ $arrRegCompany  = [
         'input'     => Form::inputAccount('text', 'comp_address', 'Nhập địa chỉ công ty', @$this->arrParam['comp_address'], true)
     ],
     [
-        'label'     => Form::labelAccount('comp_field', 'Lĩnh vực hoạt động', true), //selectbox
+        'label'     => Form::labelAccount('comp_field', 'Lĩnh vực hoạt động', true), 
         'input'     => Form::selectBoxAccount('comp_field', $arrField, @$this->arrParam['comp_field'], true)
+    ],
+    [
+        'label'     => Form::labelAccount('comp_website', 'Website công ty'), 
+        'input'     => Form::inputAccount('text', 'comp_website', 'Nhập website công ty', @$this->arrParam['comp_website'])
     ]
 ];
 

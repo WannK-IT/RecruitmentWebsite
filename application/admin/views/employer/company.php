@@ -2,6 +2,7 @@
 if (!empty($this->company)) {
     $dataComp = $this->company;
 }
+
 $arrLocation    = $this->listLocation;
 $arrSize        = $this->listSize;
 $arrField       = $this->listField;
@@ -31,9 +32,14 @@ $arrInfoCompany = [
         'input'     => Form::selectBox('comp_field', $arrField, 8, $dataComp['comp_field'])
     ],
     [
+        'label'     => Form::labelRow('comp_website', 'Website công ty', 4),
+        'input'     => Form::inputRow('text', 'comp_website', 8, $dataComp['comp_website'], false, false)
+    ],
+    [
         'label'     => Form::labelRow('comp_description', 'Giới thiệu công ty', 4),
         'input'     => Form::textArea('comp_description', 8, $dataComp['comp_description'], 10)
-    ],
+    ]
+    
 
 ];
 

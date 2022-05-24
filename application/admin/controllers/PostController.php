@@ -11,6 +11,15 @@ class PostController extends Controller
 		$this->_templateObj->load();
 		Session::init();
 		Authentication::checkLogin();
+
+		// AVATAR 
+		$avatar = $this->_model->getAvatar();
+		if(empty($avatar['comp_logo'])){
+			$avatar['comp_logo'] = $this->_view->_dirImg . 'logoAdmin.png';
+		}else{
+			
+		}
+		$this->_view->avatarLogo = $avatar['comp_logo'];
 	}
 
 	public function indexAction()

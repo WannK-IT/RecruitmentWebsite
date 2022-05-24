@@ -104,28 +104,16 @@ $('#registerForm').click(function (event) {
 
 // update account
 function updateAccount(link) {
-    $.ajax({
-        type: 'post',
-        url: link,
-        data: $('#form-emp-account').serialize(),
-        success: function (data) {
-            toastMsg('success', 'Cập nhật thông tin tài khoản thành công !');
-        }
-    });
+    $.post(link, $('#form-emp-account').serialize(), function(data){
+        toastMsg('success', 'Cập nhật thông tin tài khoản thành công !');
+    })
 }
 
 // update company
 function updateCompany(link) {
-    $.ajax({
-        type: 'post',
-        dataType: 'json',
-        url: link,
-        data: $('#form-emp-company').serialize(),
-        success: function (data) {
-            console.log(data);
-            toastMsg('success', 'Cập nhật thông tin công ty thành công !');
-        }
-    });
+    $.post(link, $('#form-emp-company').serialize(), function(data){
+        toastMsg('success', 'Cập nhật thông tin công ty thành công !');
+    })
 }
 
 

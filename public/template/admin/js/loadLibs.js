@@ -161,7 +161,10 @@ $(document).ready(function () {
                 required : "Vui lòng chọn quy mô nhân sự"
             },
             comp_tax_id: {
-                number: "MST chứa kí tự không hợp lệ !",
+                number: "MST chứa kí tự không hợp lệ !"
+            },
+            comp_website: {
+                required : "Vui lòng nhập tên website công ty"
             }
         },
 

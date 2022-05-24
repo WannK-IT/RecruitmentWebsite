@@ -12,7 +12,7 @@ $(document).ready(function () {
   $('#changePassword').click(function () {
     $('#changePass').dialog('open');
   });
-  
+
   $('#changePass').dialog({
     modal: true,
     autoOpen: false,
@@ -65,6 +65,12 @@ $(document).ready(function () {
       }
     ]
   });
+
+  $('.btn_avatar_emp').click(function(){
+    $('#form-emp-account').submit();
+  })
+    
+  
 
 
   // Disable past days in input[type=date]

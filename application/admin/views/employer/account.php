@@ -54,7 +54,7 @@ $contact = Form::showForm($arrContact);
                 </div>
             </div>
 
-            <form class="form-horizontal" method="post" id="form-emp-account" enctype="multipart/form-data">
+            <form class="form-horizontal" method="post" id="form-emp-account">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -72,7 +72,6 @@ $contact = Form::showForm($arrContact);
                                         <input type="text" id="new_password" class="form-control mb-3" name="new_password">
                                         <label for="re_password">Nhập lại mật khẩu</label>
                                         <input type="text" id="re_password" class="form-control mb-3">
-                                        <!-- <input type="submit" id="changePassword" class="btn bg-gradient-info float-right" value="Thay đổi"> -->
                                     </form>
                                 </div>
 
@@ -80,39 +79,42 @@ $contact = Form::showForm($arrContact);
                         </div>
                         <div class="col-md-6 pl-5">
                             <div class="card-body p-0">
-                                <p class="text-muted font-weight-bold h6 mb-3">Ảnh đại diện</p>
+                                <p class="text-muted font-weight-bold h6 mb-3">Thông tin liên hệ</p>
+                                <?= $contact ?>
+                                <a href="javascript:updateAccount('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'updateAccount') ?>')" id="updateAccount" name="update_account" class="btn bg-gradient-info float-right">Cập nhật</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <hr class="my-4">
+            <form class="form-horizontal" method="post" id="form-emp-image" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body p-0">
+
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
-                                        <img src="<?= $this->_dirImg ?>admin.png" width="150" height="200" class="card-img" alt="Image_account_employer">
+                                        <p class="text-muted font-weight-bold h6 mb-3 text-center">Ảnh đại diện</p>
+                                        <img src="<?= $this->avatarLogo ?>" width="150" height="200" class="card-img" alt="Image_account_employer">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <input type="file" name="comp_logo" id="logo_employer" style="display: none;">
-                                            <label role="button" class="border border-2 p-2 text-info font-weight-normal" for="logo_employer">Thay đổi hình ảnh</label>
+                                            <input type="file" name="comp_logo" id="comp_logo" style="display: none;">
+                                            <label id="btn_avatar_emp" role="button" class="border border-2 p-2 text-info font-weight-normal" for="comp_logo">Thay đổi hình ảnh</label>
                                             <p class="card-text"><small class="text-muted">Dạng file .jpg, .jpeg, .png,</small></p>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
+                        
                     </div>
-
-                    <hr class="my-4">
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card-body p-0">
-                                <p class="text-muted font-weight-bold h6 mb-3">Thông tin liên hệ</p>
-                                <?= $contact ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-footer">
-                    <a href="javascript:updateAccount('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'updateAccount') ?>')" id="updateAccount" name="update_account" class="btn bg-gradient-info float-right">Cập nhật</a>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
