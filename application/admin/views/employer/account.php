@@ -54,8 +54,8 @@ $contact = Form::showForm($arrContact);
                 </div>
             </div>
 
-            <form class="form-horizontal" method="post" id="form-emp-account">
-                <div class="card-body">
+            <div class="card-body">
+                <form class="form-horizontal" method="post" id="form-emp-account">
                     <div class="row">
                         <div class="col-md-6">
 
@@ -81,19 +81,18 @@ $contact = Form::showForm($arrContact);
                             <div class="card-body p-0">
                                 <p class="text-muted font-weight-bold h6 mb-3">Thông tin liên hệ</p>
                                 <?= $contact ?>
-                                <a href="javascript:updateAccount('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'updateAccount') ?>')" id="updateAccount" name="update_account" class="btn bg-gradient-info float-right">Cập nhật</a>
+                                <a href="javascript:updateAccount('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'updateAccount') ?>')" id="updateAccount" name="update_account" class="btn bg-gradient-info float-right mt-3">Cập nhật</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
-            <hr class="my-4">
-            <form class="form-horizontal" method="post" id="form-emp-image" enctype="multipart/form-data">
-                <div class="card-body">
+                </form>
+
+                <hr class="my-4">
+
+                <form class="form-horizontal" method="post" id="form-emp-image" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card-body p-0">
-
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <p class="text-muted font-weight-bold h6 mb-3 text-center">Ảnh đại diện</p>
@@ -101,20 +100,17 @@ $contact = Form::showForm($arrContact);
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <input type="file" name="comp_logo" id="comp_logo" style="display: none;">
-                                            <label id="btn_avatar_emp" role="button" class="border border-2 p-2 text-info font-weight-normal" for="comp_logo">Thay đổi hình ảnh</label>
-                                            <p class="card-text"><small class="text-muted">Dạng file .jpg, .jpeg, .png,</small></p>
+                                            <label for="avatar_emp" role="button" class="border border-2 p-2 text-info font-weight-normal mt-3">Thay đổi hình ảnh</label>
+                                            <input id="avatar_emp" type="file" name="comp_logo" style="display:none">
+                                            <p class="card-text"><small class="text-muted">Dạng file .jpg, .jpeg, .png</small></p>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
-                        
                     </div>
-                </div>
-            </form>
-
+                </form>
+            </div>
         </div>
     </div>
 </div>

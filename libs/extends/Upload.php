@@ -8,7 +8,12 @@ class Upload{
                 $newFileName = pathinfo($file['name'], PATHINFO_FILENAME) . $this->randomString();
                 copy($file['tmp_name'], $uploadDir . $newFileName . $exts);
             }
+            return $newFileName . $exts;
         }
+    }
+
+    public function deleteFile($path, $fileName){
+        unlink($path . '/' . $fileName);
     }
 
     private function randomString($length = 8){

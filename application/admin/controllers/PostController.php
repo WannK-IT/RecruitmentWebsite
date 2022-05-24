@@ -17,9 +17,11 @@ class PostController extends Controller
 		if(empty($avatar['comp_logo'])){
 			$avatar['comp_logo'] = $this->_view->_dirImg . 'logoAdmin.png';
 		}else{
-			
+			$avatar['comp_logo'] = UPLOAD_URL_ADMIN . 'img' . DS . $_SESSION['login']['idUser'] . DS . $avatar['comp_logo'];
 		}
 		$this->_view->avatarLogo = $avatar['comp_logo'];
+
+		$this->_view->fullNameEmployer = $this->_model->getFullName();
 	}
 
 	public function indexAction()

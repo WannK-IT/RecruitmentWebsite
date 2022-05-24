@@ -81,4 +81,15 @@ class PostModel extends Model
 
 		return $result;
 	}
+
+	// Full name employer
+	public function getFullName(){
+		$query[] = "SELECT `emp_fullname`";
+		$query[] = "FROM `employer`";
+		$query[] = "WHERE `emp_id` = '{$_SESSION['login']['idUser']}'";
+		$query		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
+
+		return $result;
+	}
 }

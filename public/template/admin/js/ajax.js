@@ -116,6 +116,10 @@ function updateCompany(link) {
     })
 }
 
+$('#form-emp-image').on('change', function(){
+    $('#form-emp-image').submit();
+})
+
 
 function toastMsg(icon, message) {
     Toast.fire({

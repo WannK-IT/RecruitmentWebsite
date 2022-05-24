@@ -16,7 +16,7 @@ class EmployerController extends Controller
 		if(empty($avatar['comp_logo'])){
 			$avatar['comp_logo'] = $this->_view->_dirImg . 'logoAdmin.png';
 		}else{
-			
+			$avatar['comp_logo'] = UPLOAD_URL_ADMIN . 'img' . DS . $_SESSION['login']['idUser'] . DS . $avatar['comp_logo'];
 		}
 		$this->_view->avatarLogo = $avatar['comp_logo'];
 
@@ -26,13 +26,11 @@ class EmployerController extends Controller
 	public function accountAction()
 	{
 		$this->_view->setTitle('Quản lý thông tin tài khoản');
-		// if(!empty($_FILES)) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
-		// echo '<pre style="color: blue;">';
-		// print_r($this->_arrParam);
-		// echo '</pre>';
-		// echo '<pre style="color: blue;">';
-		// print_r($_SESSION);
-		// echo '</pre>';
+		if(!empty($_FILES)) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
+		if(isset($this->_arrParam['comp_logo']) && $this->_arrParam['comp_logo']['error'] == 0 ){
+			$this->_model->changePicture($this->_arrParam);
+			$this->redirect('admin', 'employer', 'account');
+		}
 		$this->_view->employer = $this->_model->singleEmployer($this->_arrParam);
 		$this->_view->render('employer/account', true);
 	}

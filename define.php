@@ -11,10 +11,12 @@
 	define ('UPLOAD_PATH_DEFAULT'	, PUBLIC_PATH . 'uploads' . DS . 'default' . DS);	
 								
 	
-	define	('ROOT_URL'			, DS . 'RecruitmentWebsite' . DS);
-	define	('APPLICATION_URL'	, ROOT_URL . 'application' . DS);
-	define	('PUBLIC_URL'		, ROOT_URL . 'public' . DS);
-	define	('TEMPLATE_URL'		, PUBLIC_URL . 'template' . DS);
+	define	('ROOT_URL'				, DS . 'RecruitmentWebsite' . DS);
+	define	('APPLICATION_URL'		, ROOT_URL . 'application' . DS);
+	define	('PUBLIC_URL'			, ROOT_URL . 'public' . DS);
+	define	('TEMPLATE_URL'			, PUBLIC_URL . 'template' . DS);
+	define ('UPLOAD_URL_ADMIN'		, PUBLIC_URL . 'uploads' . DS . 'admin' . DS);	
+	define ('UPLOAD_URL_DEFAULT'	, PUBLIC_URL . 'uploads' . DS . 'default' . DS);
 	
 	define	('DEFAULT_MODULE'		, 'admin');
 	define	('DEFAULT_CONTROLLER'	, 'post');
