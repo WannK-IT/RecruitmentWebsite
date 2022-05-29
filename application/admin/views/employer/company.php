@@ -8,42 +8,45 @@ $arrSize        = $this->listSize;
 $arrField       = $this->listField;
 $arrInfoCompany = [
     [
-        'label'     => Form::labelRow('comp_name', 'Tên công ty', 4, true),
-        'input'     => Form::inputRow('text', 'comp_name', 8, $dataComp['comp_name'], true, true)
+        'label'     => FormBackEnd::labelRow('comp_name', 'Tên công ty', 4, true),
+        'input'     => FormBackEnd::inputRow('text', 'comp_name', 8, $dataComp['comp_name'], true, true)
     ],
     [
-        'label'     => Form::labelRow('comp_tax_id', 'Mã số thuế', 4),
-        'input'     => Form::inputRow('number', 'comp_tax_id', 8, $dataComp['comp_tax_id'], false, true)
+        'label'     => FormBackEnd::labelRow('comp_tax_id', 'Mã số thuế', 4),
+        'input'     => FormBackEnd::inputRow('number', 'comp_tax_id', 8, $dataComp['comp_tax_id'], false, true)
     ],
     [
-        'label'     => Form::labelRow('comp_size', 'Quy mô nhân sự', 4, true),
-        'input'     => Form::selectBox('comp_size', $arrSize, 8, $dataComp['comp_size'], true)
+        'label'     => FormBackEnd::labelRow('comp_size', 'Quy mô nhân sự', 4, true),
+        'input'     => FormBackEnd::selectBox('comp_size', $arrSize, 8, $dataComp['comp_size'], true)
     ],
     [
-        'label'     => Form::labelRow('comp_location', 'Địa điểm', 4, true),
-        'input'     => Form::selectBox('comp_location', $arrLocation, 8, $dataComp['comp_location'])
+        'label'     => FormBackEnd::labelRow('comp_location', 'Địa điểm', 4, true),
+        'input'     => FormBackEnd::selectBox('comp_location', $arrLocation, 8, $dataComp['comp_location'])
     ],
     [
-        'label'     => Form::labelRow('comp_address', 'Địa chỉ', 4, true),
-        'input'     => Form::inputRow('text', 'comp_address', 8, $dataComp['comp_address'], true)
+        'label'     => FormBackEnd::labelRow('comp_address', 'Địa chỉ', 4, true),
+        'input'     => FormBackEnd::inputRow('text', 'comp_address', 8, $dataComp['comp_address'], true)
     ],
     [
-        'label'     => Form::labelRow('comp_field', 'Lĩnh vực hoạt động', 4, true),
-        'input'     => Form::selectBox('comp_field', $arrField, 8, $dataComp['comp_field'])
+        'label'     => FormBackEnd::labelRow('comp_field', 'Lĩnh vực hoạt động', 4, true),
+        'input'     => FormBackEnd::selectBox('comp_field', $arrField, 8, $dataComp['comp_field'])
     ],
     [
-        'label'     => Form::labelRow('comp_website', 'Website công ty', 4),
-        'input'     => Form::inputRow('text', 'comp_website', 8, $dataComp['comp_website'], false, false)
+        'label'     => FormBackEnd::labelRow('comp_website', 'Website công ty', 4, true),
+        'input'     => FormBackEnd::inputRow('text', 'comp_website', 8, $dataComp['comp_website'], true)
     ],
     [
-        'label'     => Form::labelRow('comp_description', 'Giới thiệu công ty', 4),
-        'input'     => Form::textArea('comp_description', 8, $dataComp['comp_description'], 10)
+        'label'     => FormBackEnd::labelRow('comp_email', 'Email công ty', 4, true),
+        'input'     => FormBackEnd::inputRow('email', 'comp_email', 8, $dataComp['comp_email'], true)
+    ],
+    [
+        'label'     => FormBackEnd::labelRow('comp_description', 'Giới thiệu công ty', 4),
+        'input'     => FormBackEnd::textArea('comp_description', 12, $dataComp['comp_description'], 10)
     ]
-    
 
 ];
 
-$infoCompany    = Form::showForm($arrInfoCompany);
+$infoCompany    = FormBackEnd::showForm($arrInfoCompany);
 ?>
 
 <div class="row">

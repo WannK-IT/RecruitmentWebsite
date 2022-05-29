@@ -28,7 +28,6 @@ class PostController extends Controller
 	{
 		$this->_view->setTitle('Quản lý đăng tuyển');
 		$this->_view->listPost = $this->_model->listPosts();
-		$this->_view->totalPost = $this->_model->totalPost();
 		$this->_view->render('post/index', true);
 	}
 
@@ -47,6 +46,7 @@ class PostController extends Controller
 	public function formPostAction()
 	{
 		$this->_view->setTitle('Tạo tin đăng tuyển');
+		$this->_view->dataEmp = $this->_model->getInfoEmp();
 		if ($this->_arrParam['task'] == 'edit'){
 			$this->_view->dataPost = $this->_model->fetchSingle($this->_arrParam);
 			$this->_view->setTitle('Chỉnh sửa tin đăng tuyển');
@@ -70,5 +70,10 @@ class PostController extends Controller
 		$this->_view->setTitle('Quản lý đăng tuyển');
 		$this->_view->previewPost = $this->_model->fetchSingle($this->_arrParam);
 		$this->_view->render('post/preview', true);
+	}
+
+	public function totalPostAction(){
+		$result = $this->_model->totalPost();
+		echo json_encode($result);
 	}
 }

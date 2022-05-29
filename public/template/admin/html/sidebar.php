@@ -1,12 +1,12 @@
 <?php
 ob_start();
-$createPost = Helper::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'formPost&task=add');
-$listPost = Helper::createItemSide('Danh sách tin đăng', 'fas fa-list-ul', 'admin', 'post', 'index');
+$createPost = HelperBackEnd::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'formPost&task=add');
+$listPost = HelperBackEnd::createItemSide('Danh sách tin đăng', 'fas fa-list-ul', 'admin', 'post', 'index');
 
-$infoEmployer = Helper::createItemSide('Tài khoản NTD', 'fas fa-user', 'admin', 'employer', 'account');
+$infoEmployer = HelperBackEnd::createItemSide('Tài khoản NTD', 'fas fa-user', 'admin', 'employer', 'account');
 
-$group_Post = Helper::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', [$createPost, $listPost], 'post');
-$group_Employer = Helper::createGroupSide('Quản lý tài khoản NTD', 'fas fa-user-circle', [$infoEmployer], 'user');
+$group_Post = HelperBackEnd::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', [$createPost, $listPost], 'post');
+$group_Employer = HelperBackEnd::createGroupSide('Quản lý tài khoản NTD', 'fas fa-user-circle', [$infoEmployer], 'user');
 ?>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">

@@ -1,13 +1,10 @@
-
 <?php
-// $totalPosts = ($this->totalPost['total']) ?? 0; //update by php
-$totalPosts = '';   // update by ajax
 
 // Create box statistic
-$postBox = Helper::createStatisticBox('Tuyển dụng đã đăng', $totalPosts, 'ion-ios-compose', 'totalPostRow');
-$cvBox = Helper::createStatisticBox('Hồ sơ ứng tuyển', 1, 'ion-ios-person');
-$cvSavedBox = Helper::createStatisticBox('Hồ sơ đã lưu', 3, 'ion-document-text');
-$viewBox = Helper::createStatisticBox('Lượt xem bài đăng', 15, 'ion-ios-eye');
+$postBox = HelperBackEnd::createStatisticBox('Tuyển dụng đã đăng', 'ion-ios-compose', 'totalPostRow');
+$cvBox = HelperBackEnd::createStatisticBox('Hồ sơ ứng tuyển', 'ion-ios-person');
+$cvSavedBox = HelperBackEnd::createStatisticBox('Hồ sơ đã lưu', 'ion-document-text');
+$viewBox = HelperBackEnd::createStatisticBox('Lượt xem bài đăng', 'ion-ios-eye');
 ?>
 
 <!-- Statistical -->

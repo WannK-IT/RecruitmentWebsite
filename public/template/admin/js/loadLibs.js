@@ -65,6 +65,9 @@ $(document).ready(function () {
             },
             comp_tax_id: {
                 number: true,
+            },
+            comp_email: {
+                email: true,
             }
 
         },
@@ -165,6 +168,10 @@ $(document).ready(function () {
             },
             comp_website: {
                 required : "Vui lòng nhập tên website công ty"
+            },
+            comp_email: {
+                required: "Vui lòng nhập email công ty",
+                email: 'Sai định dạng email !'
             }
         },
 

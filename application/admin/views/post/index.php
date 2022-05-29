@@ -49,7 +49,7 @@ if (!empty($this->listPost)) {
         $index++;
     }
 } else {
-    $xhtml = Helper::showEmptyRow('6', 'Bạn chưa có tin tuyển dụng nào !');
+    $xhtml = HelperBackEnd::showEmptyRow('6', 'Bạn chưa có tin tuyển dụng nào !');
 }
 ?>
 
@@ -63,7 +63,7 @@ if (!empty($this->listPost)) {
         </div>
     </div>
     <div class="card-body p-0">
-        <table class="table table-striped projects">
+        <table class="table table-striped projects" id="postTable">
             <thead>
                 <tr>
                     <th style="width: 3%">#</th>

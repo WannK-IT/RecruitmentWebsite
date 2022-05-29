@@ -1,3 +1,81 @@
+$(document).ready(function () {
+
+    // change password
+    $('#changePassword').click(function () {
+        $('#changePass').dialog('open');
+    });
+
+    $('#changePass').dialog({
+        modal: true,
+        autoOpen: false,
+        width: 400,
+        resizable: false,
+        position: {
+            my: "bottom",
+            at: "center",
+            of: window
+        },
+        show: {
+            effect: 'fade',
+            duration: 250
+        },
+        buttons: [{
+                text: "Hủy",
+                'class': 'btn bg-gradient-danger',
+                id: "btnCancel",
+                click: function () {
+                    $(this).dialog("close")
+                }
+            },
+            {
+                text: "Thay đổi",
+                'class': 'btn bg-gradient-info',
+                id: "btnChangePassword",
+
+                click: function () {
+
+                    // kiểm tra nếu password và repassword trùng khớp
+                    if (!$('#new_password').val() || !$('#re_password').val()) {
+                        toastMsg('error', 'Mật khẩu không được bỏ trống !');
+                    } else if ($('#new_password').val() != $('#re_password').val()) {
+                        toastMsg('error', 'Mật khẩu không trùng khớp !');
+                    } else {
+                        let link = 'index.php?module=admin&controller=employer&action=changePassword'
+                        let valueNewPassword = $('#new_password').val();
+                        $.ajax({
+                            type: 'post',
+                            url: link,
+                            data: {
+                                new_password: valueNewPassword
+                            },
+                            success: function (data) {
+                                toastMsg('success', 'Đổi mật khẩu thành công !');
+                            }
+                        });
+                    }
+                }
+            }
+        ]
+    });
+
+    $('.btn_avatar_emp').click(function () {
+        $('#form-emp-account').submit();
+    })
+
+    // show total post
+    $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: 'index.php?module=admin&controller=post&action=totalPost',
+        success: function (data) {
+            $('#totalPostRow h3').html(data)
+
+        }
+    })
+});
+
+//============================ END JQUERY READY ====================================
+
 // delete Ajax
 function ajaxDelete(link) {
     Swal.fire({
@@ -25,19 +103,6 @@ function ajaxDelete(link) {
     })
 }
 
-// show total Posts
-function totalPost(link) {
-    $.get(link, function (data) {
-        let totalRows = countRowData(data)
-        $('#totalPostRow .inner').find('h3').append(totalRows);
-    })
-}
-
-function countRowData(data) {
-    return $(data).find('#form-table-post tbody tr').length;
-}
-
-totalPost('index.php?module=admin&controller=post&action=index');
 
 // ajax Status
 function ajaxStatus(link) {
@@ -101,22 +166,26 @@ $('#registerForm').click(function (event) {
 
 });
 
-
 // update account
 function updateAccount(link) {
-    $.post(link, $('#form-emp-account').serialize(), function(data){
+    $.post(link, $('#form-emp-account').serialize(), function (data) {
         toastMsg('success', 'Cập nhật thông tin tài khoản thành công !');
     })
 }
 
 // update company
 function updateCompany(link) {
-    $.post(link, $('#form-emp-company').serialize(), function(data){
-        toastMsg('success', 'Cập nhật thông tin công ty thành công !');
-    })
+    if(!$('#comp_location').val() || !$('#comp_address').val() || !$('#comp_field').val() || !$('#comp_website').val() || !$('#comp_email').val()){
+        toastMsg('warning', 'Vui lòng nhập các thông tin công ty');
+    }else{
+        $.post(link, $('#form-emp-company').serialize(), function (data) {
+            toastMsg('success', 'Cập nhật thông tin công ty thành công !');
+        })
+    }
+    
 }
 
-$('#form-emp-image').on('change', function(){
+$('#form-emp-image').on('change', function () {
     $('#form-emp-image').submit();
 })
 

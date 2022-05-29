@@ -3,6 +3,7 @@ $data = '';
 if (!empty($this->previewPost)) {
     $data = $this->previewPost;
 }
+
 ?>
 
 <div class="row">
@@ -127,10 +128,10 @@ if (!empty($this->previewPost)) {
                         <p class="col-md-6 h6 list-inline-item"><?= $data['emp_phone'] ?></p>
                     </div>
 
-                    <div class="my-1 row">
-                        <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Địa chỉ:</p>
-                        <p class="col-md-6 h6 list-inline-item"><?= $data['emp_address'] ?></p>
-                    </div>
+                    <?= (!empty($data['emp_address'])) ? '<div class="my-1 row">
+                            <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Địa chỉ:</p>
+                            <p class="col-md-6 h6 list-inline-item">' . $data["emp_address"] . '</p>
+                        </div>' : '' ?>
                 </div>
             </div>
 

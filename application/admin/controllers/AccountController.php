@@ -26,7 +26,7 @@ class AccountController extends Controller
     public function registerAction()
     {
         $this->_view->listLocation     = ['default' => 'Chọn địa điểm', 'TP Hồ Chí Minh', 'Hà Nội', 'Đà Nẵng', 'Cần thơ', 'Hải Phòng'];
-        $this->_view->listSize        = ['default' => 'Chọn quy mô nhân sự', 'Dưới 10 người', '10 - 50 người', '50 - 200 người', '200 - 500 người', '500 - 1000 người', '1000 - 3000 người', 'Trên 3000 người'];
+        $this->_view->listSize        = ['default' => 'Chọn quy mô nhân sự', 'Dưới 10 nhân viên', '10 - 50 nhân viên', '50 - 200 nhân viên', '200 - 500 nhân viên', '500 - 1000 nhân viên', '1000 - 3000 nhân viên', 'Trên 3000 nhân viên'];
         $this->_view->listField        = ['default' => 'Chọn lĩnh vực', 'IT', 'Marketing', 'Logistics', 'Business Management', 'Education', 'Personal Trainer'];
 
         $this->_view->setTitle('Đăng ký');

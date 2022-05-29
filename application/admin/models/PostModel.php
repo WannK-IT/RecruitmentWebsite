@@ -6,7 +6,7 @@ class PostModel extends Model
 	public function __construct()
 	{
 		parent::__construct();
-		$this->setTable('post');
+		$this->setTable(DB_TABLE);
 	}
 
 	// Show list post
@@ -14,6 +14,7 @@ class PostModel extends Model
 	{
 		$query[]	= "SELECT `post_id`, `post_position`, `post_createdDate`, `post_expired`, `post_amount`, `post_isActive`";
 		$query[]	= "FROM `{$this->table}`";
+		$query[]	= "WHERE `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
 		$query		= implode(" ", $query);
 		$result		= $this->listRecord($query);
 		return $result;
@@ -33,19 +34,21 @@ class PostModel extends Model
 	// Count total post
 	public function totalPost()
 	{
-		$query[] = "SELECT COUNT(`post_id`) AS 'total'";
-		$query[] = "FROM `{$this->table}`";
+		$query[] 	= "SELECT COUNT(`post_id`) AS 'totalPost'";
+		$query[] 	= "FROM `{$this->table}`";
+		$query[] 	= "WHERE `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
 		$query		= implode(" ", $query);
 
 		$result		= $this->singleRecord($query);
+		$result		= (empty($result)) ? 0 : $result['totalPost'];
 		return $result;
 	}
 
 	public function changeStatus($params)
 	{
-		$id = $params['pid'];
+		$id 	= $params['pid'];
 		$status = ($params['status'] == 'inactive') ? 'active' : 'inactive';
-		$query = "UPDATE `{$this->table}` SET `post_isActive` = '{$status}' WHERE `post_id` = '{$id}'";
+		$query 	= "UPDATE `{$this->table}` SET `post_isActive` = '{$status}' WHERE `post_id` = '{$id}'";
 		$this->query($query);
 
 		return [$id, $status, URL::addLink('admin', 'post', 'changeStatus', ['status' => $status, 'pid' => $id])];
@@ -53,14 +56,26 @@ class PostModel extends Model
 
 	public function deletePost($params)
 	{
-		$id = ($params['pid']) ?? 0;
-		$query = "DELETE FROM `{$this->table}` WHERE `post_id` IN ('" . $id . "')";
+		$id 	= ($params['pid']) ?? 0;
+		$query 	= "DELETE FROM `{$this->table}` WHERE `post_id` IN ('" . $id . "')";
 		$this->query($query);
 		return $id;
 	}
 
+	public function getInfoEmp()
+	{
+		$query[] 	= "SELECT `emp_fullname`, `emp_email`, `emp_phone`, `emp_address`";
+		$query[] 	= "FROM `employer`";
+		$query[] 	= "WHERE `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
+
+		$query 		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
+		return $result;
+	}
+
 	public function savePost($params, $option)
 	{
+		$params['emp_id'] = $_SESSION['login']['idUser'];
 		$data = array_intersect_key($params, array_flip($this->columns));
 		if (!empty($data)) {
 			if ($option == 'add') {
@@ -72,10 +87,11 @@ class PostModel extends Model
 	}
 
 	// Avatar
-	public function getAvatar(){
-		$query[] = "SELECT `comp_logo`";
-		$query[] = "FROM `company`";
-		$query[] = "WHERE `comp_id` = '{$_SESSION['login']['idCompany']}'";
+	public function getAvatar()
+	{
+		$query[] 	= "SELECT `comp_logo`";
+		$query[] 	= "FROM `company`";
+		$query[] 	= "WHERE `comp_id` = '{$_SESSION['login']['idCompany']}'";
 		$query		= implode(" ", $query);
 		$result		= $this->singleRecord($query);
 
@@ -83,10 +99,11 @@ class PostModel extends Model
 	}
 
 	// Full name employer
-	public function getFullName(){
-		$query[] = "SELECT `emp_fullname`";
-		$query[] = "FROM `employer`";
-		$query[] = "WHERE `emp_id` = '{$_SESSION['login']['idUser']}'";
+	public function getFullName()
+	{
+		$query[] 	= "SELECT `emp_fullname`";
+		$query[] 	= "FROM `employer`";
+		$query[] 	= "WHERE `emp_id` = '{$_SESSION['login']['idUser']}'";
 		$query		= implode(" ", $query);
 		$result		= $this->singleRecord($query);
 

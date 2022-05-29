@@ -2,12 +2,12 @@
 class EmployerModel extends Model
 {
 	private $columnsAccount = ['emp_fullname', 'emp_phone', 'emp_email', 'emp_address'];
-	private $columnsCompany = ['comp_location', 'comp_address', 'comp_field', 'comp_description', 'comp_website'];
+	private $columnsCompany = ['comp_location', 'comp_address', 'comp_field', 'comp_description', 'comp_website', 'comp_email'];
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->setTable('employer');
+		$this->setTable(DB_TBL_EMPLOYER);
 	}
 
 	// Show list Employer
@@ -26,7 +26,7 @@ class EmployerModel extends Model
 	// Show list Company
 	public function singleCompany()
 	{
-		$query[]	= "SELECT `c`.`comp_name`, `c`.`comp_location`, `c`.`comp_address`, `c`.`comp_description`, `c`.`comp_logo`, `c`.`comp_tax_id`, `c`.`comp_size`, `c`.`comp_field`, `c`.`comp_website`, `c`.`comp_id`";
+		$query[]	= "SELECT `c`.`comp_name`, `c`.`comp_location`, `c`.`comp_address`, `c`.`comp_description`, `c`.`comp_logo`, `c`.`comp_tax_id`, `c`.`comp_size`, `c`.`comp_field`, `c`.`comp_website`, `c`.`comp_email`, `c`.`comp_id`";
 		$query[]	= "FROM `{$this->table}` AS `e`, `company` AS `c`";
 		$query[]	= "WHERE `e`.`comp_id` = `c`.`comp_id`";
 		$query[]	= "AND `c`.`comp_id` = {$_SESSION['login']['idCompany']}";

@@ -3,12 +3,12 @@ class AccountModel extends Model
 {
 
     private $columnsEmployer = ['emp_email', 'emp_fullname', 'emp_user', 'emp_password', 'emp_phone', 'emp_address', 'comp_id'];
-    private $columnsCompany = ['comp_name', 'comp_location', 'comp_address', 'comp_tax_id', 'comp_size', 'comp_field', 'comp_website'];
+    private $columnsCompany = ['comp_name', 'comp_location', 'comp_address', 'comp_tax_id', 'comp_size', 'comp_field', 'comp_website', 'comp_email'];
 
     public function __construct()
     {
         parent::__construct();
-        $this->setTable('employer');
+        $this->setTable(DB_TBL_EMPLOYER);
     }
 
 

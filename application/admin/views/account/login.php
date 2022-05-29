@@ -2,16 +2,16 @@
 
 $arrFormLogin = [
     [
-        'label'     => Form::labelAccount('emp_user', 'Tên tài khoản'),
-        'input'     => Form::inputAccount('text', 'emp_user', 'Nhập tên tài khoản', '')
+        'label'     => FormBackEnd::labelAccount('emp_user', 'Tên tài khoản'),
+        'input'     => FormBackEnd::inputAccount('text', 'emp_user', 'Nhập tên tài khoản', '')
     ],
     [
-        'label'     => Form::labelAccount('emp_password', 'Mật khẩu'),
-        'input'     => Form::inputAccount('password', 'emp_password', 'Nhập mật khẩu', '')
+        'label'     => FormBackEnd::labelAccount('emp_password', 'Mật khẩu'),
+        'input'     => FormBackEnd::inputAccount('password', 'emp_password', 'Nhập mật khẩu', '')
     ],
 ];
 
-$formLogin = Form::showFormAccount($arrFormLogin);
+$formLogin = FormBackEnd::showFormAccount($arrFormLogin);
 
 ?>
 

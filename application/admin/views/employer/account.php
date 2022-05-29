@@ -6,36 +6,36 @@ if (!empty($this->employer)) {
 
 $arrAccount = [
     [
-        'label'     => Form::labelRow('emp_user', 'Tên tài khoản', 4, true),
-        'input'     => Form::inputRow('text', 'emp_user', 8, $dataEmp['emp_user'], false, true)
+        'label'     => FormBackEnd::labelRow('emp_user', 'Tên tài khoản', 4, true),
+        'input'     => FormBackEnd::inputRow('text', 'emp_user', 8, $dataEmp['emp_user'], false, true)
     ],
     [
-        'label'     => Form::labelRow('emp_password', 'Mật khẩu', 4, true),
-        'input'     => Form::inputRow('password', 'emp_password', 8, $dataEmp['emp_password'], false, true)
+        'label'     => FormBackEnd::labelRow('emp_password', 'Mật khẩu', 4, true),
+        'input'     => FormBackEnd::inputRow('password', 'emp_password', 8, $dataEmp['emp_password'], false, true)
     ],
 ];
 
 $arrContact = [
     [
-        'label'     => Form::labelRow('emp_fullname', 'Họ và tên', 4, true),
-        'input'     => Form::inputRow('text', 'emp_fullname', 8, $dataEmp['emp_fullname'], true)
+        'label'     => FormBackEnd::labelRow('emp_fullname', 'Họ và tên', 4, true),
+        'input'     => FormBackEnd::inputRow('text', 'emp_fullname', 8, $dataEmp['emp_fullname'], true)
     ],
     [
-        'label'     => Form::labelRow('emp_phone', 'Số điện thoại', 4, true),
-        'input'     => Form::inputRow('text', 'emp_phone', 8, $dataEmp['emp_phone'], true)
+        'label'     => FormBackEnd::labelRow('emp_phone', 'Số điện thoại', 4, true),
+        'input'     => FormBackEnd::inputRow('text', 'emp_phone', 8, $dataEmp['emp_phone'], true)
     ],
     [
-        'label'     => Form::labelRow('emp_email', 'Email', 4, true),
-        'input'     => Form::inputRow('email', 'emp_email', 8, $dataEmp['emp_email'], true)
+        'label'     => FormBackEnd::labelRow('emp_email', 'Email', 4, true),
+        'input'     => FormBackEnd::inputRow('email', 'emp_email', 8, $dataEmp['emp_email'], true)
     ],
     [
-        'label'     => Form::labelRow('emp_address', 'Địa chỉ', 4),
-        'input'     => Form::inputRow('text', 'emp_address', 8, $dataEmp['emp_address'])
+        'label'     => FormBackEnd::labelRow('emp_address', 'Địa chỉ', 4),
+        'input'     => FormBackEnd::inputRow('text', 'emp_address', 8, $dataEmp['emp_address'])
     ]
 ];
 
-$account = Form::showForm($arrAccount);
-$contact = Form::showForm($arrContact);
+$account = FormBackEnd::showForm($arrAccount);
+$contact = FormBackEnd::showForm($arrContact);
 ?>
 
 <div class="row">
