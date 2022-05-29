@@ -80,8 +80,8 @@ $formCompany = FormBackEnd::showFormAccount($arrRegCompany);
                 <div class="card-body p-4 p-lg-5 text-black">
                     <form method="post" id="register_form_employer">
                         <div class="d-flex align-items-center mb-3 pb-1">
-                            <i class="fas fa-cubes fa-2x mr-3" style="color: #ff6219;"></i>
-                            <span class="h1 font-weight-bold mb-0">JobHT</span>
+                            <img class="img-fluid pr-1" style="height: 50px;" src="<?= UPLOAD_URL . 'favicon-bg-remove.png'?>">
+                            <span class="h3 font-weight-bold mb-0">JobHT</span>
                         </div>
 
                         <h5 class="font-weight-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng ký tài khoản nhà tuyển dụng</h5>

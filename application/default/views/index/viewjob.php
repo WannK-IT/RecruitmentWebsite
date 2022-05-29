@@ -1,12 +1,13 @@
 <?php
 $info = $this->infoJob;
 $infoJob = '';
-if (!empty($info)) {
 
+if (!empty($info)) {
+    $hrefCompany = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewcompany', ['idCompany' => $info['comp_id']]);
     $infoJob = '<div class="card border-0">
             <div class="row g-0 my-2">
                 <div class="col-md-3 logo-box d-flex align-items-center">
-                    <a href="" class="d-flex justify-content-center"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="logo_company"></a>
+                    <a href="' . $hrefCompany . '" class="d-flex justify-content-center"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="logo_company"></a>
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
@@ -95,7 +96,7 @@ if (!empty($info)) {
         <div class="card border-0 mb-2 p-3">
             <div>
                 <div class="d-flex justify-content-center">
-                    <img src="' . UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] . '" class="img-thumbnail border-0 rounded" style="max-height: 200px" alt="logo_company">
+                    <a href="' . $hrefCompany . '"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] . '" class="img-thumbnail border-0 rounded shadow" style="max-height: 200px" alt="logo_company"></a>
                 </div>
                 <div>
                     <div class="mt-3 fw-bold text-center" style="font-size: 17px;">' . $info['comp_name'] . '</div>
@@ -112,7 +113,7 @@ if (!empty($info)) {
                         </div>
                         <div class="py-1">
                             <i class="fa-solid fa-earth-asia fa-lg"></i>
-                            <span class="ps-1 "><a class="text-muted" href="' . $info['comp_website'] . '">' . $info['comp_website'] . '</a></span>
+                            <span class="ps-1 "><a class="text-muted web-company" href="https://' . $info['comp_website'] . '">' . $info['comp_website'] . '</a></span>
                         </div>
                         <div class="py-1">
                             <i class="fa-solid fa-envelope fa-lg"></i>

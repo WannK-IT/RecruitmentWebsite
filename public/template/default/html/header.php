@@ -4,7 +4,7 @@
 
             <!-- Logo -->
             <a class="navbar-brand" href="<?= URL::addLink($this->arrParam['module'], 'index', 'index')?>">
-                <span><i class="fas fa-cubes fa-lg mr-3" style="color: #ff6219;"></i>&nbsp;<b>JobHT</b></span>
+                <span><img class="img-fluid" style="height: 30px;" src="<?= UPLOAD_URL . 'favicon-bg-remove.png'?>">&nbsp;<b class="text-muted">JobHT</b></span>
             </a>
 
             <!-- Toggle hide navbar when resize -->
@@ -47,7 +47,7 @@
                         </li>
 
                         <li class="nav-item me-1 rounded" style="background-color: #2bb5cf">
-                            <a class="nav-link text-white" href="#">Nhà tuyển dụng</a>
+                            <a class="nav-link text-white" href="<?= URL::addLink('admin', 'post', 'index')?>">Nhà tuyển dụng</a>
                         </li>
                     </ul>
                 </div>

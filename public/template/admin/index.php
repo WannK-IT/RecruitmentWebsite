@@ -5,6 +5,7 @@
   <?php echo $this->_metaHTTP; ?>
   <?php echo $this->_metaName; ?>
   <?php echo $this->_title; ?>
+  <link href="<?= UPLOAD_URL . 'favicon-bg-remove.png'?>" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   

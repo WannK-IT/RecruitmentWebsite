@@ -8,6 +8,12 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a href="<?= URL::addLink('default', 'index', 'index')?>" class="nav-link">
+            <i class="fas fa-briefcase pr-1"></i>
+                <span class="text-sm">Trang tìm việc</span>
+            </a>
+        </li>
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 <img src="<?= $this->avatarLogo?>" class=" user-image img-circle elevation-2" alt="User Image">
