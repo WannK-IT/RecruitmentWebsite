@@ -141,7 +141,7 @@ class FormBackEnd
     public static function inputAccount($type, $name, $placeHolder, $value, $required = false)
     {
         $required = ($required == true) ? 'required' : '';
-        return sprintf('<input type="%s" id="%s" name="%s" class="form-control form-control" placeholder="%s" autocomplete="off" style="font-size:1rem" value="%s" %s/>', $type, $name, $name, $placeHolder, $value, $required);
+        return sprintf('<input type="%s" id="%s" name="%s" class="form-control" placeholder="%s" autocomplete="off" style="font-size:1rem" value="%s" %s/>', $type, $name, $name, $placeHolder, $value, $required);
     }
 
     public static function selectBoxAccount($name, $arrOptions, $selected, $required = false)

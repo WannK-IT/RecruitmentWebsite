@@ -65,17 +65,18 @@ class IndexModel extends Model
 		return $result;
 	}
 
-	// // Avatar
-	// public function getAvatar()
-	// {
-	// 	$query[] = "SELECT `comp_logo`";
-	// 	$query[] = "FROM `company`";
-	// 	$query[] = "WHERE `comp_id` = '{$_SESSION['login']['idCompany']}'";
-	// 	$query		= implode(" ", $query);
-	// 	$result		= $this->singleRecord($query);
+	// Avatar
+	public function getAvatar()
+	{
+		$query[] = "SELECT `user_avatar`";
+		$query[] = "FROM `user`";
+		$query[] = "WHERE `user_id` = '{$_SESSION['loginDefault']['idUser']}'";
+		$query		= implode(" ", $query);
+		$result		= $this->singleRecord($query);
 
-	// 	return $result;
-	// }
+		return $result;
+	}
+
 
 	// // Full name employer
 	// public function getFullName()

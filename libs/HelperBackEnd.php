@@ -16,7 +16,7 @@ class HelperBackEnd
     public static function createGroupSide($title, $class, $arrItemSide, $controllerActive)
     {
         $xhtml = '<li class="nav-item">
-                    <a href="" class="nav-link" data-controller='.$controllerActive.'>
+                    <a href="" class="nav-link" data-controller='.$controllerActive.' style="width: 250px!important;">
                         <i class="' . $class . ' nav-icon"></i>
                         <p>
                             ' . $title . '

@@ -1,0 +1,79 @@
+$(document).ready(function () {
+
+    /* ----- Select2 library load select box ----- */
+    $("#level, #gender, #exp, #marriage, #city, #career, #workplace, #rank, #salary, #type_work").select2();
+
+    /* ----- jQuery Validation ----- */
+    // Validate form add recruitment form
+    $("#form-user-register, #update-user-form, #update-profile-form").validate({
+        ignore: [],
+        debug: false,
+        rules: {
+
+            // add rules to validate
+            user_fullname: {
+                minlength: 5,
+                maxlength: 100
+            },
+            user_email: {
+                email: true
+            },
+            user_username: {
+                alphanumeric: true
+            },
+            user_password: {
+                minlength : 8,
+                maxlength: 50
+            },
+            user_repassword: {
+                equalTo: '#user_password'
+            },
+            user_phone: {
+                number: true,
+                rangelength: [10, 11]
+            },
+
+        },
+
+        // -------- SHOW ERROR MESSAGE --------
+        messages: {
+            user_fullname: {
+                required: 'Họ tên không được bỏ trống !',
+                minlength: 'Tối thiểu 5 ký tự',
+                maxlength: "Tối đa 100 ký tự",
+            },
+            user_email: {
+                required: 'Email không được bỏ trống !',
+                email: 'Email không hợp lệ !'
+            },
+            user_username: {
+                required: 'Tên tài khoản không được bỏ trống !',
+                alphanumeric: 'Tên tài khoản không được chứa ký tự đặc biệt !'
+            },
+            user_password: {
+                required: 'Mật khẩu không được bỏ trống !',
+                minlength: 'Mật khẩu phải từ 8 - 50 ký tự',
+                maxlength: 'Mật khẩu phải từ 8 - 50 ký tự'
+            },
+            user_repassword: {
+                required: 'Vui lòng nhập xác minh mật khẩu !',
+                equalTo: 'Xác minh mật khẩu không khớp !'
+            },
+            user_phone: {
+                required: 'Số điện thoại không được bỏ trống !',
+                number: 'Số điện thoại không hợp lệ !',
+                rangelength: 'Số điện thoại phải từ 10-11 số theo đầu số mới'
+            },
+
+
+        },
+
+        // Method Error
+        errorElement: "span",
+        errorClass: 'error',
+        errorPlacement: function (error, element) {
+            error.insertAfter(element.parent("div"));
+        },
+    });
+
+});

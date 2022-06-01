@@ -13,6 +13,8 @@ class Bootstrap{
 		if(file_exists($filePath)){
 			$this->loadExistingController($filePath, $controllerName);
 			$this->callMethod();
+		}else{
+			$this->_error();
 		}
 	}
 	
@@ -44,7 +46,7 @@ class Bootstrap{
 	public function _error(){
 		require_once APPLICATION_PATH . 'default' . DS . 'controllers' . DS . 'ErrorController.php';
 		$this->_controllerObject = new ErrorController();
-		$this->_controllerObject->setView('default');
+		// $this->_controllerObject->setView('default');
 		$this->_controllerObject->indexAction();
 	}
 }

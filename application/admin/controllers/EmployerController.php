@@ -26,6 +26,8 @@ class EmployerController extends Controller
 	public function accountAction()
 	{
 		$this->_view->setTitle('Quản lý thông tin tài khoản');
+
+		// Xử lý phần logo nhà tuyển dụng
 		if(!empty($_FILES)) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
 		if(isset($this->_arrParam['comp_logo']) && $this->_arrParam['comp_logo']['error'] == 0 ){
 			$this->_model->changePicture($this->_arrParam);

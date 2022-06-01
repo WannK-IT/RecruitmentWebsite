@@ -10,6 +10,18 @@ class IndexController extends Controller
 		$this->_templateObj->setFileConfig('template.ini');
 		$this->_templateObj->load();
 		$this->_view->setTitle('JobHT - Việc làm cho mọi ngành nghề !');
+		Session::init();
+
+		// AVATAR 
+		if (Authentication::checkLoginDefault() == true) {
+			$avatar = $this->_model->getAvatar();
+			if (empty($avatar['user_avatar'])) {
+				$avatar['user_avatar'] = $this->_view->_dirImg . 'logo_default.png';
+			} else {
+				$avatar['user_avatar'] = UPLOAD_URL_DEFAULT . 'img' . DS . $_SESSION['loginDefault']['idUser'] . DS . $avatar['user_avatar'];
+			}
+			$this->_view->avatarLogo = $avatar['user_avatar'];
+		}
 	}
 
 	public function indexAction()
@@ -18,15 +30,15 @@ class IndexController extends Controller
 		$this->_view->render('index/index', true);
 	}
 
-	public function viewjobAction(){
+	public function viewjobAction()
+	{
 		$this->_view->infoJob = $this->_model->infoItemJob($this->_arrParam);
 		$this->_view->render('index/viewjob', true);
 	}
-	
-	public function viewcompanyAction(){
+
+	public function viewcompanyAction()
+	{
 		$this->_view->infoCompany = $this->_model->infoItemCompany($this->_arrParam);
 		$this->_view->render('index/viewcompany', true);
 	}
-
-	
 }

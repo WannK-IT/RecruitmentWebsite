@@ -2,9 +2,6 @@
 $jobs = $this->jobs;
 $listJobs = '';
 if (!empty($jobs)) {
-    echo '<pre style="color: blue;">';
-    print_r($jobs);
-    echo '</pre>';
     foreach ($jobs as $value) {
         $hrefJob   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewjob', ['idPost' => $value['post_id']]);
         $listJobs .= '<div class="card cs-card border-1 shadow-sm mt-2 mb-3">

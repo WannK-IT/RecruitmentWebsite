@@ -1,6 +1,6 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 17px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
 }
 
 a:hover {
@@ -38,11 +38,11 @@ input::-webkit-calendar-picker-indicator {
     opacity: 0;
 }
 
-input[name=position],
-input[name=career],
-input[name=city] {
+input[name=position_job_search],
+input[name=career_job_search],
+input[name=city_job_search] {
     text-indent: 25px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .custom-form {
@@ -263,6 +263,7 @@ hr {
     font-size: 18px;
 }
 
+
 .w-120 {
     width: 120px;
 }
@@ -375,3 +376,19 @@ a.web-company:hover{
     color: #2bb5cf;
     text-decoration: underline;
 }
+
+.error{
+    color: red;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+.text-purple{
+    color: #451DA0;
+}
+
+.bg-purple{
+    background-color: #451DA0 !important;
+    color: white;
+}
+

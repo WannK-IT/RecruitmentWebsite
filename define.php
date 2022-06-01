@@ -31,5 +31,5 @@ define('DB_PASS'                , '');
 define('DB_NAME'                , 'recruitment');
 define('DB_TABLE'               , 'post');
 define('DB_TBL_EMPLOYER'        , 'employer');
-define('DB_TBL_USER'            , 'user');
 define('DB_TBL_COMPANY'         , 'company');
+define('DB_TBL_USER'            , 'user');

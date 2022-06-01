@@ -39,8 +39,9 @@ $formLogin = FormBackEnd::showFormAccount($arrFormLogin);
 
                         <a class="small text-muted" href="#!">Quên mật khẩu?</a>
                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Chưa có tài khoản? <a href="<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'register') ?>" class="text-muted">Đăng ký ngay</a></p>
-                        <a href="#!" class="small text-muted">Terms of use.</a>
-                        <a href="#!" class="small text-muted">Privacy policy</a>
+                        <!-- <a href="#!" class="small text-muted">Terms of use.</a>
+                        <a href="#!" class="small text-muted">Privacy policy</a> -->
+                        <a class="small text-muted" href="<?= URL::addLink('default', 'index', 'index') ?>" class="text-muted">Quay về trang tìm việc</a>
                     </form>
 
                 </div>

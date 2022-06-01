@@ -63,7 +63,7 @@ $arrRegCompany  = [
     ],
     [
         'label'     => FormBackEnd::labelAccount('comp_website', 'Website công ty', true), 
-        'input'     => FormBackEnd::inputAccount('text', 'comp_website', 'Nhập website công ty', @$this->arrParam['comp_website'], true)
+        'input'     => FormBackEnd::inputAccount('text', 'comp_website', 'Nhập website công ty. vd: company.vn', @$this->arrParam['comp_website'], true)
     ],
 ];
 

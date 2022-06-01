@@ -5,13 +5,15 @@
   <?php echo $this->_metaHTTP; ?>
   <?php echo $this->_metaName; ?>
   <?php echo $this->_title; ?>
-  <link href="<?= UPLOAD_URL . 'favicon-bg-remove.png'?>" rel="icon" type="image/x-icon" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link href="<?= UPLOAD_URL . 'favicon-bg-remove.png' ?>" rel="icon" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  
+
   <!-- select2 library - replace select box -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  
+
   <!-- jQueryUI -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
   <?php echo $this->_cssFiles; ?>

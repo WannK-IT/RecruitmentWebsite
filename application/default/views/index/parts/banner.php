@@ -7,11 +7,11 @@
                 <div class="shadow-lg row p-3">
                     <div class="col-md-4 col-sm-4 custom-form">
                         <span class="custom-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input class="form-control" type="text" name="position" placeholder="Vị trí bạn muốn ứng tuyển">
+                        <input class="form-control" type="text" name="position_job_search" placeholder="Vị trí bạn muốn ứng tuyển">
                     </div>
                     <div class="col-md-3 col-sm-4 custom-form">
                         <span class="custom-icon"><i class="fa-solid fa-briefcase"></i></span>
-                        <input class="form-control" type="text" list="careers" name="career" placeholder="Tất cả ngành nghề">
+                        <input class="form-control" type="text" list="careers" name="career_job_search" placeholder="Tất cả ngành nghề">
                         <datalist id="careers">
                             <option value="IT phần mềm">
                             <option value="Quản trị kinh doanh">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4 custom-form">
                         <span class="custom-icon"><i class="fa-solid fa-location-dot"></i></span>
-                        <input class="form-control" type="text" list="cities" name="city" placeholder="Tất cả tỉnh thành">
+                        <input class="form-control" type="text" list="cities" name="city_job_search" placeholder="Tất cả tỉnh thành">
                         <datalist id="cities">
                             <option value="Hồ Chí Minh">
                             <option value="Đồng Nai">

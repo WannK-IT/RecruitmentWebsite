@@ -12,6 +12,18 @@ class Upload{
         }
     }
 
+    public function uploadFileDefault($file, $folderUpload, $option = null){
+        if($option == null){
+            if(@$file['tmp_name'] != null){
+                $uploadDir = UPLOAD_PATH_DEFAULT . 'img' . DS . $folderUpload . DS;
+                $exts = '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+                $newFileName = pathinfo($file['name'], PATHINFO_FILENAME) . $this->randomString();
+                copy($file['tmp_name'], $uploadDir . $newFileName . $exts);
+            }
+            return $newFileName . $exts;
+        }
+    }
+
     public function deleteFile($path, $fileName){
         unlink($path . '/' . $fileName);
     }

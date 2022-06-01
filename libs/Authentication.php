@@ -5,5 +5,14 @@ class Authentication{
             URL::direct('admin', 'account', 'login');
         }
     }
+
+    public static function checkLoginDefault(){
+        $result = false;
+        if(@$_SESSION['loginDefault']['loginSuccess'] == true)
+        {
+            $result = true;
+        }
+        return $result;
+    }
 }
 ?>
