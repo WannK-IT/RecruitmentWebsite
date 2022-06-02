@@ -206,12 +206,13 @@ if (!empty($info)) {
                         </a>
                     </div>';
         }
+    }else{
+        $sideInfo .= '<p class="text-center my-3">Chưa có công việc tương tự</p>';
     }
 
     $sideInfo .= '</div></div></div>';
 }
 ?>
-
 
 <!-- Job Header -->
 <section class="job-detail mt-5" style="background-color: #f1f1f1;">

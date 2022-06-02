@@ -71,12 +71,45 @@ $('#update_info_user').click(function () {
             url: linkUpdateInfoBasic,
             data: $('#update-user-form').serialize(),
             success: function () {
-                
+
             }
         })
         toastMsg('success', 'Cập nhật thông tin cá nhân thành công!')
     }
 
+})
+
+$('#change_password').click(function () {
+    let linkCheckPassword = 'index.php?module=default&controller=user&action=checkExistPassword'
+    let linkChangePassword = 'index.php?module=default&controller=user&action=updatePassword'
+    if (!$('#user_password').val() || !$('#newPass').val() || !$('#confirmPass').val()) {
+        toastMsg('warning', 'Vui lòng nhập đầy đủ thông tin')
+    } else if ($('#confirmPass').val() != $('#newPass').val()) {
+        toastMsg('warning', 'Xác nhận mật khẩu<br>không khớp')
+    } else if ($('#user_password').val().length < 8 || $('#newPass').val().length < 8 || $('#confirmPass').val().length < 8) {
+        toastMsg('warning', 'Mật khẩu phải từ<br>8 - 50 ký tự !')
+    } else {
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: linkCheckPassword,
+            data: $('#change-user-password').serialize(),
+            success: function (data) {
+                if (data == 'not match') {
+                    toastMsg('error', 'Mật khẩu cũ không trùng khớp');
+                } else {
+                    $.ajax({
+                        type: 'post',
+                        url: linkChangePassword,
+                        data: $('#change-user-password').serialize(),
+                        success: function (data) {
+                            toastMsg('success', 'Thay đổi mật khẩu<br>thành công');
+                        }
+                    })
+                }
+            }
+        })
+    }
 })
 
 function toastMsg(icon, message) {

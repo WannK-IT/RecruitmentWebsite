@@ -15,7 +15,8 @@
     <?php echo $this->_cssFiles; ?>
 
     <!-- select2 library - replace select box -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
     <!-- jQueryUI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
@@ -30,6 +31,8 @@
     require_once APPLICATION_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php';
     ?>
 
+    <!-- Footer Page -->
+    <?php require_once "html/footer.php" ?>
     <?php echo $this->_jsFiles; ?>
     <!-- Select2 v4.1.0 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -44,8 +47,14 @@
     <!-- Font awesome ver 6 -->
     <script src="https://kit.fontawesome.com/3c50210ea0.js" crossorigin="anonymous"></script>
 
-    <!-- Footer Page -->
-    <?php require_once "html/footer.php" ?>
+    <?php
+    if (isset($_SESSION['updateProfileSuccess']) && $_SESSION['updateProfileSuccess'] == true) {
+        echo '<script type="text/javascript">
+                    toastMsg("success", "Cập nhật hồ sơ thành công !")
+            </script>';
+        unset($_SESSION['updateProfileSuccess']);
+    }
+    ?>
 
 </body>
 

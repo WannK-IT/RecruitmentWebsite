@@ -1,4 +1,13 @@
 <?php
+$arrNavbar = [
+    HelperFrontEnd::itemNavBar('Ngành nghề', 'fa-solid fa-briefcase', URL::addLink('default', 'career', 'index'), 'career', $this->arrParam['controller']),
+    HelperFrontEnd::itemNavBar('Công ty', 'fa-solid fa-building', URL::addLink('default', 'company', 'index'), 'company', $this->arrParam['controller']),
+    HelperFrontEnd::itemNavBar('Tin tức', 'fa-solid fa-newspaper', URL::addLink('default', 'news', 'index'), 'news', $this->arrParam['controller'])
+];
+
+$navbar = HelperFrontEnd::formNavbar($arrNavbar);
+
+
 $sessionLogin = '';
 if (Authentication::checkLoginDefault()) {
     $sessionLogin =
@@ -45,17 +54,7 @@ if (Authentication::checkLoginDefault()) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Navbar -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item ms-2">
-                        <a class="nav-link" style="color: #2bb5cf" href="#"><i class="fa-solid fa-briefcase"></i>&nbsp;Ngành nghề</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-building"></i>&nbsp;Công ty</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-user-tie"></i>&nbsp;Tạo CV</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-newspaper"></i>&nbsp;Blog</a>
+                    <?= $navbar?>
                 </ul>
 
                 <!-- Right Navbar -->

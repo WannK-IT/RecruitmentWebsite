@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     /* ----- Select2 library load select box ----- */
-    $("#level, #gender, #exp, #marriage, #city, #career, #workplace, #rank, #salary, #type_work").select2();
+    $("#level, #gender, #exp, #marriage, #city, #career, #workplace, #rank, #salary, #type_work").select2({
+        theme: 'bootstrap-5',
+    });
 
     /* ----- jQuery Validation ----- */
     // Validate form add recruitment form
@@ -32,6 +34,25 @@ $(document).ready(function () {
                 number: true,
                 rangelength: [10, 11]
             },
+            hard_skl: {
+                required: function () {
+                    CKEDITOR.instances.hard_skl.updateElement();
+                },
+                minlength: 10
+            },
+            career_goals: {
+                required: function () {
+                    CKEDITOR.instances.career_goals.updateElement();
+                },
+                minlength: 10
+            },
+            exp_work: {
+                required: function () {
+                    CKEDITOR.instances.exp_work.updateElement();
+                },
+                minlength: 10
+            }
+            // =========================== FORM PROFILE CV ==========================
 
         },
 
@@ -64,7 +85,49 @@ $(document).ready(function () {
                 number: 'Số điện thoại không hợp lệ !',
                 rangelength: 'Số điện thoại phải từ 10-11 số theo đầu số mới'
             },
-
+            // =========================== FORM PROFILE CV ==========================
+            position:{
+                required: 'Vui lòng nhập vị trí cần ứng tuyển !'
+            },
+            level:{
+                required: 'Vui lòng chọn trình độ học vấn !'
+            },
+            gender:{
+                required: 'Vui lòng chọn giới tính !'
+            },
+            city: {
+                required: 'Vui lòng chọn Tỉnh/Thành phố hiện tại !'
+            },
+            career: {
+                required: 'Vui lòng chọn ngành nghề muốn ứng tuyển !'
+            },
+            workplace:{
+                required: 'Vui lòng chọn nơi làm việc mong muốn !'
+            },
+            birthday:{
+                required: 'Vui lòng nhập ngày sinh !'
+            },
+            address:{
+                required: 'Vui lòng nhập địa chỉ nơi ở hiện tại !'
+            },
+            hard_skl:{
+                required: 'Vui lòng nhập kỹ năng chuyên môn của bạn !',
+                minlength: 'Tối thiểu 10 ký tự'
+            },
+            rank:{
+                required: 'Vui lòng chọn cấp bậc muốn ứng tuyển !'
+            },
+            type_work:{
+                required: 'Vui lòng chọn hình thức làm việc !'
+            },
+            career_goals:{
+                required: 'Vui lòng nhập mục tiêu nghề nghiệp của bạn !',
+                minlength: 'Tối thiểu 10 ký tự'
+            },
+            exp_work:{
+                required: 'Vui lòng nhập kinh nghiệm làm việc của bạn !',
+                minlength: 'Tối thiểu 10 ký tự'
+            }
 
         },
 

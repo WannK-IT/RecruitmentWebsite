@@ -82,7 +82,7 @@
               "timeOut": "2500",
               "positionClass": "toast-top-center"
             };
-            toastr["success"]("Thêm tin đăng tuyển thành công !")
+            toastr["success"]("Thêm tin đăng tuyển thành công")
           </script>';
     unset($_SESSION['add_success']);
   } elseif (@$_SESSION['edit_success'] == true) {
@@ -91,7 +91,7 @@
               "timeOut": "2500",
               "positionClass": "toast-top-center"
             };
-            toastr["success"]("Chỉnh sửa tin đăng tuyển thành công !")
+            toastr["success"]("Chỉnh sửa tin đăng tuyển thành công")
           </script>';
     unset($_SESSION['edit_success']);
   }

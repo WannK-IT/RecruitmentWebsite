@@ -9,29 +9,6 @@ class AccountModel extends Model
         $this->setTable(DB_TBL_USER);
     }
 
-
-    // public function login($params)
-    // {
-    //     $query[]    = "SELECT `emp_id`, `emp_user`, `emp_password`, `emp_fullname`, `comp_id`";
-    //     $query[]    = "FROM `{$this->table}`";
-    //     $query[]    = "WHERE `emp_user` = '{$params['emp_user']}' AND `emp_password` = '".md5($params['emp_password'])."'";
-    //     $query        = implode(" ", $query);
-
-    //     // Query to load information of employer
-    //     $loadInfo    = $this->singleRecord($query);
-
-    //     // Check username & password exist
-    //     if ($this->isExist($query) == true) {
-    //         $result = 'success';
-    //         $_SESSION['login']['loginSuccess'] = true;
-    //         $_SESSION['login']['idUser'] = $loadInfo['emp_id'];
-    //         $_SESSION['login']['idCompany'] = $loadInfo['comp_id'];
-    //     } else {
-    //         $result = 'failed';
-    //     }
-    //     return $result;
-    // }
-
     public function register($params)
     {
         // insert into table user first

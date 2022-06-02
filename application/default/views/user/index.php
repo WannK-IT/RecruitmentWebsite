@@ -1,19 +1,51 @@
 <?php
 $info = $this->info;
+$row1 = [
+    [
+        'label' => FormFrontEnd::labelRow('user_username', 'Tên tài khoản', true),
+        'input' => FormFrontEnd::inputRow('text', 'user_username', $info['user_username'], true, true)
+    ],
+    [
+        'label' => FormFrontEnd::labelRow('user_password', 'Mật khẩu', true),
+        'input' => FormFrontEnd::inputRow('password', 'user_password', $info['user_password'], true, true)
+    ]
+];
+$row2 = [
+    [
+        'label' => FormFrontEnd::labelRow('user_email', 'Email', true),
+        'input' => FormFrontEnd::inputRow('email', 'user_email', $info['user_email'], true, true)
+    ],
+    [
+        'label' => FormFrontEnd::labelRow('user_fullname', 'Họ tên', true),
+        'input' => FormFrontEnd::inputRow('text', 'user_fullname', $info['user_fullname'], true)
+    ]
+];
+$row3 = [
+    [
+        'label' => FormFrontEnd::labelRow('user_phone', 'Số điện thoại', true),
+        'input' => FormFrontEnd::inputRow('text', 'user_phone', $info['user_phone'], true)
+    ]
+];
+
+$username_password  = FormFrontEnd::showForm($row1, 2);
+$email_fullname     = FormFrontEnd::showForm($row2, 2);
+$phone              = FormFrontEnd::showForm($row3, 2);
 ?>
 <div class="container">
     <div style="margin-top: 6rem;">
         <div class="row">
-            <?php require_once "parts/sidebar.php" ?>
-            <div class="col-md-9 mt-4" style="min-height: 700px;">
+            <?php require_once "sidebar.php" ?>
+            <div class="col-md-9 mt-3" style="min-height: 700px;">
                 <div class="col-12">
+                <p class="fw-bold h5 mb-3 ms-3">Thông tin cá nhân</p>
                     <form class="form-horizontal" method="post" id="form-user-image" enctype="multipart/form-data">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="card-body p-0">
+                                    <p class="ms-3 fw-bold">Avatar</p>
                                     <div class="row no-gutters">
                                         <div class="col-md-4 ms-3">
-                                            <img src="<?= $this->avatarLogo?>" width="150" height="200" class="img-fluid " alt="logo_user">
+                                            <img src="<?= $this->avatarLogo ?>" width="150" height="200" class="img-fluid " alt="logo_user">
                                         </div>
                                         <div class="col-md-6">
                                             <div class="card-body">
@@ -27,58 +59,15 @@ $info = $this->info;
                             </div>
                         </div>
                     </form>
-                    
+
                     <form method="post" action="" id="update-user-form">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group mb-4 mx-3">
-                                    <div class="error-element">
-                                        <label for="user_username">Tên tài khoản <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control fs-input" id="user_username" name="user_username" autocomplete="off" value="<?= $info['user_username'] ?>" disabled required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group mb-4 mx-3">
-                                    <div class="error-element">
-                                        <label for="user_password">Mật khẩu <span class="text-danger">*</span></label>
-                                        <input type="password" class="form-control fs-input" id="user_password" name="user_password" autocomplete="off" value="<?= $info['user_password'] ?>" disabled required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group mb-4 mx-3">
-                                    <div class="error-element">
-                                        <label for="user_email">Email <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control fs-input" id="user_email" name="user_email" value="<?= $info['user_email'] ?>" autocomplete="off" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group mb-4 mx-3">
-                                    <div class="error-element">
-                                        <label for="user_fullname">Họ tên <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" style="font-size: 1rem;" id="user_fullname" name="user_fullname" autocomplete="off" value="<?= $info['user_fullname'] ?>" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?= $username_password ?>
+                        <?= $email_fullname ?>
+                        <?= $phone ?>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group mb-4 mx-3">
-                                    <div class="error-element">
-                                        <label for="user_phone">Số điện thoại <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" style="font-size: 1rem;" id="user_phone" name="user_phone" autocomplete="off" value="<?= $info['user_phone'] ?>" required>
-                                    </div>
-                                </div>
-                                <div class="form-group mx-3">
-                                    <input type="button" name="update_info_user" id="update_info_user" class="btn bg-purple mt-4" value="Cập nhật">
-                                </div>
-                            </div>
+                        <div class="form-group mx-3">
+                            <input type="button" name="update_info_user" id="update_info_user" class="btn bg-purple mt-4" value="Cập nhật">
                         </div>
 
                     </form>

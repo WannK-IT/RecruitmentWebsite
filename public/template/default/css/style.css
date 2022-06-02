@@ -42,7 +42,7 @@ input[name=position_job_search],
 input[name=career_job_search],
 input[name=city_job_search] {
     text-indent: 25px;
-    font-size: 17px;
+    font-size: 1rem;
 }
 
 .custom-form {
@@ -178,9 +178,9 @@ a {
     color: #ff7e29;
 }
 
-input.form-control:hover {
+/* input.form-control:hover {
     border: 1px solid #2bb5cf;
-}
+} */
 
 .btn-apply {
     width: 130px;
@@ -391,4 +391,51 @@ a.web-company:hover{
     background-color: #451DA0 !important;
     color: white;
 }
+
+.bg-main{
+    background-color: #2c95ff !important;
+    color: white;
+}
+
+.circular-portrait { 
+    position: relative; 
+    width: 100px; 
+    height: 100px; 
+    overflow: hidden; 
+    border-radius: 50%; 
+} 
+.circular-portrait img { 
+    width: 100%; 
+    height: auto; 
+}
+
+
+/* REMOVE OUTLINE SELECT2 */
+.select2-container--bootstrap-5.select2-container--focus .select2-selection, .select2-container--bootstrap-5.select2-container--open .select2-selection{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+input.select2-search__field{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.cs-ellipsis-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.cs-ellipsis-3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+
 

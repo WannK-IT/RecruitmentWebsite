@@ -4,13 +4,14 @@ class FormFrontEnd
     public static function labelRow($forName, $title, $required = false)
     {
         $required = ($required == true) ? ' <span class="text-danger">*</span>' : '';
-        return sprintf('<label class="mb-1" for="%s">%s%s</label>', $forName, $title, $required);
+        return sprintf('<label class="mb-1 fw-bold" for="%s">%s%s</label>', $forName, $title, $required);
     }
 
-    public static function inputRow($type, $name, $value, $required = false)
+    public static function inputRow($type, $name, $value, $required = false, $disable = false)
     {
+        $disable = ($disable == true) ? 'disabled' : '';
         $required = ($required == true) ? 'required' : '';
-        return sprintf('<input type="%s" class="form-control fs-input" id="%s" name="%s" autocomplete="off" value="%s" %s>', $type, $name, $name, $value, $required);
+        return sprintf('<input type="%s" class="form-control" style="font-size: 1rem;" id="%s" name="%s" autocomplete="off" value="%s" %s %s>', $type, $name, $name, $value, $required, $disable);
     }
 
     public static function selectBoxRow($name, $arrValue, $selected, $required = false)

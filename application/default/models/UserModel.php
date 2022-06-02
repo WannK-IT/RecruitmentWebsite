@@ -1,7 +1,8 @@
 <?php
 class UserModel extends Model
 {
-    private $columnsUser = ['user_email', 'user_username', 'user_password', 'user_fullname', 'user_phone'];
+    private $columnsUser    = ['user_email', 'user_username', 'user_password', 'user_fullname', 'user_phone'];
+    private $columnsCV       = ['position', 'level', 'exp', 'gender', 'birthday', 'marriage', 'city', 'address', 'hard_skl', 'soft_skl', 'career', 'workplace', 'rank', 'salary', 'type_work', 'career_goals', 'exp_work', 'degree'];
 
     public function __construct()
     {
@@ -25,6 +26,22 @@ class UserModel extends Model
         return $result;
     }
 
+    public function checkExistPassword($arrParams)
+    {
+        $query[]    = "SELECT `user_password`";
+        $query[]    = "FROM `{$this->table}`";
+        $query[]    = "WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
+        $query[]    = "AND `user_password` = '" . md5($arrParams['user_password']) . "'";
+        $query      = implode(" ", $query);
+
+        $result = 'not match';
+        if ($this->isExist($query) == true) {
+            $result = 'match';
+        }
+
+        return $result;
+    }
+
     public function infoBasic()
     {
         $query[] = "SELECT `user_username`, `user_password`, `user_fullname`, `user_email`, `user_phone`, `user_avatar`";
@@ -40,6 +57,26 @@ class UserModel extends Model
     {
         $data = array_intersect_key($arrParams, array_flip($this->columnsUser));
         $this->update($data, [['user_id', $_SESSION['loginDefault']['idUser']]]);
+    }
+
+    public function updateProfile($arrParams)
+    {
+        $data = array_intersect_key($arrParams, array_flip($this->columnsCV));
+        $this->updateOtherTable($data, 'cv', [['user_id', $_SESSION['loginDefault']['idUser']]]);
+        $_SESSION['updateProfileSuccess'] = true;
+    }
+
+    public function updatePassword($arrParams)
+    {
+        $query = "UPDATE `{$this->table}` SET `user_password` = '" . md5($arrParams['newPass']) . "' WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
+        $this->query($query);
+    }
+
+    public function infoProfile($arrParams)
+    {
+        $query = "SELECT * FROM `cv` WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
+        $result = $this->singleRecord($query);
+        return $result;
     }
 
     // Avatar

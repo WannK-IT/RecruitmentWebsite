@@ -9,7 +9,7 @@ $group_Post = HelperBackEnd::createGroupSide('Quản lý đăng tuyển', 'fas f
 $group_Employer = HelperBackEnd::createGroupSide('Quản lý tài khoản', 'fas fa-user-circle', [$infoEmployer], 'user');
 ?>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
     <!-- Brand Logo -->
     <a href="<?= URL::addLink('admin', 'post', 'index') ?>" class="brand-link">
         <img src="<?= UPLOAD_URL . 'favicon.png'?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">

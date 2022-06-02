@@ -50,7 +50,6 @@ if (!empty($jobs)) {
 } else {
     $listJobs = '<div class="text-center">Không có tin đăng tuyển !</div>';
 }
-
 ?>
 
 <!-- Banner -->
