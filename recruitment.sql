@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 29, 2022 at 05:55 PM
+-- Generation Time: Jun 04, 2022 at 11:13 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.0.19
 
@@ -20,30 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `recruitment`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `blog`
---
-
-CREATE TABLE `blog` (
-  `blog_id` int(11) NOT NULL,
-  `blog_name` varchar(255) NOT NULL,
-  `blog_description` varchar(255) NOT NULL,
-  `blog_image` longblob
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `career`
---
-
-CREATE TABLE `career` (
-  `career_id` int(11) NOT NULL,
-  `career_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -70,8 +46,44 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`comp_id`, `comp_name`, `comp_location`, `comp_address`, `comp_description`, `comp_logo`, `comp_tax_id`, `comp_size`, `comp_website`, `comp_email`, `comp_field`) VALUES
-(28, 'Công Ty Tnhh Lampart', 'TP Hồ Chí Minh', 'An Phú Plaza, Tầng 12, 119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh', 'Công ty TNHH Lampart được thành lập từ năm 2012 với mục tiêu trở thành đơn vị đem đến những giải pháp về hệ thống đáp ứng những nhu cầu của khách hàng.\r\n\r\nLampart được vận hành bởi những kỹ sư người Nhật và người Việt có trình độ chuyên môn cao. Hiện công ty đang cung cấp các dịch vụ về ứng dụng website, thi công phần mềm cho các khách hàng là doanh nghiệp Việt và cả những công ty Nhật Bản hoạt động kinh doanh tại Việt Nam.', 'lampart-logodOhjVFYx.jpg', '', '200 - 500 nhân viên', 'lampart-vn.com', 'recruit@lampart-vn.com', 'IT'),
-(29, 'Công ty TMCP Wemade', 'TP Hồ Chí Minh', '31 Làng Tăng Phú', 'Công ty khởi nghiệp Wemade được thành lập và cũng do Park Kwan-ho làm chủ tịch, và cũng đã thực sự giới thiệu bộ sưu tập trò chơi điện tử Mir trong suốt nhiều năm. Nó bắt đầu ra mắt bộ sưu tập trò chơi điện tử Mir vào năm 2000, tuy nhiên đã xoay vòng sang môi trường kinh tế mã thông báo trò chơi dựa trên blockchain vào ngày 26 tháng 4, với sự ra mắt của MIR170. Trò chơi đã được giới thiệu ở 12 quốc gia bằng 10 ngôn ngữ và cũng đã thực sự được tải xuống và cài đặt hơn một triệu lần trên Google Play,  lợi nhuận thực tế cho các yếu tố trò chơi ở mức 4 triệu đô la hàng tháng theo tiêu chuẩn hiện tại. Trước MIR500, Wemade. Bộ sưu tập Mir hiện đã có XNUMX triệu game thủ chỉ tính riêng ở Trung Quốc.', 'unnamedqhj0cm1v.png', '', '50 - 200 nhân viên', 'daidung99.com', 'wemade@gmail.com', 'IT');
+(28, 'Công Ty TNHH Lampart', 'TP Hồ Chí Minh', 'An Phú Plaza, Tầng 12, 119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh', 'Công ty TNHH Lampart được thành lập từ năm 2012 với mục tiêu trở thành đơn vị đem đến những giải pháp về hệ thống đáp ứng những nhu cầu của khách hàng.\r\n\r\nLampart được vận hành bởi những kỹ sư người Nhật và người Việt có trình độ chuyên môn cao. Hiện công ty đang cung cấp các dịch vụ về ứng dụng website, thi công phần mềm cho các khách hàng là doanh nghiệp Việt và cả những công ty Nhật Bản hoạt động kinh doanh tại Việt Nam.', 'lampart-logodOhjVFYx.jpg', '', '200 - 500 nhân viên', 'lampart-vn.com', 'recruit@lampart-vn.com', 'Công nghệ thông tin'),
+(29, 'Công ty TMCP Wemade', 'TP Hồ Chí Minh', '31 Làng Tăng Phú', 'Công ty khởi nghiệp Wemade được thành lập và cũng do Park Kwan-ho làm chủ tịch, và cũng đã thực sự giới thiệu bộ sưu tập trò chơi điện tử Mir trong suốt nhiều năm. Nó bắt đầu ra mắt bộ sưu tập trò chơi điện tử Mir vào năm 2000, tuy nhiên đã xoay vòng sang môi trường kinh tế mã thông báo trò chơi dựa trên blockchain vào ngày 26 tháng 4, với sự ra mắt của MIR170. Trò chơi đã được giới thiệu ở 12 quốc gia bằng 10 ngôn ngữ và cũng đã thực sự được tải xuống và cài đặt hơn một triệu lần trên Google Play,  lợi nhuận thực tế cho các yếu tố trò chơi ở mức 4 triệu đô la hàng tháng theo tiêu chuẩn hiện tại. Trước MIR500, Wemade. Bộ sưu tập Mir hiện đã có XNUMX triệu game thủ chỉ tính riêng ở Trung Quốc.', 'unnamedqhj0cm1v.png', '', '50 - 200 nhân viên', 'daidung99.com', 'wemade@gmail.com', 'Công nghệ thông tin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cv`
+--
+
+CREATE TABLE `cv` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `position` varchar(100) DEFAULT NULL COMMENT 'Vị trí công việc cần tìm',
+  `level` varchar(100) DEFAULT NULL COMMENT 'Trình độ học vấn',
+  `exp` varchar(50) DEFAULT NULL COMMENT 'Số năm kinh nghiệm',
+  `gender` varchar(10) DEFAULT NULL COMMENT 'Giới tính',
+  `birthday` date DEFAULT NULL COMMENT 'Ngày sinh',
+  `marriage` varchar(100) DEFAULT NULL COMMENT 'Tình trạng hôn nhân',
+  `city` varchar(50) DEFAULT NULL COMMENT 'Tỉnh Thành phố',
+  `address` varchar(200) DEFAULT NULL COMMENT 'Địa chỉ nơi ở',
+  `hard_skl` text COMMENT 'Kỹ năng cứng',
+  `soft_skl` text COMMENT 'Kỹ năng mềm',
+  `career` varchar(100) DEFAULT NULL COMMENT 'Ngành nghề',
+  `workplace` varchar(100) DEFAULT NULL COMMENT 'Nơi làm việc mong muốn',
+  `rank` varchar(100) DEFAULT NULL COMMENT 'Cấp bậc mong muốn',
+  `salary` varchar(50) DEFAULT NULL COMMENT 'Mức lương mong muốn',
+  `type_work` varchar(50) DEFAULT NULL COMMENT 'loại hình công việc',
+  `career_goals` text COMMENT 'Mục tiêu nghề nghiệp',
+  `exp_work` text COMMENT 'Kinh nghiệm làm việc',
+  `degree` text COMMENT 'Học vấn bằng cấp'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cv`
+--
+
+INSERT INTO `cv` (`id`, `user_id`, `position`, `level`, `exp`, `gender`, `birthday`, `marriage`, `city`, `address`, `hard_skl`, `soft_skl`, `career`, `workplace`, `rank`, `salary`, `type_work`, `career_goals`, `exp_work`, `degree`) VALUES
+(3, 9, 'Backend PHP Intern', 'Cao đẳng', 'Chưa có kinh nghiệm', 'Nam', '1999-12-08', 'Độc thân', 'TP Hồ Chí Minh', 'TPHCM', '<ul>\r\n	<li>HTML5/CSS3/JS/JQuery</li>\r\n	<li>PHP/MySQL</li>\r\n	<li>Database Desgin</li>\r\n</ul>\r\n', '<ul>\r\n	<li>Kỹ năng l&agrave;m việc nh&oacute;m</li>\r\n	<li>Kỹ năng quản l&yacute; thời gian</li>\r\n	<li>Kỹ năng giao tiếp</li>\r\n</ul>\r\n', 'Công nghệ thông tin', 'TP Hồ Chí Minh', 'Nhân viên', 'Thỏa thuận', 'Toàn thời gian cố định', '<p>Trở th&agrave;nh developer PHP chuy&ecirc;n nghiệp</p>\r\n', '<p>Project Website tuyển dụng việc l&agrave;m PHP/MySQL MVC</p>\r\n', '');
 
 -- --------------------------------------------------------
 
@@ -97,6 +109,19 @@ CREATE TABLE `employer` (
 INSERT INTO `employer` (`emp_id`, `emp_email`, `emp_fullname`, `emp_user`, `emp_password`, `emp_phone`, `emp_address`, `comp_id`) VALUES
 (23, 'n.nquanght@gmail.com', 'Nguyễn Nhựt Quang', 'admin', '21232f297a57a5a743894a0e4a801fc3', '0356809728', 'TP Hồ Chí Minh', 28),
 (24, 'dungdai@gmail.com', 'Đại Anh Dũng', 'daidung99', '9388ac7ca68c433105f2d695795ba36d', '01234565648', '', 29);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `news_id` int(11) NOT NULL,
+  `news_name` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `news_description` text CHARACTER SET utf8mb4,
+  `news_image` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -150,34 +175,26 @@ INSERT INTO `post` (`post_id`, `post_position`, `post_career`, `post_type_work`,
 --
 
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `user_email` varchar(255) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
-  `user_fullname` varchar(255) NOT NULL,
-  `user_phone` varchar(255) NOT NULL,
-  `user_avatar` text,
-  `user_gender` varchar(255) NOT NULL,
-  `user_birthday` datetime DEFAULT NULL,
-  `user_marriage` varchar(255) DEFAULT NULL,
-  `user_address` varchar(255) DEFAULT NULL,
-  `user_date_created` datetime NOT NULL
+  `user_id` int(100) NOT NULL,
+  `user_email` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Email',
+  `user_username` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Tên tài khoản',
+  `user_password` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Mật khẩu',
+  `user_fullname` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Họ tên',
+  `user_phone` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'SĐT',
+  `user_avatar` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT 'Avatar',
+  `user_date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_email`, `user_username`, `user_password`, `user_fullname`, `user_phone`, `user_avatar`, `user_date_created`) VALUES
+(9, 'quang@gmail.com', 'admin', '9fafde0a3ab3890eb4ebd593678e5454', 'Nguyễn Nhựt Quang', '03568097284', '277741523_3286476674918959_7406532727525711506_nQKLTi4Br.jpg', '2022-05-31 15:06:12');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `blog`
---
-ALTER TABLE `blog`
-  ADD PRIMARY KEY (`blog_id`);
-
---
--- Indexes for table `career`
---
-ALTER TABLE `career`
-  ADD PRIMARY KEY (`career_id`);
 
 --
 -- Indexes for table `company`
@@ -186,10 +203,22 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`comp_id`);
 
 --
+-- Indexes for table `cv`
+--
+ALTER TABLE `cv`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `employer`
 --
 ALTER TABLE `employer`
   ADD PRIMARY KEY (`emp_id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`news_id`);
 
 --
 -- Indexes for table `post`
@@ -208,28 +237,28 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `blog`
---
-ALTER TABLE `blog`
-  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `career`
---
-ALTER TABLE `career`
-  MODIFY `career_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `comp_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=30;
 
 --
+-- AUTO_INCREMENT for table `cv`
+--
+ALTER TABLE `cv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `employer`
 --
 ALTER TABLE `employer`
   MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id', AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `post`
@@ -241,7 +270,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
