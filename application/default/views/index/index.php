@@ -3,32 +3,32 @@ $jobs = $this->jobs;
 $listJobs = '';
 if (!empty($jobs)) {
     foreach ($jobs as $value) {
-        $hrefJob   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewjob', ['idPost' => $value['post_id']]);
+        $hrefCareer   = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $value['post_id']]);
         $listJobs .= '<div class="card cs-card border-1 shadow-sm mt-2 mb-3">
                         <div class="row g-0">
                             <div class="col-md-3 logo-box d-flex align-items-center">
-                                <a href="' . $hrefJob . '"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $value['emp_id'] . '/' . $value['comp_logo'] . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="box_Job"></a>
+                                <a href="' . $hrefCareer . '"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $value['emp_id'] . '/' . $value['comp_logo'] . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="box_Job"></a>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <div class="pb-1" style="font-size: 18px;">
-                                        <a class="text-decoration-none card-title fw-bold title-job" href="' . $hrefJob . '">' . $value['post_position'] . '</a>
+                                        <a class="text-decoration-none card-title fw-bold title-job" href="' . $hrefCareer . '">' . $value['post_position'] . '</a>
                                     </div>
                                     <div class="card-text" style="font-size: 15px;">
                                         <div>
-                                            <i class="bi bi-building"></i>
+                                            <i class="fa-solid fa-city"></i>
                                             <span class="ps-1">' . $value['comp_name'] . '</span>
                                         </div>
                                         <div>
-                                            <i class="bi bi-geo-alt"></i>
+                                            <i class="fa-solid fa-map-location-dot"></i>
                                             <span class="ps-1">' . $value['post_address_work'] . '</span>
                                         </div>
                                         <div class="text-success">
-                                            <i class="bi bi-cash"></i>
+                                            <i class="fa-solid fa-money-bill-wave"></i>
                                             <span class="ps-1">' . $value['post_salary'] . '</span>
                                         </div>
                                         <div>
-                                            <i class="bi bi-hourglass-split"></i>
+                                            <i class="fa-solid fa-clock"></i>
                                             <span class="ps-1">' . date('d/m/Y', strtotime($value['post_expired'])) . '</span>
                                         </div>
                                     </div>

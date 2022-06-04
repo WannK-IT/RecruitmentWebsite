@@ -8,7 +8,7 @@
 
                     <div class="form-group mb-3">
                         <div class="error-element">
-                            <label for="user_fullname">Họ và tên    </label>
+                            <label for="user_fullname">Họ và tên</label>
                             <input type="text" name="user_fullname" id="user_fullname" class="form-control fs-6" placeholder="Nhập họ và tên" autocomplete="off" required>
                         </div>
                     </div>

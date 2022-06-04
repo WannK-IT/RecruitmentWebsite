@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     /* ----- Select2 library load select box ----- */
-    $("#level, #gender, #exp, #marriage, #city, #career, #workplace, #rank, #salary, #type_work").select2({
+    $("#level, #gender, #exp, #marriage, #city, #career, #workplace, #rank, #salary, #type_work, #career_search, #city_search").select2({
         theme: 'bootstrap-5',
     });
 

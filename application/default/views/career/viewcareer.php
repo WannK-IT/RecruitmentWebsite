@@ -1,9 +1,8 @@
 <?php
 $info = $this->infoJob;
 $infoJob = '';
-
 if (!empty($info)) {
-    $hrefCompany = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewcompany', ['idCompany' => $info['comp_id']]);
+    $hrefCompany = URL::addLink($this->arrParam['module'], 'company', 'viewcompany', ['idCompany' => $info['comp_id']]);
     $infoJob = '<div class="card border-0">
             <div class="row g-0 my-2">
                 <div class="col-md-3 logo-box d-flex align-items-center">
@@ -19,16 +18,16 @@ if (!empty($info)) {
                                 <span>' . $info['comp_name'] . '</span>
                             </div>
                             <div class="fs-6">
-                                <i class="bi bi-geo-alt-fill"></i>
+                                <i class="fa-solid fa-map-location-dot"></i>
                                 <span class="ps-1">' . $info['post_address_work'] . '</span>
                             </div>
                             <div class="fs-6">
-                                <i class="bi bi-cash"></i>
+                                <i class="fa-solid fa-money-bill"></i>
                                 <span class="ps-1">' . $info['post_salary'] . '</span>
                             </div>
                             <div class="fs-6">
-                                <i class="bi bi-clock-fill"></i>
-                                <span class="ps-1">' . date('d/m/Y', strtotime($info['post_expired'])) . '</span>
+                                <i class="fa-solid fa-clock"></i>
+                                <span class="ps-2">' . date('d/m/Y', strtotime($info['post_expired'])) . '</span>
                             </div>
                         </div>
                     </div>
@@ -122,8 +121,8 @@ if (!empty($info)) {
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <a href="" class="view-all">
-                            <span style="font-size: 14px;">Xem thêm các việc làm khác&nbsp;<i style="font-size: 11px;" class="fa-solid fa-arrow-right"></i></span>
+                        <a href="'.$hrefCompany.'" class="view-all">
+                            <span style="font-size: 14px;">Các việc làm khác từ công ty&nbsp;<i style="font-size: 11px;" class="fa-solid fa-arrow-right"></i></span>
                         </a>
                     </div>
 
@@ -191,7 +190,7 @@ if (!empty($info)) {
 
     if (!empty($info['relatedJob'])) {
         foreach ($info['relatedJob'] as $value) {
-            $hrefJob   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewjob', ['idPost' => $value['post_id']]);
+            $hrefJob   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewcareer', ['idPost' => $value['post_id']]);
             $sideInfo .= '<div class="similar-job p-2">
                         <a href="' . $hrefJob . '">
                             <div class="row g-0">

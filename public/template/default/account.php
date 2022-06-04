@@ -80,7 +80,6 @@
         .login-wrapper label {
             font-size: 17px;
             font-weight: bold;
-            color: #b0adad;
         }
 
         .login-wrapper .form-control {

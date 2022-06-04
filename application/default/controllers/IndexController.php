@@ -30,15 +30,4 @@ class IndexController extends Controller
 		$this->_view->render('index/index', true);
 	}
 
-	public function viewjobAction()
-	{
-		$this->_view->infoJob = $this->_model->infoItemJob($this->_arrParam);
-		$this->_view->render('index/viewjob', true);
-	}
-
-	public function viewcompanyAction()
-	{
-		$this->_view->infoCompany = $this->_model->infoItemCompany($this->_arrParam);
-		$this->_view->render('index/viewcompany', true);
-	}
 }

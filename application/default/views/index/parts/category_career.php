@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-3 me-3">
-                    <a href="" class="view-all">
+                    <a href="<?= URL::addLink($this->arrParam['module'], 'career', 'index')?>" class="view-all">
                         <span>Xem thêm nhiều ngành nghề hot&nbsp;<i style="font-size: 13px;" class="fa-solid fa-arrow-right"></i></span>
 
                     </a>

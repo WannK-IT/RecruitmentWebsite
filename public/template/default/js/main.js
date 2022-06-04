@@ -27,4 +27,13 @@ $(document).ready(function () {
         $('#form-user-image').submit();
     })
 
+    $('#career_search').on('change', function () {
+        $('#formSearchCareer').submit();
+    })
+
+    $('#city_search').on('change', function () {
+        $('#formSearchCareer').submit();
+    })
+
+
 });

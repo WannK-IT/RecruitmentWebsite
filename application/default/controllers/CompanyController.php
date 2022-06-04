@@ -26,6 +26,14 @@ class CompanyController extends Controller
 
 	public function indexAction()
 	{
+		$this->_view->listCompanies = $this->_model->listCompanies($this->_arrParam);
+		$this->_view->totalCompany 	= $this->_model->totalCompany($this->_arrParam);
 		$this->_view->render('company/index', true);
+	}
+
+	public function viewcompanyAction()
+	{
+		$this->_view->infoCompany = $this->_model->infoItemCompany($this->_arrParam);
+		$this->_view->render('company/viewcompany', true);
 	}
 }

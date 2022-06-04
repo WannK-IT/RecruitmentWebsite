@@ -21,50 +21,6 @@ class IndexModel extends Model
 		return $result;
 	}
 
-	public function infoItemJob($arrParams){
-		// Info job
-		$query[] 	= "SELECT `p`.*, `c`.*";
-		$query[] 	= "FROM `post` AS `p`, `company` AS `c`, `employer` AS `e`";
-		$query[] 	= "WHERE `e`.`emp_id` = `p`.`emp_id` AND `e`.`comp_id` = `c`.`comp_id`";
-		$query[] 	= "AND `p`.`post_id` = '{$arrParams['idPost']}'";
-
-		$query 		= implode(" ", $query);
-		$result 	= $this->singleRecord($query);
-
-		// List jobs tương tự
-		$queryRelated[] = "SELECT `p`.`post_id`, `p`.`post_position`, `e`.`emp_id`, `c`.`comp_id`, `c`.`comp_name`, `c`.`comp_logo`";
-		$queryRelated[] = "FROM `post` AS `p`, `company` AS `c`, `employer` AS `e`";
-		$queryRelated[] = "WHERE `e`.`emp_id` = `p`.`emp_id` AND `e`.`comp_id` = `c`.`comp_id` AND NOT `p`.`post_id` = '{$arrParams['idPost']}'";
-		$queryRelated[] = "AND `p`.`post_career` = '{$result['post_career']}'";
-		$queryRelated[] = "ORDER BY RAND()";
-		$queryRelated[] = 'LIMIT 5';
-		$queryRelated 	= implode(" ", $queryRelated);
-		$result['relatedJob'] = $this->listRecord($queryRelated);
-
-		return $result;
-	}
-
-	public function infoItemCompany($arrParams){
-		// Info company
-		$query[] 	= "SELECT `c`.*, `e`.`emp_id`";
-		$query[] 	= "FROM `post` AS `p`, `company` AS `c`, `employer` AS `e`";
-		$query[] 	= "WHERE `e`.`emp_id` = `p`.`emp_id` AND `e`.`comp_id` = `c`.`comp_id`";
-		$query[] 	= "AND `c`.`comp_id` = '{$arrParams['idCompany']}'";
-
-		$query 		= implode(" ", $query);
-		$result 	= $this->singleRecord($query);
-
-		// List posts of company
-		$queryPosts[] 	= "SELECT `p`.`post_id`, `p`.`post_position`, `p`.`post_salary`, `p`.`post_address_work`, `p`.`post_expired`, `c`.`comp_id`";
-		$queryPosts[] 	= "FROM `post` AS `p`, `company` AS `c`, `employer` AS `e`";
-		$queryPosts[] 	= "WHERE `e`.`emp_id` = `p`.`emp_id` AND `e`.`comp_id` = `c`.`comp_id`";
-		$queryPosts[] 	= "AND `c`.`comp_id` = '{$arrParams['idCompany']}'";
-		$queryPosts 	= implode(" ", $queryPosts);
-		$result['listPosts'] = $this->listRecord($queryPosts);
-
-		return $result;
-	}
-
 	// Avatar
 	public function getAvatar()
 	{

@@ -1,4 +1,4 @@
-<div class="container" style="width: 70%; min-height: 700px">
+<div class="container" style="min-height: 700px">
     <div style="margin-top: 5rem" class="ps-1 mb-5">
         <div class="pb-2">
             <div class="row">
@@ -58,7 +58,7 @@
                     
                 </div>
                 <!-- Side more news -->
-                <?= require_once "sidecontent.php"?>
+                <?php require_once "sidecontent.php"?>
             </div>
         </div>
     </div>

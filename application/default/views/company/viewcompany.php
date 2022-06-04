@@ -9,24 +9,24 @@ if (!empty($info)) {
 
             <div class="cs-translate-2">
                 <div class="fw-bold fs-company">' . $info['comp_name'] . '</div>
-                <span class="text-muted"><i style="color: #2bb5cf;" class="fa-solid fa-location-dot"></i>&nbsp;' . $info['comp_location'] . '</span>
+                <span class="text-muted"><i style="color: #2bb5cf;" class="fa-solid fa-location-dot pe-1"></i>&nbsp;' . $info['comp_location'] . '</span>
 
             </div>
 
             <div class="cs-translate-3">
                 <div class="btn-company pb-2">
-                    <button class="btn btn-apply fw-bold"><i class="bi bi-eye"></i>&nbsp;Theo dõi</button>
+                    <button class="btn btn-apply fw-bold"><i class="fa-solid fa-eye pe-1"></i>&nbsp;Theo dõi</button>
                 </div>
 
                 <div class="btn-company">
-                    <button class="btn btn-share fw-bold"><i class="bi bi-share"></i>&nbsp;Chia sẻ</button>
+                    <button class="btn btn-share fw-bold"><i class="fa-solid fa-link pe-1"></i>&nbsp;Chia sẻ</button>
                 </div>
             </div>
         </div>';
 
     if (!empty($info['listPosts'])) {
         foreach ($info['listPosts'] as $value) {
-            $hrefJob = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewjob', ['idPost' => $value['post_id']]);
+            $hrefJob = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $value['post_id']]);
             $posts .= '<div class="card card-company-job rounded-0 p-2 shadow-sm my-2 ps-3">
                 <div class="row">
                     <div class="col-md-11">
@@ -107,7 +107,7 @@ if (!empty($info)) {
         <div class="mx-5">
             <h3 class="fw-bold mb-3">Vị trí đang tuyển</h3>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 mb-5">
                     <?= $posts ?>
 
                     <h3 class="fw-bold mt-5">Giới thiệu doanh nghiệp</h3>
