@@ -74,7 +74,7 @@ if (!empty($jobs)) {
 
                 <!-- Button view all posts -->
                 <div class="d-flex justify-content-end">
-                    <a href="" class="view-all">
+                    <a href="<?= URL::addLink($this->arrParam['module'], 'career', 'index')?>" class="view-all">
                         <span>Xem tất cả công việc&nbsp;<i style="font-size: 13px;" class="fa-solid fa-arrow-right"></i></span>
                     </a>
                 </div>

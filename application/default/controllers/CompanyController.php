@@ -16,7 +16,7 @@ class CompanyController extends Controller
 		if (Authentication::checkLoginDefault() == true) {
 			$avatar = $this->_model->getAvatar();
 			if (empty($avatar['user_avatar'])) {
-				$avatar['user_avatar'] = $this->_view->_dirImg . 'logo_default.png';
+				$avatar['user_avatar'] = $this->_view->_dirImg . 'logo_default_male.png';
 			} else {
 				$avatar['user_avatar'] = UPLOAD_URL_DEFAULT . 'img' . DS . $_SESSION['loginDefault']['idUser'] . DS . $avatar['user_avatar'];
 			}

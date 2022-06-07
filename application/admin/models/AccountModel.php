@@ -16,7 +16,7 @@ class AccountModel extends Model
     {
         $query[]    = "SELECT `emp_id`, `emp_user`, `emp_password`, `emp_fullname`, `comp_id`";
         $query[]    = "FROM `{$this->table}`";
-        $query[]    = "WHERE `emp_user` = '{$params['emp_user']}' AND `emp_password` = '".md5($params['emp_password'])."'";
+        $query[]    = "WHERE `emp_user` = '".trim($params['emp_user'])."' AND `emp_password` = '".trim(md5($params['emp_password']))."'";
         $query        = implode(" ", $query);
 
         // Query to load information of employer

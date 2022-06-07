@@ -62,6 +62,7 @@ class UserModel extends Model
     public function updateProfile($arrParams)
     {
         $data = array_intersect_key($arrParams, array_flip($this->columnsCV));
+        $data['update_time'] = date('Y/m/d');
         $this->updateOtherTable($data, 'cv', [['user_id', $_SESSION['loginDefault']['idUser']]]);
         $_SESSION['updateProfileSuccess'] = true;
     }
@@ -103,5 +104,17 @@ class UserModel extends Model
         $newImg = $fileUpload->uploadFileDefault(@$arrParams['user_avatar'], $_SESSION['loginDefault']['idUser']);
         $query = "UPDATE `{$this->table}` SET `user_avatar` = '" . $newImg . "' WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
         $this->query($query);
+    }
+
+    public function infoCV()
+    {
+        $query[]    = "SELECT `v`.*, `u`.`user_email`, `u`.`user_fullname`, `u`.`user_phone`, `u`.`user_avatar`";
+        $query[]    = "FROM `cv` AS `v`, `{$this->table}` AS `u`";
+        $query[]    = "WHERE `v`.`user_id` = `u`.`user_id`";
+        $query[]    = "AND `u`.`user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
+
+        $query      = implode(" ", $query);
+        $result     = $this->singleRecord($query);
+        return $result;
     }
 }

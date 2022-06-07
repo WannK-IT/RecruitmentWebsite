@@ -11,7 +11,6 @@ define('UPLOAD_PATH'            , PUBLIC_PATH . 'uploads' . DS);
 define('UPLOAD_PATH_ADMIN'      , UPLOAD_PATH . 'admin' . DS);
 define('UPLOAD_PATH_DEFAULT'    , UPLOAD_PATH . 'default' . DS);
 
-
 define('ROOT_URL'               , DS . 'RecruitmentWebsite' . DS);
 define('APPLICATION_URL'        , ROOT_URL . 'application' . DS);
 define('PUBLIC_URL'             , ROOT_URL . 'public' . DS);
@@ -19,6 +18,8 @@ define('TEMPLATE_URL'           , PUBLIC_URL . 'template' . DS);
 define('UPLOAD_URL'             , PUBLIC_URL . 'uploads' . DS);
 define('UPLOAD_URL_ADMIN'       , UPLOAD_URL . 'admin' . DS);
 define('UPLOAD_URL_DEFAULT'     , UPLOAD_URL . 'default' . DS);
+define('IMG_URL_DEFAULT'        , TEMPLATE_URL . 'default' . DS . 'images' . DS );
+define('IMG_URL_ADMIN'        , TEMPLATE_URL . 'admin' . DS . 'images' . DS );
 
 define('DEFAULT_MODULE'         , 'default');
 define('DEFAULT_CONTROLLER'     , 'index');
@@ -33,3 +34,4 @@ define('DB_TABLE'               , 'post');
 define('DB_TBL_EMPLOYER'        , 'employer');
 define('DB_TBL_COMPANY'         , 'company');
 define('DB_TBL_USER'            , 'user');
+define('DB_TBL_CV'              , 'cv');

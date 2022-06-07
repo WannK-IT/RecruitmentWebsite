@@ -62,4 +62,24 @@ class HelperFrontEnd
         }
         return $xhtml;
     }
+
+    public static function calculateDate($date, $type = 'y')
+    {
+        $date   = new DateTime($date);
+        $now    = new DateTime();
+
+        $result = $now->diff($date);
+        return $result->$type;
+
+        /**
+         * $type = 
+         *      y: year
+         *      m: month
+         *      d: day
+         *      h: hour
+         *      i: minute
+         *      s: second
+         *      days: days
+         */
+    }
 }

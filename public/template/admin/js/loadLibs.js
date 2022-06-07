@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     /* ----- Select2 library load select box ----- */
-    $("#post-career, #post-type-work, #post-address-work, #post-rank, #post-degree, #post-exp, #post-gender, #post-salary, #comp_location, #comp_size, #comp_field").select2();
+    $("#post-career, #post-type-work, #post-address-work, #post-rank, #post-degree, #post-exp, #post-gender, #post-salary, #comp_location, #comp_size, #comp_field, #career_search, #workplace_search, #degree_search, #gender_search, #exp_search").select2();
 
     /* ----- jQuery Validation ----- */
     // Validate form add recruitment form

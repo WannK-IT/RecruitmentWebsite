@@ -7,7 +7,7 @@ if (!empty($this->previewPost)) {
 ?>
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 ml-2">
         <!-- Default box -->
         <div class="card card-info card-outline my-3">
             <div class="card-header">

@@ -38,12 +38,12 @@ input::-webkit-calendar-picker-indicator {
     opacity: 0;
 }
 
-input[name=position_job_search],
+/* input[name=position_job_search],
 input[name=career_job_search],
 input[name=city_job_search] {
     text-indent: 25px;
     font-size: 1rem;
-}
+} */
 
 .custom-form {
     position: relative;
@@ -399,8 +399,8 @@ a.web-company:hover{
 
 .circular-portrait { 
     position: relative; 
-    width: 100px; 
-    height: 100px; 
+    width: 130px; 
+    height: 130px; 
     overflow: hidden; 
     border-radius: 50%; 
 } 

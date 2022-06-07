@@ -1,6 +1,6 @@
 body {
     font-family: 'Nunito', sans-serif;
-    font-size: 17px;
+    font-size: 1rem;
 }
 
 a.text-anchor{
@@ -54,6 +54,14 @@ a.text-anchor:hover{
 .circular-portrait img { 
     width: 100%; 
     height: auto; 
+}
+
+.bg-blur-info{
+    background-color: rgba(58, 176, 195, .1)
+}
+
+.fs-12{
+    font-size: 12px !important;
 }
 
 /* ===================================== TIME LINE ===================================== */

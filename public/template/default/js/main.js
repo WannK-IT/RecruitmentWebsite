@@ -25,15 +25,20 @@ $(document).ready(function () {
 
     $('#form-user-image').on('change', function () {
         $('#form-user-image').submit();
-    })
+    });
 
-    $('#career_search').on('change', function () {
+    $('#career_search, #city_search, #type_work_search').on('change', function () {
         $('#formSearchCareer').submit();
-    })
-
-    $('#city_search').on('change', function () {
-        $('#formSearchCareer').submit();
-    })
+    });
 
 
 });
+
+function chkLogin(check){
+    if(check == 'notLogged'){
+        $('#modalLogin').modal('show');
+    }else{
+        $('#modalApply').modal('show');
+    }
+}
+

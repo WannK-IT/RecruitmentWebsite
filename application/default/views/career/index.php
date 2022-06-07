@@ -1,6 +1,7 @@
 <?php
-$selectBoxPosition  = FormFrontEnd::selectBoxRow('career_search', $this->careers, @$this->arrParam['career_search'], false);
-$selectBoxCity      = FormFrontEnd::selectBoxRow('city_search', $this->cities, @$this->arrParam['city_search'], false);
+$selectBoxPosition      = FormFrontEnd::selectBoxRow('career_search', $this->careers, @$this->arrParam['career_search'], false);
+$selectBoxCity          = FormFrontEnd::selectBoxRow('city_search', $this->cities, @$this->arrParam['city_search'], false);
+$selectBoxTypeWork      = FormFrontEnd::selectBoxRow('type_work_search', $this->type_work, @$this->arrParam['type_work_search'], false);
 
 $list = $this->listCareers;
 $xhtml = '';
@@ -54,20 +55,24 @@ if (!empty($list)) {
             <input type="hidden" name="controller" value="career">
             <input type="hidden" name="action" value="index">
             <div class="shadow-sm row p-3 border border-1">
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-3">
                     <input class="form-control" type="text" autocomplete="off" name="position_search" placeholder="Vị trí bạn muốn ứng tuyển" value="<?= @$this->arrParam['position_search'] ?>">
                 </div>
-                <div class="col-md-3 col-sm-4">
+                <div class="col-md-3">
                     <?= $selectBoxPosition ?>
                 </div>
-                <div class="col-md-3 col-sm-4">
+                <div class="col-md-2">
                     <?= $selectBoxCity ?>
                 </div>
-                <div class="col-md-2 col-sm-4">
+                <div class="col-md-3">
+                    <?= $selectBoxTypeWork ?>
+                </div>
+                <div class="col-md-1">
 
-                    <input class="form-control text-white" style="background-color: #2c95ff;" type="submit" name="search" value="Tìm việc">
+                    <input class="form-control text-white" style="background-color: #2c95ff;" type="submit" name="search" value="Lọc">
                 </div>
             </div>
+
         </form>
     </div>
     <div class="my-2">
@@ -79,14 +84,18 @@ if (!empty($list)) {
                         <p>Kết quả tìm kiếm: <?= $this->totalCareer['total'] ?> tin đăng tuyển<br></p>
                         <?php
                         if (!empty(@$this->arrParam['position_search']))
-                        echo '<p class="h6 text-muted">Vị trí: ' . @$this->arrParam['position_search'] . '</p>';
+                            echo '<p class="h6 text-muted">Vị trí: ' . @$this->arrParam['position_search'] . '</p>';
 
-                        if (@$this->arrParam['career_search'] != 'Tất cả ngành nghề' && !empty(@$this->arrParam['career_search']) )
+                        if (@$this->arrParam['career_search'] != 'Tất cả ngành nghề' && !empty(@$this->arrParam['career_search']))
                             echo '<p class="h6 text-muted">Ngành nghề: ' . @$this->arrParam['career_search'] . '</p>';
-                        
+
                         if (@$this->arrParam['city_search'] != 'Tất cả tỉnh thành'  && !empty(@$this->arrParam['city_search']))
                             echo '<p class="h6 text-muted">Địa điểm: ' . @$this->arrParam['city_search'] . '</p>';
+
+                        if (@$this->arrParam['type_work_search'] != 'Loại công việc'  && !empty(@$this->arrParam['type_work_search']))
+                            echo '<p class="h6 text-muted">Loại công việc: ' . @$this->arrParam['type_work_search'] . '</p>';
                         ?>
+
                     </div>
                 </div>
 

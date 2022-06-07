@@ -9,7 +9,7 @@ $('#registerUser').click(function (e) {
             data: $('#form-user-register').serialize(),
             success: function (data) {
                 if (data == 'exist username') {
-                    toastMsg('warning', 'Tên tài khoản đã được sử dụng !')
+                    toastMsg('warning', 'Tên tài khoản đã được sử dụng')
                 } else {
                     $('#form-user-register').submit();
                 }
@@ -28,7 +28,7 @@ $('#registerUser').click(function (e) {
             data: $('#form-user-register').serialize(),
             success: function (data) {
                 if (data == 'exist email') {
-                    toastMsg('warning', 'Email đã được sử dụng !')
+                    toastMsg('warning', 'Email đã được sử dụng')
                 } else {
                     $('#form-user-register').submit();
                 }
@@ -42,7 +42,7 @@ $('#registerUser').click(function (e) {
 function loginUser(link, direct) {
     // Check empty input field
     if (!$('#user_username').val() || !$('#user_password').val()) {
-        toastMsg('warning', 'Vui lòng nhập tên tài khoản và mật khẩu !');
+        toastMsg('warning', 'Vui lòng nhập tên tài khoản và mật khẩu');
     } else {
         $.ajax({
             type: 'post',
@@ -51,7 +51,7 @@ function loginUser(link, direct) {
             data: $('#form-user-login').serialize(),
             success: function (data) {
                 if (data == 'failed') {
-                    toastMsg('error', 'Tên tài khoản và mật khẩu chưa chính xác !');
+                    toastMsg('error', 'Tên tài khoản và mật khẩu chưa chính xác');
                 } else {
                     location.href = direct;
                 }

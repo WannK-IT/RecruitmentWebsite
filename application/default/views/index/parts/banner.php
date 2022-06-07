@@ -1,43 +1,33 @@
+<?php
+$selectBoxPosition      = FormFrontEnd::selectBoxRow('career_search', $this->careers, '', false);
+$selectBoxCity          = FormFrontEnd::selectBoxRow('city_search', $this->cities, '', false);
+$selectBoxTypeWork      = FormFrontEnd::selectBoxRow('type_work_search', $this->type_work, '', false);
+?>
+
 <section class="banner">
     <div class="shadow mt-5 p-5 text-dark text-center bg-hero-banner">
         <div id="search-form" style="width: 90%">
             <h1 class="pb-2 custom-title fw-bold">Cơ hội mới! Tương lai mới!</h1>
             <h6 class="custom-title">Tìm việc làm và cơ hội nghề nghiệp của bạn ngay bây giờ !</h6>
-            <form action="" method="" class="d-flex justify-content-center row p-3" id="formSearchJob">
+            <form action="<?= URL::addLink('default', 'career', 'index')?>" method="GET" class="row p-3" id="formSearchJob">
+                <input type="hidden" name="module" value="default">
+                <input type="hidden" name="controller" value="career">
+                <input type="hidden" name="action" value="index">
                 <div class="shadow-lg row p-3">
-                    <div class="col-md-4 col-sm-4 custom-form">
-                        <span class="custom-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input class="form-control" type="text" name="position_job_search" placeholder="Vị trí bạn muốn ứng tuyển">
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" name="position_search" autocomplete="off" placeholder="Vị trí bạn muốn ứng tuyển">
                     </div>
-                    <div class="col-md-3 col-sm-4 custom-form">
-                        <span class="custom-icon"><i class="fa-solid fa-briefcase"></i></span>
-                        <input class="form-control" type="text" list="careers" name="career_job_search" placeholder="Tất cả ngành nghề">
-                        <datalist id="careers">
-                            <option value="IT phần mềm">
-                            <option value="Quản trị kinh doanh">
-                            <option value="Xây dựng">
-                            <option value="Cơ khí">
-                            <option value="Kỹ thuật">
-                            <option value="Pháp lý - Luật">
-                            <option value="Marketing - PR">
-                        </datalist>
+                    <div class="col-md-3">
+                        <?= $selectBoxPosition ?>
                     </div>
-                    <div class="col-md-3 col-sm-4 custom-form">
-                        <span class="custom-icon"><i class="fa-solid fa-location-dot"></i></span>
-                        <input class="form-control" type="text" list="cities" name="city_job_search" placeholder="Tất cả tỉnh thành">
-                        <datalist id="cities">
-                            <option value="Hồ Chí Minh">
-                            <option value="Đồng Nai">
-                            <option value="Vũng Tàu">
-                            <option value="Tiền Giang">
-                            <option value="Cần Thơ">
-                            <option value="Đà Nẵng">
-                            <option value="Bình Thuận">
-                            <option value="Hà Nội">
-                        </datalist>
+                    <div class="col-md-2">
+                        <?= $selectBoxCity ?>
                     </div>
-                    <div class="col-md-2 col-sm-4">
-                        <input class="form-control text-white" style="background-color: #2c95ff;" type="submit" name="search" value="Tìm việc">
+                    <div class="col-md-3">
+                        <?= $selectBoxTypeWork ?>
+                    </div>
+                    <div class="col-md-1">
+                        <input class="form-control text-white" style="background-color: #2c95ff;" type="submit" name="search" value="Tìm">
                     </div>
                 </div>
             </form>

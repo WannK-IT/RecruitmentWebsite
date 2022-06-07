@@ -50,7 +50,7 @@ $infoCompany    = FormBackEnd::showForm($arrInfoCompany);
 ?>
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 ml-2">
         <div class="mt-4">
             <div class="list-inline-item font-weight-bold"><a class="text-dark" href="<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'account') ?>">Thông tin tài khoản</a></div>
             <div class="list-inline-item font-weight-bold border-bottom border-info"><a href="" class="text-info">Thông tin công ty</a></div>

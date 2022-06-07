@@ -133,7 +133,7 @@ $info = $this->info;
 
                         <div class="form-group mx-3 mb-4">
                             <input type="hidden" name="token" value="1697523">
-                            <input type="submit" name="update_profile_user" id="update_profile_user" class="btn bg-purple mt-4" value="Cập nhật hồ sơ">
+                            <input type="submit" name="update_profile_user" id="update_profile_user" class="btn bg-purple mt-4 text-white" value="Cập nhật hồ sơ">
                         </div>
                     </form>
                 </div>

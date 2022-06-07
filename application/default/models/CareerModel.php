@@ -30,10 +30,13 @@ class CareerModel extends Model
 		
 		
 		// filter career
-		$query[] 	= (@$arrParams['career_search'] != 'Tất cả ngành nghề') ? "AND `p`.`post_career` LIKE '%" . trim(@$arrParams['career_search']) . "%'" : '';
+		$query[] 	= (@$arrParams['career_search'] != trim('Tất cả ngành nghề')) ? "AND `p`.`post_career` LIKE '%" . trim(@$arrParams['career_search']) . "%'" : '';
 
 		// filter city
-		$query[] 	= (@$arrParams['city_search'] != 'Tất cả tỉnh thành') ? "AND `p`.`post_address_work` LIKE '%" . trim(@$arrParams['city_search']) . "%'" : '';
+		$query[] 	= (@$arrParams['city_search'] != trim('Tất cả tỉnh thành')) ? "AND `p`.`post_address_work` LIKE '%" . trim(@$arrParams['city_search']) . "%'" : '';
+
+		// filter type work
+		$query[] 	= (@$arrParams['type_work_search'] != trim('Loại công việc')) ? "AND `p`.`post_type_work` LIKE '%" . trim(@$arrParams['type_work_search']) . "%'" : '';
 
 
 		$query[] 	= "ORDER BY `p`.`post_expired` ASC";
@@ -74,10 +77,13 @@ class CareerModel extends Model
 		$query[] 	= (!empty(trim(@$arrParams['position_search']))) ? "AND `post_position` LIKE '%" . trim(@$arrParams['position_search']) . "%'" : '';
 		
 		// filter career
-		$query[] 	= (@$arrParams['career_search'] != 'Tất cả ngành nghề') ? "AND `post_career` LIKE '%" . trim(@$arrParams['career_search']) . "%'" : '';
+		$query[] 	= (@$arrParams['career_search'] != trim('Tất cả ngành nghề')) ? "AND `post_career` LIKE '%" . trim(@$arrParams['career_search']) . "%'" : '';
 
 		// filter city
-		$query[] 	= (@$arrParams['city_search'] != 'Tất cả tỉnh thành') ? "AND `post_address_work` LIKE '%" . trim(@$arrParams['city_search']) . "%'" : '';
+		$query[] 	= (@$arrParams['city_search'] != trim('Tất cả tỉnh thành')) ? "AND `post_address_work` LIKE '%" . trim(@$arrParams['city_search']) . "%'" : '';
+
+		// filter type work
+		$query[] 	= (@$arrParams['type_work_search'] != 'Loại công việc') ? "AND `post_type_work` LIKE '%" . trim(@$arrParams['type_work_search']) . "%'" : '';
 
 		$query 		= implode(" ", $query);
 		$result 	= $this->singleRecord($query);

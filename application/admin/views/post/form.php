@@ -99,7 +99,7 @@ $_address                       = FormBackEnd::formGroupElements([$contactAddres
 <script src="//cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 ml-2">
         <div class="card card-info card-outline my-2">
             <div class="card-header">
                 <h5 class="card-title text-info">Thông tin tuyển dụng</h5>

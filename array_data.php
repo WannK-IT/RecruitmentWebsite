@@ -15,8 +15,31 @@ $arrRank = ['default' => 'Chọn cấp bậc', 'Trưởng nhóm', 'Phó giám đ
 
 $arrSize = ['Dưới 10 người', '10 - 50 người', '50 - 200 người', '200 - 500 người', '500 - 1000 người', '1000 - 3000 người', 'Trên 3000 người'];
 
+
+echo '<pre style="color: blue;">';
+print_r($_POST);
+echo '</pre>';
 ?>
 
+<!-- <form action="" method="post">
+    <textarea name="test" id="" cols="30" rows="10"></textarea>
+    <input type="submit" value="submit">
+</form>
+
+<textarea name="test2" id="" cols="30" rows="10" readonly><?= @$_POST['test']?></textarea> -->
+
+<form action="" method="post">
+<input type="radio" name="radio1">
+<input type="radio" name="radio2">
+<input type="radio" name="radio3">
+<input type="submit" value="fdfdfd">
+</form>
+
+<?php 
+    echo '<pre style="color: blue;">';
+    print_r($_POST);
+    echo '</pre>';
+?>
 
 
     

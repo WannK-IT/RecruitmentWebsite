@@ -28,5 +28,8 @@ $(document).ready(function () {
     }
   });
 
+  $('#career_search, #workplace_search, #degree_search, #gender_search, #exp_search').on('change', function () {
+    $('#formSearch').submit();
+  })
 
 });

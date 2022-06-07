@@ -1,8 +1,11 @@
 <?php
 $info = $this->infoJob;
 $infoJob = '';
+
+$checkLogin = ((Authentication::checkLoginDefault()) == false) ? 'notLogged' : 'logged';
 if (!empty($info)) {
     $hrefCompany = URL::addLink($this->arrParam['module'], 'company', 'viewcompany', ['idCompany' => $info['comp_id']]);
+    $expiredDate = HelperFrontEnd::calculateDate($info['post_expired'], 'd');
     $infoJob = '<div class="card border-0">
             <div class="row g-0 my-2">
                 <div class="col-md-3 logo-box d-flex align-items-center">
@@ -15,7 +18,7 @@ if (!empty($info)) {
                         </div>
                         <div class="card-text text-muted" style="font-size: 17px;">
                             <div class="pb-2">
-                                <span>' . $info['comp_name'] . '</span>
+                                <span class="fw-bold">' . $info['comp_name'] . '</span>
                             </div>
                             <div class="fs-6">
                                 <i class="fa-solid fa-map-location-dot"></i>
@@ -32,17 +35,15 @@ if (!empty($info)) {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 pe-5">
                     <div class="action-job mt-4 text-center">
                         <div class="button-apply py-2">
                             <form action="" method="post">
                                 <div class="social mb-2 text-center">
-                                    <a class="px-1" href=""><img src="' . $this->_dirImg . 'icons/facebook.png" alt=""></a>
-                                    <a class="px-1" href=""><img src="' . $this->_dirImg . 'icons/google.png" alt=""></a>
-                                    <a class="px-1" href=""><img src="' . $this->_dirImg . 'icons/twitter.png" alt=""></a>
+                                    <p style="font-size: 14px">Hết hạn trong <span class="text-warning fw-bold">' . $expiredDate . '</span> ngày</p>
                                 </div>
-                                <input class="btn btn-apply border-0 rounded w-50 my-2 fw-bold" type="submit" name="apply" value="Ứng tuyển">
-                                <input class="btn btn-share border-0 rounded w-50 fw-bold" type="submit" name="apply" value="Theo dõi">
+                                <button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold" id="apply_job" type="button"  value="Ứng tuyển" onClick="chkLogin(\'' . $checkLogin . '\')">Ứng tuyển</button>
+                                <input class="btn btn-share border-0 rounded w-50 fw-bold" id="follow_job" type="button" name="follow_job" value="Theo dõi">
                             </form>
                         </div>
                     </div>
@@ -121,7 +122,7 @@ if (!empty($info)) {
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <a href="'.$hrefCompany.'" class="view-all">
+                        <a href="' . $hrefCompany . '" class="view-all">
                             <span style="font-size: 14px;">Các việc làm khác từ công ty&nbsp;<i style="font-size: 11px;" class="fa-solid fa-arrow-right"></i></span>
                         </a>
                     </div>
@@ -205,7 +206,7 @@ if (!empty($info)) {
                         </a>
                     </div>';
         }
-    }else{
+    } else {
         $sideInfo .= '<p class="text-center my-3">Chưa có công việc tương tự</p>';
     }
 
@@ -222,7 +223,16 @@ if (!empty($info)) {
     </div>
 </section>
 <!-- End Job Header -->
+<?php
+echo '<pre style="color: blue;">';
+print_r($this->arrParam);
+echo '</pre>';
 
+echo '<pre style="color: blue;">';
+print_r($_SESSION);
+echo '</pre>';
+echo $checkLogin;
+?>
 <!-- Job Content -->
 <section class="job-detail-content" style="background-color: #f1f1f1;">
     <div class="container">
@@ -239,3 +249,94 @@ if (!empty($info)) {
 
 </section>
 <!-- End Job Content -->
+
+
+
+<!-- Modal Login -->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="labelModalLogin" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="labelModalLogin">Người tìm việc đăng nhập </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container" style="width: 90%;">
+                    <div class="login-wrapper text-center">
+                        <form action="" method="post" id="form-user-login">
+
+                            <div class="form-group mb-3">
+                                <input type="text" name="user_username" id="user_username" class="form-control fs-6" placeholder="Nhập tên tài khoản" autocomplete="off">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="password" name="user_password" id="user_password" class="form-control fs-6" placeholder="Nhập mật khẩu" autocomplete="off">
+                            </div>
+
+                            <a class="btn bg-purple" name="loginUser" id="loginUser" href="javascript:loginUser('<?= URL::addLink($this->arrParam['module'], 'account', 'loginUser') ?>', '<?= URL::addLink('default', 'index', 'index') ?>')">Đăng nhập</a>
+
+                        </form>
+                        <p class="login-wrapper-footer-text mt-3">Bạn chưa có tài khoản ? <a href="<?= URL::addLink($this->arrParam['module'], 'account', 'register') ?>" class="text-reset">Đăng ký</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Login -->
+
+
+<!-- Modal Apply -->
+<div class="modal fade" id="modalApply" tabindex="-1" aria-labelledby="labelModalApply" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="pb-3">
+                        <h5 class="modal-title fw-bold" id="labelModalApply">Ứng tuyển <span class="text-warning"><?= $info['post_position'] ?></span></h5>
+                        <p class="text-muted fw-bold m-0" style="font-size: 13px;"><?= $info['comp_name'] ?></p>
+                    </div>
+                    <div class="login-wrapper">
+                        <form action="" method="post" id="form-apply-job">
+
+                            <div class="form-group mb-3">
+                                <div class="error-element">
+                                    <label for="user_fullname" class="fw-bold mb-1">Họ và tên <span class="text-danger">*</span></label>
+                                    <input type="text" name="user_fullname" id="user_fullname" class="form-control fs-6" placeholder="Nhập họ và tên" autocomplete="off" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <div class="error-element">
+                                    <label for="user_email" class="fw-bold mb-1">Email <span class="text-danger">*</span></label>
+                                    <input type="email" name="user_email" id="user_email" class="form-control fs-6" placeholder="Nhập Email" autocomplete="off" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <div class="error-element">
+                                    <label for="user_phone" class="fw-bold mb-1">Điện thoại <span class="text-danger">*</span></label>
+                                    <input type="text" name="user_phone" id="user_phone" class="form-control fs-6" placeholder="Nhập số điện thoại" autocomplete="off" required>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group mb-3">
+                                <div class="error-element">
+                                    <label for="introduction" class="fw-bold mb-1">Thư giới thiệu <span class="text-muted h6">(không bắt buộc)</span></label>
+                                    <textarea name="introduction" id="introduction" cols="40" rows="6" class="form-control fs-6"></textarea>
+                                </div>
+                            </div>
+
+                            <input type="submit" class="btn bg-purple" value="Nộp hồ sơ">
+
+                        </form>
+                        <p class="login-wrapper-footer-text mt-3">Bạn chưa có tài khoản ? <a href="<?= URL::addLink($this->arrParam['module'], 'account', 'register') ?>" class="text-reset">Đăng ký</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Apply -->

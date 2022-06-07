@@ -11,6 +11,14 @@ $arrSide = [
         ])
     ],
     [
+        'label'         => HelperFrontEnd::labelSideBar('CV của tôi', 'cv-collapse'),
+        'idCollapse'    => 'cv-collapse',
+        'link'          => HelperFrontEnd::linkSideBar([
+            'Xem CV' => 'index.php?module=default&controller=user&action=previewcv',
+            'Upload CV' => 'index.php?module=default&controller=user&action=uploadcv' 
+        ])
+    ],
+    [
         'label'         => HelperFrontEnd::labelSideBar('Việc làm của tôi', 'job-collapse'),
         'idCollapse'    => 'job-collapse',
         'link'          => HelperFrontEnd::linkSideBar([
@@ -19,6 +27,7 @@ $arrSide = [
             'Công ty đã lưu' => 'index.php?module=default&controller=user&action=companySave'
         ])
     ],
+
 ];
 
 $formSideBar = HelperFrontEnd::formSideBarUser($arrSide);
@@ -30,6 +39,7 @@ $formSideBar = HelperFrontEnd::formSideBarUser($arrSide);
         <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
             <span class="fs-5 fw-semibold">Trang thông tin ứng viên</span>
         </a>
-        <?= $formSideBar?>
+        <?= $formSideBar ?>
+        
     </div>
 </div>

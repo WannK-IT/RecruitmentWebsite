@@ -19,7 +19,7 @@ class UserController extends Controller
 		// AVATAR 
 		$avatar = $this->_model->getAvatar();
 		if(empty($avatar['user_avatar'])){
-			$avatar['user_avatar'] = $this->_view->_dirImg . 'logo_default.png';
+			$avatar['user_avatar'] = $this->_view->_dirImg . 'logo_default_male.png';
 		}else{
 			$avatar['user_avatar'] = UPLOAD_URL_DEFAULT . 'img' . DS . $_SESSION['loginDefault']['idUser'] . DS . $avatar['user_avatar'];
 		}
@@ -79,5 +79,15 @@ class UserController extends Controller
 
 	public function updatePasswordAction(){
 		$this->_model->updatePassword($this->_arrParam);
+	}
+
+	public function previewcvAction(){
+		$this->_view->infoCV = $this->_model->infoCV();
+		$this->_view->render('user/previewcv', true);
+	}
+
+	public function uploadcvAction(){
+		// $this->_view->infoCV = $this->_model->uploadcv();
+		$this->_view->render('user/uploadcv', true);
 	}
 }

@@ -13,10 +13,11 @@ class HelperBackEnd
         return $xhtml;
     }
 
-    public static function createGroupSide($title, $class, $arrItemSide, $controllerActive)
+    public static function createGroupSide($title, $class, $arrItemSide, $controllerActive, $active)
     {
+        $active = ($active == $controllerActive) ? 'active' : '';
         $xhtml = '<li class="nav-item">
-                    <a href="" class="nav-link" data-controller='.$controllerActive.' style="width: 250px!important;">
+                    <a href="" class="nav-link '.$active.'" data-id=' . $controllerActive . ' style="width: 250px!important;">
                         <i class="' . $class . ' nav-icon"></i>
                         <p>
                             ' . $title . '
@@ -37,7 +38,7 @@ class HelperBackEnd
     public static function createStatisticBox($title, $icon, $id = '', $value = 0)
     {
         $xhtml = '<div class="col-md-3 col-3">
-                    <div class="small-box bg-gradient-info" id="' . $id . '">
+                    <div class="small-box bg-gradient-info ml-2" id="' . $id . '">
                         <div class="inner">
                             <h3>' . $value . '</h3>
                             <p>' . $title . '</p>
@@ -59,7 +60,23 @@ class HelperBackEnd
                         </tr>', $colspan, $message, URL::addLink('admin', 'post', 'formPost', ['task' => 'add']));
     }
 
-    public static function createFolder($dir, $name){
-        
+    public static function calculateDate($date, $type = 'y')
+    {
+        $date   = new DateTime($date);
+        $now    = new DateTime();
+
+        $result = $now->diff($date);
+        return $result->$type;
+
+        /**
+         * $type = 
+         *      y: year
+         *      m: month
+         *      d: day
+         *      h: hour
+         *      i: minute
+         *      s: second
+         *      days: days
+         */
     }
 }

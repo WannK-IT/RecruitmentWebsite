@@ -5,11 +5,11 @@ $listPost = HelperBackEnd::createItemSide('Danh sách tin đăng', 'fas fa-list-
 
 $infoEmployer = HelperBackEnd::createItemSide('Tài khoản NTD', 'fas fa-user', 'admin', 'employer', 'account');
 
-$group_Post = HelperBackEnd::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', [$createPost, $listPost], 'post');
-$group_Employer = HelperBackEnd::createGroupSide('Quản lý tài khoản', 'fas fa-user-circle', [$infoEmployer], 'user');
+$group_Post = HelperBackEnd::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', [$createPost, $listPost], 'post', $this->arrParam['controller']);
+$group_Employer = HelperBackEnd::createGroupSide('Quản lý tài khoản', 'fas fa-user-circle', [$infoEmployer], 'employer', $this->arrParam['controller']);
 ?>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed; width: 265px">
     <!-- Brand Logo -->
     <a href="<?= URL::addLink('admin', 'post', 'index') ?>" class="brand-link">
         <img src="<?= UPLOAD_URL . 'favicon.png'?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
