@@ -42,6 +42,7 @@ class AccountController extends Controller
 	public function loginUserAction()
     {
         $result =  $this->_model->login($this->_arrParam);
+		$_SESSION['default']['userLoginSuccess'] = true;
         echo json_encode($result);
     }
 

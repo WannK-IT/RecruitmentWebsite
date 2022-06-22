@@ -19,6 +19,16 @@ class CompanyModel extends Model
 		return $result;
 	}
 
+	public function getFullName(){
+        $query[]    = "SELECT `user_fullname`";
+        $query[]    = "FROM `user`";
+        $query[]    = "WHERE `user_id` = '{$_SESSION['loginDefault']['idUser']}'";
+        $query      = implode(" ", $query);
+        $result     = $this->singleRecord($query);
+
+        return $result;
+    }
+
 	public function listCompanies($arrParams)
 	{
 		$query[] 	= "SELECT  `c`.`comp_id`, `c`.`comp_name`, `e`.`emp_id`, `c`.`comp_logo`, `c`.`comp_address`, `c`.`comp_size`";

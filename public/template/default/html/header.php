@@ -16,12 +16,12 @@ if (Authentication::checkLoginDefault()) {
         </a>
 
         <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown" aria-expanded="true">
-            <img src="' . $this->avatarLogo . '" class="avatar rounded-circle me-1" alt="logo" width="40" height="40"> <span class="text-dark pt-3">' . $_SESSION['loginDefault']['fullnameUser'] . '</span>
+            <img src="' . $this->avatarLogo . '" class="avatar rounded-circle me-1" alt="logo" width="40" height="40"> <span class="text-dark pt-3">' . $this->fullNameDefault['user_fullname'] . '</span>
         </a>
         <div class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
             <a class="dropdown-item" href="' . URL::addLink($this->arrParam['module'], 'user', 'index') . '"><i class="fa-solid fa-user-tie pe-2"></i>Trang cá nhân</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="'.URL::addLink($this->arrParam['module'], 'user', 'profile').'"><i class="fa-solid fa-address-card pe-2 text-gray"></i>Hồ sơ ứng viên</a>
+            <a class="dropdown-item" href="'.URL::addLink($this->arrParam['module'], 'user', 'previewcv').'"><i class="fa-solid fa-address-card pe-2 text-gray"></i>Hồ sơ ứng viên</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="' . URL::addLink($this->arrParam['module'], 'account', 'logout') . '"><i class="fa-solid fa-right-from-bracket pe-2"></i>Đăng xuất</a>
         </div>

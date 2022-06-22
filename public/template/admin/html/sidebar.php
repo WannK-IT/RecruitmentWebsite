@@ -1,12 +1,28 @@
 <?php
 ob_start();
-$createPost = HelperBackEnd::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'formPost&task=add');
-$listPost = HelperBackEnd::createItemSide('Danh sách tin đăng', 'fas fa-list-ul', 'admin', 'post', 'index');
 
-$infoEmployer = HelperBackEnd::createItemSide('Tài khoản NTD', 'fas fa-user', 'admin', 'employer', 'account');
+// manager post
+$createPost         = HelperBackEnd::createItemSide('Tạo tin tuyển dụng', 'far fa-plus-square', 'admin', 'post', 'formPost&task=add');
+$listPost           = HelperBackEnd::createItemSide('Danh sách tin đăng', 'fas fa-list-ul', 'admin', 'post', 'index');
 
-$group_Post = HelperBackEnd::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', [$createPost, $listPost], 'post', $this->arrParam['controller']);
-$group_Employer = HelperBackEnd::createGroupSide('Quản lý tài khoản', 'fas fa-user-circle', [$infoEmployer], 'employer', $this->arrParam['controller']);
+// manage candidate
+$profileApply       = HelperBackEnd::createItemSide('Hồ sơ ứng tuyển', 'fas fa-user-tie', 'admin', 'candidate', 'list');
+$profileSaved       = HelperBackEnd::createItemSide('Hồ sơ đã lưu', 'fas fa-heart', 'admin', 'candidate', 'saved');
+$profileFind        = HelperBackEnd::createItemSide('Tìm ứng viên', 'fas fa-search', 'admin', 'candidate', 'find');
+
+// manage employer
+$infoEmployer       = HelperBackEnd::createItemSide('Tài khoản NTD', 'fas fa-user', 'admin', 'employer', 'account');
+
+// manage news
+$createNews         = HelperBackEnd::createItemSide('Tạo tin tức', 'far fa-newspaper', 'admin', 'news', 'formNews');
+$listNews           = HelperBackEnd::createItemSide('Danh sách tin tức', 'fas fa-bars', 'admin', 'news', 'listNews');
+
+// ================== Group Sidebar ==================
+$group_Post         = HelperBackEnd::createGroupSide('Quản lý đăng tuyển', 'fas fa-list-alt', [$createPost, $listPost], 'post', $this->arrParam['controller']);
+$group_Candidate    = HelperBackEnd::createGroupSide('Quản lý ứng viên', 'fas fa-user-friends', [$profileApply, $profileSaved, $profileFind], 'candidate', $this->arrParam['controller']);
+$group_Employer     = HelperBackEnd::createGroupSide('Quản lý tài khoản', 'fas fa-user-circle', [$infoEmployer], 'employer', $this->arrParam['controller']);
+$group_News         = HelperBackEnd::createGroupSide('Quản lý tin tức', 'fas fa-newspaper', [$createNews, $listNews], 'news', $this->arrParam['controller']);
+
 ?>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed; width: 265px">
@@ -32,7 +48,7 @@ $group_Employer = HelperBackEnd::createGroupSide('Quản lý tài khoản', 'fas
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 
-                <?= $group_Post . $group_Employer ?>
+                <?= $group_Post . $group_Candidate . $group_Employer . $group_News ?>
 
             </ul>
         </nav>

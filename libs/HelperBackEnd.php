@@ -62,8 +62,8 @@ class HelperBackEnd
 
     public static function calculateDate($date, $type = 'y')
     {
-        $date   = new DateTime($date);
-        $now    = new DateTime();
+        $date   = new DateTime(date("Y-m-d", strtotime($date)));
+        $now    = new DateTime(date("Y-m-d"));
 
         $result = $now->diff($date);
         return $result->$type;

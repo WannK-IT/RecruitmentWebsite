@@ -188,4 +188,27 @@ class FormBackEnd
         return $xhtml;
     }
 
+    public static function formEmail($content)
+    {
+        $xhtml = '<div style="font-size:14px;line-height:1.4;margin:0px;background:rgb(238,238,238);color:rgb(54,54,54);padding-top:20px">
+        <div style="max-width:580px;width:100%;padding:0px;margin-right:auto;margin-left:auto;background:rgb(238,238,238); padding-bottom: 5px">
+            <div style="font-weight:500">
+                <div style="background-color:#17a2b8;border-radius:0px;float:left;width:100%;margin-bottom:20px;border:0px solid transparent;margin:0;padding-bottom:17px">
+                    <div style="margin-top:15px;padding-left:20px;padding-right:20px">
+                        <div style="float:left">
+                            <div style="margin-top:5px"><a href=""><img style="filter: invert(100%) brightness(100%);" src="https://lh3.googleusercontent.com/UwM7F8yEsXXHjq59nUtuR8knsl71dT1y0mTNkDaswpfFcJmHMQ_UZNlfIrONDyXmyE6dhatyJPdgRcPScJc4KlmLsWYcZrNbZKehRQ783URvAXDK5VfmEN0ZeWUNAUmwh5YPkGSY6LRZmpqYCJWHI8XJeOTq5ZtvdBovd82qTpdHjsiaXJs8GHtzZa5mP1n3jzBcN_A-JlII4gyPq0TLMPJEr0LyixT26MzF_wfKx61BlcGREiphRaKX0v1mU6bC72kZJGe_9X_0mD8_1V748Eo36LCfFvL4OvOqBW-_Xx3AOADmFss6AoR7AeMW_D-V-muyzyBz0oPV_2UcgM9g-EH2uuBRr8apu9FVdq_lojgvCZ6UYO7biGG5dUGX1r7gin6sugHxP5bQhz8rjDVHLWZI1Gw99dUSqgVj-KF3W2Jwl9n7hZw_GhVqCbjMZFb0R_6pcrJ5cfmwiQguMMIBIsBxZMTxTMXZWqsUNY67S4CWBqPH0VGXX2qIuUKbVKXMbMbkWy7TfkItTaxbw6LxqhGMWcJBJy-NaVAIC9xlo00Ebusgrce7pJ3MvhmARj2cUkj6z2H-agzQWCw4JQ5SYyGS7g9tHg6EpYN3wy2Cv3F23AzoFghbm20AnaYAsQAtm7k6MfPX_evbSznThMUI7NRCUV2SLAa2wRGSoWzQFuEp53bzmQa164HZbGFOEsL4jmUm-j967a9I9KXXXOt3qhmsezPVvH93p21g9S-iqmUBRtMjDub1QEl8_rsXsmZDVQZiah5_Yg8tQrSrKJC5gytiCP9w3rPdmAny=w685-h200-no?authuser=0" width="120" height="30"></a></div>
+                        </div>
+                        <div style="color:white;margin-top:8px;float:right;font-size:17px!important;font-weight:600">Việc làm cho mọi ngành nghề !</div>
+                    </div>
+                </div>
+                <div style="clear:both;max-height:0px">&nbsp;</div>
+            </div>
+            <div style="padding:20px 20px;background-color:#fff;font-size:14px!important; margin-bottom: 20px">
+                '.$content.'
+            </div>
+        </div>
+    </div>';
+
+        return $xhtml;
+    }
 }

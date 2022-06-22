@@ -83,6 +83,10 @@ input[name=city_job_search] {
     color: #2bb5cf;
 }
 
+.bg-main{
+    background-color: #2bb5cf;
+}
+
 .clear-mb {
     margin-bottom: 0rem;
 }
@@ -147,22 +151,6 @@ a {
 }
 
 /* end zoom */
-
-.cs-ellipsis-2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-}
-
-.cs-ellipsis-4 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-}
 
 .view-all {
     color: #287ab9;
@@ -397,6 +385,10 @@ a.web-company:hover{
     color: white;
 }
 
+.bg-blur-purple{
+    background-color: rgba(69, 29, 160, .05)
+}
+
 .circular-portrait { 
     position: relative; 
     width: 130px; 
@@ -409,6 +401,13 @@ a.web-company:hover{
     height: auto; 
 }
 
+.bg-red{
+    background-color: red;
+}
+
+.fs-13{
+    font-size: 13px;
+}
 
 /* REMOVE OUTLINE SELECT2 */
 .select2-container--bootstrap-5.select2-container--focus .select2-selection, .select2-container--bootstrap-5.select2-container--open .select2-selection{
@@ -429,10 +428,19 @@ input.select2-search__field{
     -webkit-box-orient: vertical;
 }
 
+
 .cs-ellipsis-3 {
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.cs-ellipsis-4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }

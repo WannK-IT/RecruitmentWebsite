@@ -13,6 +13,9 @@ $(document).ready(function () {
         rules: {
 
             // add rules to validate
+            profileApply: {
+                required: true
+            },
             user_fullname: {
                 minlength: 5,
                 maxlength: 100
@@ -127,6 +130,9 @@ $(document).ready(function () {
             exp_work:{
                 required: 'Vui lòng nhập kinh nghiệm làm việc của bạn !',
                 minlength: 'Tối thiểu 10 ký tự'
+            },
+            profileApply:{
+                required: 'Chọn hồ sơ ứng tuyển !'
             }
 
         },

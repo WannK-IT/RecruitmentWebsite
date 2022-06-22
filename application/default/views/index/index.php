@@ -63,13 +63,7 @@ if (!empty($jobs)) {
     <div class="container pb-5 px-5" style="max-width: 1200px;">
         <div class="row">
             <div class="col-md-8">
-                <!-- button time job -->
-                <div class="d-flex justify-content-end my-4">
-                    <a href="" class=" border cs-box cs-card border-secondary btn btn-light mx-1">Full Time</a>
-                    <a href="" class=" border cs-box cs-card border-secondary btn btn-light mx-1">Part Time</a>
-                    <a href="" class=" border cs-box cs-card border-secondary btn btn-light mx-1">Freelance</a>
-                    <a href="" class=" border cs-box cs-card border-secondary btn btn-light mx-1">Intern</a>
-                </div>
+
                 <?= $listJobs ?>
 
                 <!-- Button view all posts -->
@@ -81,7 +75,7 @@ if (!empty($jobs)) {
             </div>
 
             <!-- Side content -->
-            <div class="col-md-4 mt-4">
+            <div class="col-md-4 mt-2">
                 <!-- Location Job -->
                 <div class="card mx-3 border-1 shadow-sm" style="border: 1px solid rgba(0,185,242,.5); background-color: #f7fdff">
                     <div class="single-sidebar">
@@ -221,4 +215,4 @@ if (!empty($jobs)) {
 <?php require_once "parts/top_employer.php" ?>
 
 <!-- Blogs -->
-<?php require_once "parts/blog.php" ?>
+<?php require_once "parts/news.php" ?>

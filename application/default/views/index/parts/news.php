@@ -2,7 +2,7 @@
     <!-- Blog -->
     <div class="container">
         <div class="blog-title">
-            <p class="pt-5 pb-4 h2 text-center text-secondary">Blog</p>
+            <p class="pt-5 pb-4 h2 text-center text-secondary">Tin tức</p>
         </div>
         <div class="blogs mb-5">
             <div class="row">

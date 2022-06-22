@@ -94,6 +94,33 @@
             toastr["success"]("Chỉnh sửa tin đăng tuyển thành công")
           </script>';
     unset($_SESSION['edit_success']);
+  } elseif (@$_SESSION['updateApplyProfile'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Cập nhật trạng thái thành công !")
+          </script>';
+    unset($_SESSION['updateApplyProfile']);
+  }elseif (@$_SESSION['loginAdminSuccess'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Đăng nhập thành công !")
+          </script>';
+    unset($_SESSION['loginAdminSuccess']);
+  }elseif (@$_SESSION['sendMailSuccess'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Gửi email đến ứng viên thành công !")
+          </script>';
+    unset($_SESSION['sendMailSuccess']);
   }
   ?>
 

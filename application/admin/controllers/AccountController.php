@@ -20,6 +20,7 @@ class AccountController extends Controller
     public function loginAccountAction()
     {
         $result =  $this->_model->login($this->_arrParam);
+        $_SESSION['loginAdminSuccess'] = true;
         echo $result;
     }
 

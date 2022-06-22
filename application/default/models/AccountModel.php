@@ -73,7 +73,6 @@ class AccountModel extends Model
             $result = 'success';
             $_SESSION['loginDefault']['loginSuccess'] = true;
             $_SESSION['loginDefault']['idUser'] = $loadInfo['user_id'];
-            $_SESSION['loginDefault']['fullnameUser'] = $loadInfo['user_fullname'];
         } else {
             $result = 'failed';
         }

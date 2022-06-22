@@ -1,10 +1,10 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <!-- <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-    </ul>
+    </ul> -->
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -14,12 +14,12 @@
                 <span class="text-sm">Trang tìm việc</span>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="<?= URL::addLink('admin', 'candidate', 'index')?>" class="nav-link">
             <i class="fas fa-user-tie pr-1"></i>
                 <span class="text-sm">Tìm ứng viên</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 <img src="<?= $this->avatarLogo?>" class=" user-image img-circle elevation-2" alt="User Image">

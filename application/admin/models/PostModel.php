@@ -12,9 +12,13 @@ class PostModel extends Model
 	// Show list post
 	public function listPosts()
 	{
-		$query[]	= "SELECT `post_id`, `post_position`, `post_createdDate`, `post_expired`, `post_amount`, `post_isActive`";
-		$query[]	= "FROM `{$this->table}`";
+		$query[]	= "SELECT  `p`.`post_id`,  `p`.`post_position`,  `p`.`post_createdDate`,  `p`.`post_expired`,  `p`.`post_amount`,  `p`.`post_isActive`, COUNT(`j`.`apply_id`) AS 'total'";
+		$query[]	= "FROM `{$this->table}` AS `p`";
+		$query[]	= "LEFT JOIN `apply_job` AS `j`";
+		$query[]	= "ON `p`.`post_id` = `j`.`post_id`";
 		$query[]	= "WHERE `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
+		$query[]	= "GROUP BY `p`.`post_id`";
+		$query[]	= "ORDER BY `p`.`post_expired`";
 		$query		= implode(" ", $query);
 		$result		= $this->listRecord($query);
 		return $result;

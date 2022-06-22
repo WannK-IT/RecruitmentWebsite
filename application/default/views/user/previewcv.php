@@ -1,8 +1,8 @@
 <?php
 $info = $this->infoCV;
 
-$info['soft_skl']   = (empty(trim($info['soft_skl']))) ? 'Chưa cập nhật' : $info['soft_skl'];
-$info['degree']     = (empty(trim($info['degree']))) ? 'Chưa cập nhật' : $info['degree'];
+@$info['soft_skl']   = (empty(trim($info['soft_skl']))) ? 'Chưa cập nhật' : $info['soft_skl'];
+@$info['degree']     = (empty(trim($info['degree']))) ? 'Chưa cập nhật' : $info['degree'];
 
 if (trim($info['position']) != null) {
     $xhtml = '<div class="col-12">

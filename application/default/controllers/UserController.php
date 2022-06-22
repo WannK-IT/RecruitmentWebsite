@@ -24,6 +24,9 @@ class UserController extends Controller
 			$avatar['user_avatar'] = UPLOAD_URL_DEFAULT . 'img' . DS . $_SESSION['loginDefault']['idUser'] . DS . $avatar['user_avatar'];
 		}
 		$this->_view->avatarLogo = $avatar['user_avatar'];
+
+		$this->_view->fullNameDefault = $this->_model->getFullName();
+		ob_start();
 	}
 
 	public function indexAction()
@@ -87,7 +90,40 @@ class UserController extends Controller
 	}
 
 	public function uploadcvAction(){
-		// $this->_view->infoCV = $this->_model->uploadcv();
+
+		// Xử lý phần upload cv
+		$this->_view->getCV = $this->_model->getFileCV();
+
+		if(!empty($_FILES)) $this->_arrParam['upload_cv'] = $_FILES['upload_cv'];
+		$fileAccept 	= ['pdf'];
+		if(isset($this->_arrParam['upload_cv']) && $this->_arrParam['upload_cv']['error'] == 0){
+			$checkFile 	= explode('/', $this->_arrParam['upload_cv']['type']);
+			$size 		= $this->_arrParam['upload_cv']['size'] / 1000000;
+			if(!in_array($checkFile[1], $fileAccept) || $size > 3){
+				$this->_view->errorUpload = 'Định dạng file hoặc dung lượng không phù hợp';
+			}else{
+				$this->_model->uploadCV($this->_arrParam);
+				$_SESSION['default']['uploadcv'] = true;
+				$this->redirect('default', 'user', 'uploadcv');
+			}			
+		}
 		$this->_view->render('user/uploadcv', true);
+		
 	}
+
+	public function deleteCVAction(){
+		$this->_model->deleteCV();
+		$_SESSION['default']['deletecv'] = true;
+		$this->redirect('default', 'user', 'uploadcv');
+	}
+
+	public function jobAppliedAction(){
+		$this->_view->render('user/jobApplied', true);
+	}
+
+	public function jobSavedAction(){
+		$this->_view->render('user/jobSaved', true);
+	}
+
+
 }

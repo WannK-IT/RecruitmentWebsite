@@ -21,6 +21,7 @@ class NewsController extends Controller
 				$avatar['user_avatar'] = UPLOAD_URL_DEFAULT . 'img' . DS . $_SESSION['loginDefault']['idUser'] . DS . $avatar['user_avatar'];
 			}
 			$this->_view->avatarLogo = $avatar['user_avatar'];
+			$this->_view->fullNameDefault = $this->_model->getFullName();
 		}
 	}
 

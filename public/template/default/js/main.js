@@ -31,14 +31,36 @@ $(document).ready(function () {
         $('#formSearchCareer').submit();
     });
 
+    $('#form-upload-cv').change(function () {
+        $('#form-upload-cv').submit();
+    })
+
+    $('.btnViewCV').click(function (e) {
+        e.preventDefault();
+        $('#modalViewCV').modal('show');
+    })
 
 });
 
-function chkLogin(check){
-    if(check == 'notLogged'){
+function chkLogin(check) {
+    if (check == 'notLogged') {
         $('#modalLogin').modal('show');
-    }else{
+    } else {
         $('#modalApply').modal('show');
     }
 }
 
+function deleteCV(link) {
+    Swal.fire({
+        text: 'Bạn muốn xóa CV hiện tại ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đồng ý'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = link
+        }
+    })
+}

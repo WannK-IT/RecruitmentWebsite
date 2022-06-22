@@ -2,14 +2,15 @@
 require_once "elements/statistic.php";
 $xhtml = '';
 
+
 if (!empty($this->listPost)) {
     $index = 1;
     foreach ($this->listPost as $post) {
         $id                 = $post['post_id'];
         $position           = $post['post_position'];
         $created            = date('d/m/Y H:i:s', strtotime($post['post_createdDate']));
-        $expired            = date('d/m/Y', strtotime($post['post_expired']));
-        $applyAmount        = 'Default';
+        $expired            = (HelperFrontEnd::calculateDate($post['post_expired'], 'invert') != 1) ? date('d/m/Y', strtotime($post['post_expired'])) : '<span class="text-danger font-weight-bold">Hết hạn</span>';
+        $applyAmount        = $post['total'];
         $status             = $post['post_isActive'];
         $classStatus        = ($status == 'active') ? 'fa-check text-success' : 'fa-minus text-danger';
 

@@ -1,11 +1,26 @@
 <?php
-$info = $this->infoJob;
+$info               = $this->infoJob;
+@$infoCandidate     = $this->infoCandidate;
+@$infoCV             = $this->infoCV;
 $infoJob = '';
 
+@$ext = '.' . pathinfo($infoCV['fileCV'], PATHINFO_EXTENSION);
+@$filename = substr(pathinfo($infoCV['fileCV'], PATHINFO_FILENAME), 0, -8);
+$newFilename = $filename . $ext;
+
+// Kiểm tra user login
 $checkLogin = ((Authentication::checkLoginDefault()) == false) ? 'notLogged' : 'logged';
+
+// Kiểm tra user cập nhật CV
+$profile = (!empty($infoCV['position'])) ? '<span class="float-end"><a href="' . URL::addLink($this->arrParam['module'], 'user', 'previewcv') . '">' . $infoCV['position'] . '</a></span>' : '<span class="float-end"><a class="text-danger fs-13 fst-italic" href="' . URL::addLink($this->arrParam['module'], 'user', 'profile') . '">Cập nhật hồ sơ ngay</a></span>';
+
+$CV = (!empty($infoCV['fileCV'])) ? '<span style="cursor:pointer" class="float-end btnViewCV">' . $newFilename . '</span>' : '<span class="float-end"><a class="text-danger fs-13 fst-italic" href="' . URL::addLink($this->arrParam['module'], 'user', 'uploadcv') . '">Upload CV ngay</a></span>';
+
+$btnChkApply = (@$this->checkApply == 'applied') ? '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')" disabled' . '>Đã ứng tuyển</button>' : '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')"' . '>Ứng tuyển</button>';
+
 if (!empty($info)) {
     $hrefCompany = URL::addLink($this->arrParam['module'], 'company', 'viewcompany', ['idCompany' => $info['comp_id']]);
-    $expiredDate = HelperFrontEnd::calculateDate($info['post_expired'], 'd');
+    $expiredDate = HelperFrontEnd::calculateDate($info['post_expired'], 'days');
     $infoJob = '<div class="card border-0">
             <div class="row g-0 my-2">
                 <div class="col-md-3 logo-box d-flex align-items-center">
@@ -42,7 +57,7 @@ if (!empty($info)) {
                                 <div class="social mb-2 text-center">
                                     <p style="font-size: 14px">Hết hạn trong <span class="text-warning fw-bold">' . $expiredDate . '</span> ngày</p>
                                 </div>
-                                <button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold" id="apply_job" type="button"  value="Ứng tuyển" onClick="chkLogin(\'' . $checkLogin . '\')">Ứng tuyển</button>
+                                ' . $btnChkApply . '
                                 <input class="btn btn-share border-0 rounded w-50 fw-bold" id="follow_job" type="button" name="follow_job" value="Theo dõi">
                             </form>
                         </div>
@@ -213,7 +228,6 @@ if (!empty($info)) {
     $sideInfo .= '</div></div></div>';
 }
 ?>
-
 <!-- Job Header -->
 <section class="job-detail mt-5" style="background-color: #f1f1f1;">
     <div class="container">
@@ -223,16 +237,7 @@ if (!empty($info)) {
     </div>
 </section>
 <!-- End Job Header -->
-<?php
-echo '<pre style="color: blue;">';
-print_r($this->arrParam);
-echo '</pre>';
 
-echo '<pre style="color: blue;">';
-print_r($_SESSION);
-echo '</pre>';
-echo $checkLogin;
-?>
 <!-- Job Content -->
 <section class="job-detail-content" style="background-color: #f1f1f1;">
     <div class="container">
@@ -274,7 +279,7 @@ echo $checkLogin;
                                 <input type="password" name="user_password" id="user_password" class="form-control fs-6" placeholder="Nhập mật khẩu" autocomplete="off">
                             </div>
 
-                            <a class="btn bg-purple" name="loginUser" id="loginUser" href="javascript:loginUser('<?= URL::addLink($this->arrParam['module'], 'account', 'loginUser') ?>', '<?= URL::addLink('default', 'index', 'index') ?>')">Đăng nhập</a>
+                            <a class="btn bg-purple text-white" name="loginUser" id="loginUser" href="javascript:loginUser('<?= URL::addLink($this->arrParam['module'], 'account', 'loginUser') ?>', '<?= URL::addLink('default', 'index', 'index') ?>')">Đăng nhập</a>
 
                         </form>
                         <p class="login-wrapper-footer-text mt-3">Bạn chưa có tài khoản ? <a href="<?= URL::addLink($this->arrParam['module'], 'account', 'register') ?>" class="text-reset">Đăng ký</a></p>
@@ -291,7 +296,7 @@ echo $checkLogin;
 <div class="modal fade" id="modalApply" tabindex="-1" aria-labelledby="labelModalApply" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-body">
+            <div class="modal-body mb-2">
                 <div class="container">
                     <div class="pb-3">
                         <h5 class="modal-title fw-bold" id="labelModalApply">Ứng tuyển <span class="text-warning"><?= $info['post_position'] ?></span></h5>
@@ -303,24 +308,38 @@ echo $checkLogin;
                             <div class="form-group mb-3">
                                 <div class="error-element">
                                     <label for="user_fullname" class="fw-bold mb-1">Họ và tên <span class="text-danger">*</span></label>
-                                    <input type="text" name="user_fullname" id="user_fullname" class="form-control fs-6" placeholder="Nhập họ và tên" autocomplete="off" required>
+                                    <input type="text" name="user_fullname" id="user_fullname" class="form-control-plaintext fs-6" placeholder="Nhập họ và tên" value="<?= @$infoCandidate['user_fullname'] ?>" autocomplete="off" required readonly>
                                 </div>
                             </div>
 
                             <div class="form-group mb-3">
                                 <div class="error-element">
                                     <label for="user_email" class="fw-bold mb-1">Email <span class="text-danger">*</span></label>
-                                    <input type="email" name="user_email" id="user_email" class="form-control fs-6" placeholder="Nhập Email" autocomplete="off" required>
+                                    <input type="email" name="user_email" id="user_email" class="form-control-plaintext fs-6" placeholder="Nhập Email" value="<?= @$infoCandidate['user_email'] ?>" autocomplete="off" required readonly>
                                 </div>
                             </div>
 
                             <div class="form-group mb-3">
                                 <div class="error-element">
                                     <label for="user_phone" class="fw-bold mb-1">Điện thoại <span class="text-danger">*</span></label>
-                                    <input type="text" name="user_phone" id="user_phone" class="form-control fs-6" placeholder="Nhập số điện thoại" autocomplete="off" required>
+                                    <input type="text" name="user_phone" id="user_phone" class="form-control-plaintext fs-6" placeholder="Nhập số điện thoại" value="<?= @$infoCandidate['user_phone'] ?>" autocomplete="off" required readonly>
                                 </div>
                             </div>
 
+                            <!-- Chọn CV -->
+                            <div class="form-group mb-3">
+
+                                <label for="user_phone" class="fw-bold mb-1">Chọn hồ sơ ứng tuyển <span class="text-danger">*</span></label>
+                                <div class="error-element">
+                                    <input class="form-check-input" type="radio" name="profileApply" id="chooseProfile" value="profile" data-id="<?= @$infoCV['position'] ?>" />
+                                    <label class="form-check-label" for="chooseProfile"> Hồ sơ <span class="text-danger">*</span></label><?= $profile ?><br>
+
+                                    <input class="form-check-input" type="radio" name="profileApply" id="chooseCV" value="cv" data-id="<?= @$filename ?>" />
+                                    <label class="form-check-label" for="chooseCV"> CV</label><?= $CV ?>
+
+
+                                </div>
+                            </div>
 
                             <div class="form-group mb-3">
                                 <div class="error-element">
@@ -329,10 +348,15 @@ echo $checkLogin;
                                 </div>
                             </div>
 
-                            <input type="submit" class="btn bg-purple" value="Nộp hồ sơ">
+                            <div class="float-end">
+                                <input type="hidden" name="comp_id" value="<?= $info['comp_id'] ?>">
+                                <input type="hidden" name="cv_id" value="<?= $infoCV['id'] ?>">
+                                <a href="<?= URL::addLink($this->arrParam['module'], 'user', 'index') ?>" class="btn bg-main text-white">Sửa hồ sơ</a>
+                                <input type="submit" class="btn bg-purple text-white" name="applyJob" value="Nộp hồ sơ">
+
+                            </div>
 
                         </form>
-                        <p class="login-wrapper-footer-text mt-3">Bạn chưa có tài khoản ? <a href="<?= URL::addLink($this->arrParam['module'], 'account', 'register') ?>" class="text-reset">Đăng ký</a></p>
                     </div>
                 </div>
             </div>
@@ -340,3 +364,16 @@ echo $checkLogin;
     </div>
 </div>
 <!-- End Modal Apply -->
+
+<!-- Modal View CV -->
+<div class="modal fade modalViewCV-modal-xl" id="modalViewCV" tabindex="-1" role="dialog" aria-labelledby="modalViewCV" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <iframe src="<?= UPLOAD_URL_DEFAULT . 'cv/' . $_SESSION['loginDefault']['idUser'] . DS . $infoCV['fileCV'] ?> " height="650px"></iframe>
+        </div>
+    </div>
+</div>
+<!-- End Modal View CV -->

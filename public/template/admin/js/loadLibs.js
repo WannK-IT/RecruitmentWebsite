@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     /* ----- Select2 library load select box ----- */
-    $("#post-career, #post-type-work, #post-address-work, #post-rank, #post-degree, #post-exp, #post-gender, #post-salary, #comp_location, #comp_size, #comp_field, #career_search, #workplace_search, #degree_search, #gender_search, #exp_search").select2();
+    $("#post-career, #post-type-work, #post-address-work, #post-rank, #post-degree, #post-exp, #post-gender, #post-salary, #comp_location, #comp_size, #comp_field, #career_search, #workplace_search, #degree_search, #gender_search, #exp_search, #typework_search").select2();
 
     /* ----- jQuery Validation ----- */
     // Validate form add recruitment form
@@ -167,12 +167,12 @@ $(document).ready(function () {
                 number: "MST chứa kí tự không hợp lệ !"
             },
             comp_website: {
-                required : "Vui lòng nhập tên website công ty"
+                required : "Vui lòng nhập tên website công ty !"
             },
             comp_email: {
-                required: "Vui lòng nhập email công ty",
+                required: "Vui lòng nhập email công ty !",
                 email: 'Sai định dạng email !'
-            }
+            },
         },
 
         // Method Error

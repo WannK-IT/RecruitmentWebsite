@@ -48,11 +48,58 @@
     <script src="https://kit.fontawesome.com/3c50210ea0.js" crossorigin="anonymous"></script>
 
     <?php
-    if (isset($_SESSION['updateProfileSuccess']) && $_SESSION['updateProfileSuccess'] == true) {
+
+    if (isset($_SESSION['default']['userLoginSuccess']) && $_SESSION['default']['userLoginSuccess'] == true) {
+        echo '<script type="text/javascript">
+                    toastMsg("success", "Đăng nhập thành công !")
+            </script>';
+        unset($_SESSION['default']['userLoginSuccess']);
+    }
+
+    if (isset($_SESSION['default']['updateProfileSuccess']) && $_SESSION['default']['updateProfileSuccess'] == true) {
         echo '<script type="text/javascript">
                     toastMsg("success", "Cập nhật hồ sơ thành công !")
             </script>';
-        unset($_SESSION['updateProfileSuccess']);
+        unset($_SESSION['default']['updateProfileSuccess']);
+    }
+    
+    if (isset($_SESSION['default']['uploadcv']) && $_SESSION['default']['uploadcv'] == true) {
+        echo '<script type="text/javascript">
+                    toastMsg("success", "Upload CV thành công !")
+            </script>';
+        unset($_SESSION['default']['uploadcv']);
+    }
+
+    if (isset($_SESSION['default']['deletecv']) && $_SESSION['default']['deletecv'] == true) {
+        echo '<script type="text/javascript">
+                Swal.fire(
+                    "Đã xóa!",
+                    "CV của bạn đã được xóa thành công",
+                    "success"
+                )
+            </script>';
+        unset($_SESSION['default']['deletecv']);
+    }
+
+    if (isset($_SESSION['default']['applyJobSuccess']) && $_SESSION['default']['applyJobSuccess'] == true) {
+        echo '<script type="text/javascript">
+                    toastMsg("success", "Ứng tuyển công việc thành công !")
+            </script>';
+        unset($_SESSION['default']['applyJobSuccess']);
+    }
+
+    if (isset($_SESSION['default']['checkExistProfile']) && $_SESSION['default']['checkExistProfile'] == true) {
+        echo '<script type="text/javascript">
+                    toastMsg("warning", "Vui lòng hoàn thiện hồ sơ<br>trước khi ứng tuyển !")
+            </script>';
+        unset($_SESSION['default']['checkExistProfile']);
+    }
+
+    if (isset($_SESSION['default']['checkExistCV']) && $_SESSION['default']['checkExistCV'] == true) {
+        echo '<script type="text/javascript">
+                    toastMsg("warning", "Vui lòng cập nhật CV<br>trước khi ứng tuyển !")
+            </script>';
+        unset($_SESSION['default']['checkExistCV']);
     }
     ?>
 
