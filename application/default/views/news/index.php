@@ -12,7 +12,7 @@
                             <div class="pb-3"><img src="https://st.gamevui.com/images/image/2019/03/20/pikachu-200.jpg" class="rounded-circle me-1" alt="logo" width="30" height="30"><span class="text-muted pt-3 ps-1" style="font-size: 14px;">Nguyễn Nhựt Quang</span></div>
                             <p class="cs-ellipsis-2">PHP (viết tắt hồi quy của Hypertext Preprocessor) là ngôn ngữ lập trình đa mục đích. Cụ thể hơn, PHP là ngôn ngữ kịch bản mã nguồn mở, chạy ở phía server và được dùng để tạo ra các ứng dụng web.</p>
                         </div>
-                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white">Đọc tiếp...</a>
+                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white bg-gradient">Đọc tiếp...</a>
                     </div>
 
                     <div class="card mb-2 p-4 mb-4">
@@ -22,7 +22,7 @@
                             <div class="pb-3"><img src="https://st.gamevui.com/images/image/2019/03/20/pikachu-200.jpg" class="rounded-circle me-1" alt="logo" width="30" height="30"><span class="text-muted pt-3 ps-1" style="font-size: 14px;">Nguyễn Nhựt Quang</span></div>
                             <p class="cs-ellipsis-2">PHP (viết tắt hồi quy của Hypertext Preprocessor) là ngôn ngữ lập trình đa mục đích. Cụ thể hơn, PHP là ngôn ngữ kịch bản mã nguồn mở, chạy ở phía server và được dùng để tạo ra các ứng dụng web.</p>
                         </div>
-                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white">Đọc tiếp...</a>
+                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white bg-gradient">Đọc tiếp...</a>
                     </div>
 
                     <div class="card mb-2 p-4 mb-4">
@@ -32,7 +32,7 @@
                             <div class="pb-3"><img src="https://st.gamevui.com/images/image/2019/03/20/pikachu-200.jpg" class="rounded-circle me-1" alt="logo" width="30" height="30"><span class="text-muted pt-3 ps-1" style="font-size: 14px;">Nguyễn Nhựt Quang</span></div>
                             <p class="cs-ellipsis-2">PHP (viết tắt hồi quy của Hypertext Preprocessor) là ngôn ngữ lập trình đa mục đích. Cụ thể hơn, PHP là ngôn ngữ kịch bản mã nguồn mở, chạy ở phía server và được dùng để tạo ra các ứng dụng web.</p>
                         </div>
-                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white">Đọc tiếp...</a>
+                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white bg-gradient">Đọc tiếp...</a>
                     </div>
 
                     <div class="card mb-2 p-4 mb-4">
@@ -42,7 +42,7 @@
                             <div class="pb-3"><img src="https://st.gamevui.com/images/image/2019/03/20/pikachu-200.jpg" class="rounded-circle me-1" alt="logo" width="30" height="30"><span class="text-muted pt-3 ps-1" style="font-size: 14px;">Nguyễn Nhựt Quang</span></div>
                             <p class="cs-ellipsis-2">PHP (viết tắt hồi quy của Hypertext Preprocessor) là ngôn ngữ lập trình đa mục đích. Cụ thể hơn, PHP là ngôn ngữ kịch bản mã nguồn mở, chạy ở phía server và được dùng để tạo ra các ứng dụng web.</p>
                         </div>
-                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white">Đọc tiếp...</a>
+                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white bg-gradient">Đọc tiếp...</a>
                     </div>
 
                     <div class="card mb-2 p-4 mb-4">
@@ -52,7 +52,7 @@
                             <div class="pb-3"><img src="https://st.gamevui.com/images/image/2019/03/20/pikachu-200.jpg" class="rounded-circle me-1" alt="logo" width="30" height="30"><span class="text-muted pt-3 ps-1" style="font-size: 14px;">Nguyễn Nhựt Quang</span></div>
                             <p class="cs-ellipsis-2">PHP (viết tắt hồi quy của Hypertext Preprocessor) là ngôn ngữ lập trình đa mục đích. Cụ thể hơn, PHP là ngôn ngữ kịch bản mã nguồn mở, chạy ở phía server và được dùng để tạo ra các ứng dụng web.</p>
                         </div>
-                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white">Đọc tiếp...</a>
+                        <a href="" class="col-md-3 mx-auto btn bg-purple text-white bg-gradient">Đọc tiếp...</a>
                     </div>
 
                     

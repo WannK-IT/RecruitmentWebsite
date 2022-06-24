@@ -121,6 +121,24 @@
             toastr["success"]("Gửi email đến ứng viên thành công !")
           </script>';
     unset($_SESSION['sendMailSuccess']);
+  }elseif (@$_SESSION['addNews'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Thêm tin tức thành công !")
+          </script>';
+    unset($_SESSION['addNews']);
+  }elseif (@$_SESSION['updateNews'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Cập nhật tin tức thành công !")
+          </script>';
+    unset($_SESSION['updateNews']);
   }
   ?>
 

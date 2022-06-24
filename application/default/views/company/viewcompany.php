@@ -15,11 +15,11 @@ if (!empty($info)) {
 
             <div class="cs-translate-3">
                 <div class="btn-company pb-2">
-                    <button class="btn btn-apply fw-bold"><i class="fa-solid fa-eye pe-1"></i>&nbsp;Theo dõi</button>
+                    <button class="btn btn-apply fw-bold bg-gradient"><i class="fa-solid fa-eye pe-1"></i>&nbsp;Theo dõi</button>
                 </div>
 
                 <div class="btn-company">
-                    <button class="btn btn-share fw-bold"><i class="fa-solid fa-link pe-1"></i>&nbsp;Chia sẻ</button>
+                    <button class="btn btn-share fw-bold bg-gradient"><i class="fa-solid fa-link pe-1"></i>&nbsp;Chia sẻ</button>
                 </div>
             </div>
         </div>';

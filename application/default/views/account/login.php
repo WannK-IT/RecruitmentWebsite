@@ -15,7 +15,7 @@
                         <input type="password" name="user_password" id="user_password" class="form-control fs-6" placeholder="Nhập mật khẩu" autocomplete="off">
                     </div>
 
-                    <a class="btn btn-block login-btn" name="loginUser" id="loginUser" href="javascript:loginUser('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'loginUser')?>', '<?= URL::addLink('default', 'index', 'index')?>')">Đăng nhập</a>
+                    <a class="btn btn-block login-btn bg-gradient" name="loginUser" id="loginUser" href="javascript:loginUser('<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'loginUser')?>', '<?= URL::addLink('default', 'index', 'index')?>')">Đăng nhập</a>
                     <!-- <input name="loginUser" id="loginUser" class="btn btn-block login-btn" type="button" value="Đăng nhập"> -->
                 </form>
                 <a href="#!" class="forgot-password-link">Forgot password?</a>

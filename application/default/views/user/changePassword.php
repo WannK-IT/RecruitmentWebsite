@@ -37,7 +37,7 @@ $confirmPass    = FormFrontEnd::showForm($row3, 2);
                     
                         <div class="form-group mx-3 mb-4">
                             <input type="hidden" name="token" value="1697523">
-                            <input type="button" name="change_password" id="change_password" class="btn bg-purple mt-4" value="Đổi mật khẩu">
+                            <input type="button" name="change_password" id="change_password" class="btn bg-purple mt-4 bg-gradient" value="Đổi mật khẩu">
                         </div>
                     </form>
                 </div>

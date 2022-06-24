@@ -2,10 +2,16 @@
 class HelperBackEnd
 {
     // --------  Sidebar -------- 
-    public static function createItemSide($title, $class, $module, $controller, $action)
+    public static function createItemSide($title, $class, $module, $controller, $action, $arrOption = null)
     {
+        $options = '';
+        if (!empty($arrOption)) {
+            foreach ($arrOption as $key => $value) {
+                $options .= "&$key" . '=' . "$value";
+            }
+        }
         $xhtml = '<li class="nav-item pl-2">
-                    <a href="index.php?module=' . $module . '&controller=' . $controller . '&action=' . $action . '" class="nav-link">
+                    <a href="index.php?module=' . $module . '&controller=' . $controller . '&action=' . $action . $options . '" class="nav-link">
                         <i class="nav-icon ' . $class . '"></i>
                         <p>' . $title . '</p>
                     </a>
@@ -17,7 +23,7 @@ class HelperBackEnd
     {
         $active = ($active == $controllerActive) ? 'active' : '';
         $xhtml = '<li class="nav-item">
-                    <a href="" class="nav-link '.$active.'" data-id=' . $controllerActive . ' style="width: 250px!important;">
+                    <a href="" class="nav-link ' . $active . '" data-id=' . $controllerActive . ' style="width: 250px!important;">
                         <i class="' . $class . ' nav-icon"></i>
                         <p>
                             ' . $title . '

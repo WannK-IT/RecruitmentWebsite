@@ -10,6 +10,7 @@ define('TEMPLATE_PATH'          , PUBLIC_PATH . 'template' . DS);
 define('UPLOAD_PATH'            , PUBLIC_PATH . 'uploads' . DS);
 define('UPLOAD_PATH_ADMIN'      , UPLOAD_PATH . 'admin' . DS);
 define('UPLOAD_PATH_DEFAULT'    , UPLOAD_PATH . 'default' . DS);
+define('THUMB_PATH_ADMIN'       , UPLOAD_PATH . 'admin' . DS . 'thumbnail_news' . DS);
 
 define('ROOT_URL'               , DS . 'RecruitmentWebsite' . DS);
 define('APPLICATION_URL'        , ROOT_URL . 'application' . DS);
@@ -18,8 +19,9 @@ define('TEMPLATE_URL'           , PUBLIC_URL . 'template' . DS);
 define('UPLOAD_URL'             , PUBLIC_URL . 'uploads' . DS);
 define('UPLOAD_URL_ADMIN'       , UPLOAD_URL . 'admin' . DS);
 define('UPLOAD_URL_DEFAULT'     , UPLOAD_URL . 'default' . DS);
+define('THUMB_URL_ADMIN'        , UPLOAD_URL . 'admin' . DS . 'thumbnail_news' . DS);
 define('IMG_URL_DEFAULT'        , TEMPLATE_URL . 'default' . DS . 'images' . DS );
-define('IMG_URL_ADMIN'        , TEMPLATE_URL . 'admin' . DS . 'images' . DS );
+define('IMG_URL_ADMIN'          , TEMPLATE_URL . 'admin' . DS . 'images' . DS );
 
 define('DEFAULT_MODULE'         , 'default');
 define('DEFAULT_CONTROLLER'     , 'index');
@@ -35,3 +37,4 @@ define('DB_TBL_EMPLOYER'        , 'employer');
 define('DB_TBL_COMPANY'         , 'company');
 define('DB_TBL_USER'            , 'user');
 define('DB_TBL_CV'              , 'cv');
+define('DB_TBL_NEWS'            , 'news');

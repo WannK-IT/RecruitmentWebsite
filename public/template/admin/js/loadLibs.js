@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     /* ----- jQuery Validation ----- */
     // Validate form add recruitment form
-    $("#form-add-job, #form-emp-account, #form-emp-company, #register_form_employer").validate({
+    $("#form-add-job, #form-emp-account, #form-emp-company, #register_form_employer, #form-add-news").validate({
         ignore: [],
         debug: false,
         rules: {
@@ -68,7 +68,20 @@ $(document).ready(function () {
             },
             comp_email: {
                 email: true,
-            }
+            },
+
+            // Validate News
+            news_title:{
+                required: true,
+            },
+            news_thumbnail:{
+                extension: "png|jpeg|jpg",
+            },
+            news_description: {
+                required: function () {
+                    CKEDITOR.instances.news_description.updateElement();
+                }
+            },
 
         },
 
@@ -173,6 +186,16 @@ $(document).ready(function () {
                 required: "Vui lòng nhập email công ty !",
                 email: 'Sai định dạng email !'
             },
+
+            news_title:{
+                required: "Vui lòng nhập tiêu đề tin tức !"
+            },
+            news_thumbnail:{
+                extension: "Ảnh thumbnail không đúng định dạng !<br>Định dạng ảnh hợp lệ: png | jpeg | jpg !"
+            },
+            news_description:{
+                required: "Vui lòng nhập nội dung tin tức !"
+            }
         },
 
         // Method Error

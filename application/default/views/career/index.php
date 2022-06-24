@@ -69,7 +69,7 @@ if (!empty($list)) {
                 </div>
                 <div class="col-md-1">
 
-                    <input class="form-control text-white" style="background-color: #2c95ff;" type="submit" name="search" value="Lọc">
+                    <input class="form-control text-white bg-primary bg-gradient" type="submit" name="search" value="Lọc">
                 </div>
             </div>
 
@@ -83,18 +83,46 @@ if (!empty($list)) {
                     <div class="fw-bold h5">
                         <p>Kết quả tìm kiếm: <?= $this->totalCareer['total'] ?> tin đăng tuyển<br></p>
                         <?php
+                        $keyword = '';
                         if (!empty(@$this->arrParam['position_search']))
-                            echo '<p class="h6 text-muted">Vị trí: ' . @$this->arrParam['position_search'] . '</p>';
+                            $keyword .= '<span class="badge bg-blur-info text-dark ms-1 fs-12">' . @$this->arrParam['position_search'] . '</span>';
+                        if (@$this->arrParam['career_search'] != 'Tất cả ngành nghề' && !empty(@$this->arrParam['career_search']))
+                            $keyword .= '<span class="badge bg-blur-info text-dark ms-1 fs-12">' . @$this->arrParam['career_search'] . '</span>';
+                        if (@$this->arrParam['city_search'] != 'Tất cả tỉnh thành'  && !empty(@$this->arrParam['city_search']))
+                            $keyword .= '<span class="badge bg-blur-info text-dark ms-1 fs-12">' . @$this->arrParam['city_search'] . '</span>';
+                        if (@$this->arrParam['type_work_search'] != 'Loại công việc'  && !empty(@$this->arrParam['type_work_search']))
+                            $keyword .= '<span class="badge bg-blur-info text-dark ms-1 fs-12">' . @$this->arrParam['type_work_search'] . '</span>';
+
+                        $keyword = (!empty($keyword)) ? '<div class="mb-2"><span class="fs-12">Từ khóa: </span>' . $keyword . '</div>' : '';
+                        echo $keyword;
+                        ?>
+
+                        <!-- <?php
+                        $keyword = '';
+                        if (!empty(@$this->arrParam['position_search']))
+                            $keyword .= '<span class="badge bg-blur-info ml-1">' . @$this->arrParam['position_search'] . '</span>';
+
+                        if (@$this->arrParam['typework_search'] != 'Tất cả hình thức' && !empty(@$this->arrParam['typework_search']))
+                            $keyword .= '<span class="badge bg-blur-info ml-1">' . @$this->arrParam['typework_search'] . '</span>';
 
                         if (@$this->arrParam['career_search'] != 'Tất cả ngành nghề' && !empty(@$this->arrParam['career_search']))
-                            echo '<p class="h6 text-muted">Ngành nghề: ' . @$this->arrParam['career_search'] . '</p>';
+                            $keyword .= '<span class="badge bg-blur-info ml-1">' . @$this->arrParam['career_search'] . '</span>';
 
-                        if (@$this->arrParam['city_search'] != 'Tất cả tỉnh thành'  && !empty(@$this->arrParam['city_search']))
-                            echo '<p class="h6 text-muted">Địa điểm: ' . @$this->arrParam['city_search'] . '</p>';
+                        if (@$this->arrParam['workplace_search'] != 'Tất cả tỉnh thành'  && !empty(@$this->arrParam['workplace_search']))
+                            $keyword .= '<span class="badge bg-blur-info ml-1">' . @$this->arrParam['workplace_search'] . '</span>';
 
-                        if (@$this->arrParam['type_work_search'] != 'Loại công việc'  && !empty(@$this->arrParam['type_work_search']))
-                            echo '<p class="h6 text-muted">Loại công việc: ' . @$this->arrParam['type_work_search'] . '</p>';
-                        ?>
+                        if (@$this->arrParam['degree_search'] != 'Tất cả bằng cấp'  && !empty(@$this->arrParam['degree_search']))
+                            $keyword .= '<span class="badge bg-blur-info ml-1">' . @$this->arrParam['degree_search'] . '</span>';
+
+                        if (@$this->arrParam['gender_search'] != 'Tất cả giới tính'  && !empty(@$this->arrParam['gender_search']))
+                            $keyword .= '<span class="badge bg-blur-info ml-1">' . @$this->arrParam['gender_search'] . '</span>';
+
+                        if (@$this->arrParam['exp_search'] != 'Tất cả kinh nghiệm'  && !empty(@$this->arrParam['exp_search']))
+                            $keyword .= '<span class="badge bg-blur-info ml-1">' . @$this->arrParam['exp_search'] . '</span>';
+
+                        $keyword = (!empty($keyword)) ? '<div class="mb-2"><span class="fs-12">Từ khóa: </span>' . $keyword . '</div>' : '';
+                        echo $keyword;
+                        ?> -->
 
                     </div>
                 </div>

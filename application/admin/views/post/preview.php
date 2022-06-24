@@ -19,32 +19,32 @@ if (!empty($this->previewPost)) {
                     <div class="col-md-6 pl-5">
                         <div class="my-1">
                             <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Chức danh:</p>
-                            <p class="col-md-4 h6 list-inline-item"><?= $data['post_position'] ?></p>
+                            <p class="col-md-7 h6 list-inline-item"><?= $data['post_position'] ?></p>
                         </div>
 
                         <div class="my-1">
                             <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Ngành nghề:</p>
-                            <p class="col-md-4 h6 list-inline-item"><?= $data['post_career'] ?></p>
+                            <p class="col-md-7 h6 list-inline-item"><?= $data['post_career'] ?></p>
                         </div>
 
                         <div class="my-1">
                             <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Hình thức làm việc:</p>
-                            <p class="col-md-4 h6 list-inline-item"><?= $data['post_type_work'] ?></p>
+                            <p class="col-md-7 h6 list-inline-item"><?= $data['post_type_work'] ?></p>
                         </div>
 
                         <div class="my-1">
                             <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Nơi làm việc:</p>
-                            <p class="col-md-4 h6 list-inline-item"><?= $data['post_address_work'] ?></p>
+                            <p class="col-md-7 h6 list-inline-item"><?= $data['post_address_work'] ?></p>
                         </div>
 
                         <div class="my-1">
                             <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Cấp bậc:</p>
-                            <p class="col-md-4 h6 list-inline-item"><?= $data['post_rank'] ?></p>
+                            <p class="col-md-7 h6 list-inline-item"><?= $data['post_rank'] ?></p>
                         </div>
 
                         <div class="my-1">
                             <p class="col-md-4 h6 font-weight-bold text-muted list-inline-item">Số lượng tuyển dụng:</p>
-                            <p class="col-md-4 h6 list-inline-item"><?= $data['post_amount'] ?></p>
+                            <p class="col-md-7 h6 list-inline-item"><?= $data['post_amount'] ?></p>
                         </div>
                     </div>
 

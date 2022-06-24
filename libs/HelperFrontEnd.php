@@ -45,7 +45,7 @@ class HelperFrontEnd
 
     public static function itemNavBar($title, $icon, $link, $id, $activeNavbar)
     {
-        $active = ($activeNavbar == $id) ? 'style="color: #2bb5cf"' : '';
+        $active = ($activeNavbar == $id) ? 'style="color: #0dcaf0"' : '';
         $xhtml = '<li class="nav-item ms-2">
                     <a class="nav-link" data-id="' . $id . '" ' . $active . ' href="' . $link . '"><i class="' . $icon . '"></i>&nbsp;' . $title . '</a>
                 </li>';

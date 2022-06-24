@@ -61,7 +61,7 @@ class PostModel extends Model
 	public function deletePost($params)
 	{
 		$id 	= ($params['pid']) ?? 0;
-		$query 	= "DELETE FROM `{$this->table}` WHERE `post_id` IN ('" . $id . "')";
+		$query 	= "DELETE FROM `{$this->table}` WHERE `post_id` = '".$id."'";
 		$this->query($query);
 		return $id;
 	}

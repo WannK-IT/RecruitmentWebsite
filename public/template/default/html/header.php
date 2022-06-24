@@ -31,7 +31,7 @@ if (Authentication::checkLoginDefault()) {
         '<li class="nav-item me-1">
         <a class="nav-link" href="' . URL::addLink($this->arrParam['module'], 'account', 'login') . '">Đăng nhập</a>
     </li>
-    <li class="nav-item me-1 rounded" style="background-color: #2bb5cf">
+    <li class="nav-item me-1 rounded bg-info bg-gradient">
         <a class="nav-link text-white" href="' . URL::addLink('admin', 'post', 'index') . '">Nhà tuyển dụng</a>
     </li>';
 }

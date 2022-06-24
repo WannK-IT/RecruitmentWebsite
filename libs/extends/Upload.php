@@ -1,17 +1,20 @@
 <?php
 class Upload
 {
-    public function uploadFile($file, $folderUpload, $option = null)
+    public function uploadFile($file, $folderUpload, $option = 'img')
     {
-        if ($option == null) {
-            if (@$file['tmp_name'] != null) {
+        if (@$file['tmp_name'] != null) {
+            if ($option == 'img') {
                 $uploadDir = UPLOAD_PATH_ADMIN . 'img' . DS . $folderUpload . DS;
-                $exts = '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
-                $newFileName = pathinfo($file['name'], PATHINFO_FILENAME) . $this->randomString();
-                copy($file['tmp_name'], $uploadDir . $newFileName . $exts);
+            }elseif($option == 'thumbnail'){
+                $uploadDir = UPLOAD_PATH_ADMIN . 'thumbnail_news' . DS . $folderUpload . DS;
             }
-            return $newFileName . $exts;
+            $exts = '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            $newFileName = pathinfo($file['name'], PATHINFO_FILENAME) . $this->randomString();
+            copy($file['tmp_name'], $uploadDir . $newFileName . $exts);
         }
+        return $newFileName . $exts;
+        
     }
 
     public function uploadFileDefault($file, $folderUpload)

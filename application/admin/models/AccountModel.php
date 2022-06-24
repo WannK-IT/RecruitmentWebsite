@@ -51,8 +51,11 @@ class AccountModel extends Model
         $query = "SELECT `emp_id` FROM `{$this->table}` WHERE `emp_user` = '".$dataEmployer['emp_user']."' AND `emp_password` = '".$dataEmployer['emp_password']."'";
         $getID  = $this->singleRecord($query);
 
-        // create a folder storage images
+        // create a folder store images
         mkdir(UPLOAD_PATH_ADMIN . 'img' . DS . $getID['emp_id']);
+
+        // create a folder store thumbnail news
+        mkdir(UPLOAD_PATH_ADMIN . 'thumbnail_news' . DS . $getID['emp_id']);
     }
 
     public function checkExistAccount($arrParams)

@@ -80,11 +80,11 @@ input[name=city_job_search] {
 }
 
 .colormain{
-    color: #2bb5cf;
+    color: #0dcaf0;
 }
 
 .bg-main{
-    background-color: #2bb5cf;
+    background-color: #0dcaf0;
 }
 
 .clear-mb {
@@ -109,17 +109,17 @@ a {
 }
 
 .cs-box:hover {
-    background-color: #2bb5cf;
+    background-color: #0dcaf0;
     color: white;
 }
 
 .cs-list-job:hover {
     border-style: solid;
-    border-color: #2bb5cf;
+    border-color: #0dcaf0;
 }
 
 .cs-list-location:hover {
-    box-shadow: 0 .125rem .4rem rgba(43, 181, 207, .5) !important;
+    box-shadow: 0 .125rem .4rem rgba(13, 202, 240, .5) !important;
 }
 
 .border-list-company {
@@ -167,7 +167,7 @@ a {
 }
 
 /* input.form-control:hover {
-    border: 1px solid #2bb5cf;
+    border: 1px solid #0dcaf0;
 } */
 
 .btn-apply {
@@ -215,7 +215,7 @@ hr {
 }
 
 .similar-job:hover {
-    background-color: rgba(43, 181, 207, .05);
+    background-color: rgba(13, 202, 240, .05);
 }
 
 .img-res img {
@@ -356,12 +356,12 @@ a.company-job:hover{
 }
 
 .card-company-job:hover{
-    border: 1px solid #2bb5cf;
-    background-color: rgba(43, 181, 207, .035);
+    border: 1px solid #0dcaf0;
+    background-color: rgba(13, 202, 240, .035);
 }
 
 a.web-company:hover{
-    color: #2bb5cf;
+    color: #0dcaf0;
     text-decoration: underline;
 }
 
@@ -406,7 +406,15 @@ a.web-company:hover{
 }
 
 .fs-13{
-    font-size: 13px;
+    font-size: 13px !important;
+}
+.fs-12{
+    font-size: 12px !important;
+}
+
+.bg-blur-info{
+    background-color: rgba(13, 202, 240, .1);
+
 }
 
 /* REMOVE OUTLINE SELECT2 */

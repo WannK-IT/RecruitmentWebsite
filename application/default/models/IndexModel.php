@@ -13,6 +13,7 @@ class IndexModel extends Model
 		$query[] 	= "FROM `post` AS `p`, `employer` AS `e`, `company` AS `c`";
 		$query[] 	= "WHERE `e`.`emp_id` = `p`.`emp_id` AND `e`.`comp_id` = `c`.`comp_id`";
 		$query[] 	= "AND `p`.`post_isActive` = 'active'";
+		$query[] 	= "AND `p`.`post_expired` > CURRENT_DATE()";
 		$query[] 	= "ORDER BY RAND()";
 		$query[] 	= "LIMIT 7";
 

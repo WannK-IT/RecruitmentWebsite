@@ -67,7 +67,7 @@ $phone              = FormFrontEnd::showForm($row3, 2);
                         <?= $phone ?>
 
                         <div class="form-group mx-3">
-                            <input type="button" name="update_info_user" id="update_info_user" class="btn bg-purple mt-4" value="Cập nhật">
+                            <input type="button" name="update_info_user" id="update_info_user" class="btn bg-purple mt-4 bg-gradient" value="Cập nhật">
                         </div>
 
                     </form>

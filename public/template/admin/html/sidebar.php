@@ -14,7 +14,7 @@ $profileFind        = HelperBackEnd::createItemSide('Tìm ứng viên', 'fas fa-
 $infoEmployer       = HelperBackEnd::createItemSide('Tài khoản NTD', 'fas fa-user', 'admin', 'employer', 'account');
 
 // manage news
-$createNews         = HelperBackEnd::createItemSide('Tạo tin tức', 'far fa-newspaper', 'admin', 'news', 'formNews');
+$createNews         = HelperBackEnd::createItemSide('Tạo tin tức', 'far fa-newspaper', 'admin', 'news', 'formNews', ['taskNews' => 'add']);
 $listNews           = HelperBackEnd::createItemSide('Danh sách tin tức', 'fas fa-bars', 'admin', 'news', 'listNews');
 
 // ================== Group Sidebar ==================

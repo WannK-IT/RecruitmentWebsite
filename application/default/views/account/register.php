@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="token" value="564236985">
-                    <input name="registerUser" id="registerUser" class="btn btn-block login-btn" type="submit" value="Đăng ký">
+                    <input name="registerUser" id="registerUser" class="btn btn-block login-btn bg-gradient" type="submit" value="Đăng ký">
                 </form>
                 <a href="#!" class="forgot-password-link">Forgot password?</a>
                 <p class="login-wrapper-footer-text">Bạn đã có tài khoản ? <a href="<?= URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'login') ?>" class="text-reset">Đăng nhập</a></p>

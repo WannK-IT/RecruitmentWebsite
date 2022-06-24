@@ -9,7 +9,7 @@ if (!empty($this->listPost)) {
         $id                 = $post['post_id'];
         $position           = $post['post_position'];
         $created            = date('d/m/Y H:i:s', strtotime($post['post_createdDate']));
-        $expired            = (HelperFrontEnd::calculateDate($post['post_expired'], 'invert') != 1) ? date('d/m/Y', strtotime($post['post_expired'])) : '<span class="text-danger font-weight-bold">Hết hạn</span>';
+        $expired            = (HelperBackEnd::calculateDate($post['post_expired'], 'invert') != 1) ? '<p class="m-0">' . date('d/m/Y', strtotime($post['post_expired'])) . '</p><p class="m-0 fs-12">Hết hạn sau <span class="text-primary font-weight-bold">' . HelperBackEnd::calculateDate($post['post_expired'], 'days') . '</span> ngày</p>' : '<p class="text-danger m-0 font-weight-bold">Hết hạn</p>';
         $applyAmount        = $post['total'];
         $status             = $post['post_isActive'];
         $classStatus        = ($status == 'active') ? 'fa-check text-success' : 'fa-minus text-danger';
@@ -28,23 +28,25 @@ if (!empty($this->listPost)) {
                             <td class="text-center">' . $expired . '</td>
                             <td class="text-center">' . $applyAmount . '</td>
                             <td class="project-state">
-                                <a id="status-post-' . $id . '" href="javascript:ajaxStatus(\'' . $linkChangeStatus . '\')">
+                                <a id="status-post-' . $id . '" href="javascript:ajaxStatus(\'' . $linkChangeStatus . '\', \'post\')">
                                     <span class="fa-lg fas ' . $classStatus . '"></span>
                                 </a>
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn bg-gradient-primary btn-sm" href="' . $linkViewPost . '">
-                                    <i class="fas fa-eye"></i>
-                                    Xem
-                                </a>
-                                <a class="btn bg-gradient-info btn-sm" href="' . $linkEditPost . '">
-                                    <i class="fas fa-pencil-alt"></i>
-                                    Sửa
-                                </a>
-                                <a class="btn bg-gradient-danger btn-sm" href="javascript:ajaxDelete(\'' . $linkDeletePost . '\')">
-                                    <i class="fas fa-trash"></i>
-                                    Xóa
-                                </a>
+                                <div class="row">
+                                    <a class="btn bg-gradient-primary btn-sm mx-1" href="' . $linkViewPost . '">
+                                        <i class="fas fa-eye"></i>
+                                        Xem
+                                    </a>
+                                    <a class="btn bg-gradient-info btn-sm" href="' . $linkEditPost . '">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Sửa
+                                    </a>
+                                    <a class="btn bg-gradient-danger btn-sm mx-1" href="javascript:ajaxDelete(\'' . $linkDeletePost . '\', \'post\')">
+                                        <i class="fas fa-trash"></i>
+                                        Xóa
+                                    </a>
+                                </div>
                             </td>
                         </tr>';
         $index++;

@@ -27,7 +27,7 @@ $selectBoxTypeWork      = FormFrontEnd::selectBoxRow('type_work_search', $this->
                         <?= $selectBoxTypeWork ?>
                     </div>
                     <div class="col-md-1">
-                        <input class="form-control text-white" style="background-color: #2c95ff;" type="submit" name="search" value="Tìm">
+                        <input class="form-control text-white bg-primary bg-gradient" type="submit" name="search" value="Tìm">
                     </div>
                 </div>
             </form>

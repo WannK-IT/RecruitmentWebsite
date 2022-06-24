@@ -1,4 +1,4 @@
-<footer class="bg-dark text-center text-white">
+<footer class="bg-dark text-center text-white bg-gradient">
     <!-- Grid container -->
     <div class="container p-4">
         <!-- Section: Text -->

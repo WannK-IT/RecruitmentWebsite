@@ -16,7 +16,7 @@ $profile = (!empty($infoCV['position'])) ? '<span class="float-end"><a href="' .
 
 $CV = (!empty($infoCV['fileCV'])) ? '<span style="cursor:pointer" class="float-end btnViewCV">' . $newFilename . '</span>' : '<span class="float-end"><a class="text-danger fs-13 fst-italic" href="' . URL::addLink($this->arrParam['module'], 'user', 'uploadcv') . '">Upload CV ngay</a></span>';
 
-$btnChkApply = (@$this->checkApply == 'applied') ? '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')" disabled' . '>Đã ứng tuyển</button>' : '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')"' . '>Ứng tuyển</button>';
+$btnChkApply = (@$this->checkApply == 'applied') ? '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold bg-gradient" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')" disabled' . '>Đã ứng tuyển</button>' : '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold bg-gradient" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')"' . '>Ứng tuyển</button>';
 
 if (!empty($info)) {
     $hrefCompany = URL::addLink($this->arrParam['module'], 'company', 'viewcompany', ['idCompany' => $info['comp_id']]);
@@ -58,7 +58,7 @@ if (!empty($info)) {
                                     <p style="font-size: 14px">Hết hạn trong <span class="text-warning fw-bold">' . $expiredDate . '</span> ngày</p>
                                 </div>
                                 ' . $btnChkApply . '
-                                <input class="btn btn-share border-0 rounded w-50 fw-bold" id="follow_job" type="button" name="follow_job" value="Theo dõi">
+                                <input class="btn btn-share border-0 rounded w-50 fw-bold bg-gradient" id="follow_job" type="button" name="follow_job" value="Theo dõi">
                             </form>
                         </div>
                     </div>

@@ -77,50 +77,99 @@ $(document).ready(function () {
 //============================ END JQUERY READY ====================================
 
 // delete Ajax
-function ajaxDelete(link) {
-    Swal.fire({
-        title: 'Bạn có chắc chắn ?',
-        text: "Tin đăng tuyển dụng của bạn sẽ không thể khôi phục",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Đồng ý',
-        cancelButtonText: 'Hủy bỏ',
-        focusCancel: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.get(link, function (data) {
-                $('#post-' + data).hide("slow");
-            }, 'json');
-
-            Swal.fire(
-                'Thành công !',
-                'Tin đăng tuyển dụng của bạn đã được xóa',
-                'success'
-            )
-        }
-    })
+function ajaxDelete(link, option) {
+    if(option == 'post'){
+        Swal.fire({
+            title: 'Bạn có chắc chắn ?',
+            text: "Tin đăng tuyển dụng của bạn sẽ không thể khôi phục",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Đồng ý',
+            cancelButtonText: 'Hủy bỏ',
+            focusCancel: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get(link, function (data) {
+                    $('#post-' + data).hide("slow");
+                }, 'json');
+    
+                Swal.fire(
+                    'Thành công !',
+                    'Tin đăng tuyển dụng của bạn đã được xóa',
+                    'success'
+                ).then(function(){
+                    location.reload();
+                })
+            }
+        })
+    }else if(option == 'news'){
+        Swal.fire({
+            title: 'Bạn có chắc chắn ?',
+            text: "Bài viết của bạn sẽ không thể khôi phục",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Đồng ý',
+            cancelButtonText: 'Hủy bỏ',
+            focusCancel: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get(link, function (data) {
+                    $('#news-' + data).hide("slow");
+                }, 'json');
+    
+                Swal.fire(
+                    'Thành công !',
+                    'Bài viết của bạn đã được xóa',
+                    'success'
+                ).then(function(){
+                    location.reload();
+                })
+            }
+        })
+    }
 }
 
 
 // ajax Status
-function ajaxStatus(link) {
-    $.get(link, function (data) {
-        let anchorTag = 'a#status-post-' + data[0];
-        let classActive = 'fa-check text-success';
-        let classInactive = 'fa-minus text-danger';
-        if (data[1] == 'active') {
-            classInactive = 'fa-check text-success';
-            classActive = 'fa-minus text-danger';
-        }
-        $(anchorTag).attr('href', "javascript:ajaxStatus('" + data[2] + "')");
-        $(anchorTag + ' span').removeClass(classActive).addClass(classInactive);
-        Toast.fire({
-            icon: 'success',
-            title: 'Trạng thái đã được thay đổi !'
-        })
-    }, 'json')
+function ajaxStatus(link, option) {
+    console.log(option);
+    if(option == 'post'){
+        $.get(link, function (data) {
+            let anchorTag = 'a#status-post-' + data[0];
+            let classActive = 'fa-check text-success';
+            let classInactive = 'fa-minus text-danger';
+            if (data[1] == 'active') {
+                classInactive = 'fa-check text-success';
+                classActive = 'fa-minus text-danger';
+            }
+            $(anchorTag).attr('href', "javascript:ajaxStatus('" + data[2] + "', 'post')");
+            $(anchorTag + ' span').removeClass(classActive).addClass(classInactive);
+            Toast.fire({
+                icon: 'success',
+                title: 'Trạng thái đã được thay đổi !'
+            })
+        }, 'json')
+    }else{
+        $.get(link, function (data) {
+            let anchorTag = 'a#status-news-' + data[0];
+            let classActive = 'fa-check text-success';
+            let classInactive = 'fa-minus text-danger';
+            if (data[1] == 'active') {
+                classInactive = 'fa-check text-success';
+                classActive = 'fa-minus text-danger';
+            }
+            $(anchorTag).attr('href', "javascript:ajaxStatus('" + data[2] + "', 'news')");
+            $(anchorTag + ' span').removeClass(classActive).addClass(classInactive);
+            Toast.fire({
+                icon: 'success',
+                title: 'Trạng thái đã được thay đổi !'
+            })
+        }, 'json')
+    }
 }
 
 function loginForm(link, direct) {

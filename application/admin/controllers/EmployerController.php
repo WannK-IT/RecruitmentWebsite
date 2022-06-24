@@ -28,11 +28,12 @@ class EmployerController extends Controller
 		$this->_view->setTitle('Quản lý thông tin tài khoản');
 
 		// Xử lý phần logo nhà tuyển dụng
-		if(!empty($_FILES)) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
+		if(!empty($_FILES['comp_logo'])) $this->_arrParam['comp_logo'] = $_FILES['comp_logo'];
 		if(isset($this->_arrParam['comp_logo']) && $this->_arrParam['comp_logo']['error'] == 0 ){
 			$this->_model->changePicture($this->_arrParam);
 			$this->redirect('admin', 'employer', 'account');
 		}
+
 		$this->_view->employer = $this->_model->singleEmployer($this->_arrParam);
 		$this->_view->render('employer/account', true);
 	}
