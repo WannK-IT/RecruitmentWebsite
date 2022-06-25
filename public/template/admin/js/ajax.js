@@ -136,7 +136,6 @@ function ajaxDelete(link, option) {
 
 // ajax Status
 function ajaxStatus(link, option) {
-    console.log(option);
     if(option == 'post'){
         $.get(link, function (data) {
             let anchorTag = 'a#status-post-' + data[0];
@@ -232,6 +231,24 @@ function updateCompany(link) {
         })
     }
     
+}
+
+// save profile candidate
+function saveProfile(link){
+    $.get(link, function (data) {
+        let element         = 'a#status-profile-' + data[1];
+        
+        let classSaved      = 'fa-heart text-danger';
+        let classNotSave    = 'fa-heart text-secondary';
+        let messsage        = 'Lưu hồ sơ thành công !'
+        if(data[0] == 'saved'){
+            classSaved      = 'fa-heart text-secondary';
+            classNotSave    = 'fa-heart text-danger';
+            messsage        = 'Bỏ lưu hồ sơ thành công !';
+        }
+        $(element + ' i').removeClass(classNotSave).addClass(classSaved);
+        toastMsg('success', messsage);
+    }, 'json')
 }
 
 $('#form-emp-image').on('change', function () {

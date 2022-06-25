@@ -71,7 +71,7 @@ if (!empty($news)) {
                 <thead>
                     <tr>
                         <th style="width: 3%">#</th>
-                        <th style="width: 25%">Tiêu đề tin tức</th>
+                        <th style="width: 25%">Tiêu đề bài viết</th>
                         <th style="width: 20%" class="text-center">Thumbnail</th>
                         <th style="width: 15%" class="text-center">Ngày tạo / cập nhật</th>
                         <th style="width: 15%" class="text-center">Trạng thái</th>

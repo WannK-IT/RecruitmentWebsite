@@ -139,6 +139,15 @@
             toastr["success"]("Cập nhật tin tức thành công !")
           </script>';
     unset($_SESSION['updateNews']);
+  }elseif (@$_SESSION['unsaveProfile'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Bỏ lưu hồ sơ thành công !")
+          </script>';
+    unset($_SESSION['unsaveProfile']);
   }
   ?>
 

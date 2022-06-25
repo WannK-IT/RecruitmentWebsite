@@ -7,11 +7,15 @@ $selectBoxGender        = FormBackEnd::selectBoxAccount('gender_search', $this->
 $selectBoxExp           = FormBackEnd::selectBoxAccount('exp_search', $this->exp, @$this->arrParam['exp_search'], false);
 
 $info   = $this->candidates;
-$xhtml  = '';
+$saved = array_column($this->saved, 'cv_id');
+$xhtml  = $classSaved = '';
 if (!empty($info)) {
+
     foreach ($info as $candidate) {
-        $age    = HelperBackEnd::calculateDate($candidate['birthday']);
-        $href   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'profile', ['id' => $candidate['id']]);
+        $classSaved = (in_array($candidate['id'], $saved)) ? 'fa-heart text-danger' : 'fa-heart text-secondary';
+        $age        = HelperBackEnd::calculateDate($candidate['birthday']);
+        $href       = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'profile', ['id' => $candidate['id']]);
+        $hrefSave   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'saveProfile', ['id' => $candidate['id']]);
         $xhtml .= '<div class="card rounded-0 hover-card p-2 pl-4 mb-2 py-1">
             <div class="row">
                 <div class="col-md-8">
@@ -33,7 +37,7 @@ if (!empty($info)) {
                 </div>
                 <div class="col-md-4 pr-2">
                     <div class="col-12 text-right pt-1">
-                        <a href="" class="btn btn-sm"><i class="far fa-heart"></i></a>
+                        <a href="javascript:saveProfile(\'' . $hrefSave . '\')" id="status-profile-' . $candidate['id'] . '" class="btn btn-sm"><i class="fas ' . $classSaved . '"></i></a>
                         <a href="' . $href . '" class="btn btn-sm bg-blur-info">Xem</a>
                     </div>
                     <div class="col-12 text-right">

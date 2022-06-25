@@ -67,6 +67,11 @@ class CandidateModel extends Model
             $query[] = "WHERE `j`.`user_id` = `v`.`user_id` AND `v`.`user_id` = `u`.`user_id` AND `j`.`post_id` = `p`.`post_id`";
             $query[] = "AND `j`.`comp_id` = '" . $_SESSION['login']['idCompany'] . "'";
             $query[] = "ORDER BY FIELD(`j`.`action`, 'Chờ duyệt', 'Đã duyệt', 'Đã phỏng vấn', 'Trúng tuyển', 'Không trúng tuyển')";
+        } elseif ($option == 'actionSaved') {
+            $query[] = "SELECT `s`.*, `u`.`user_fullname`, `cv`.`id`, `cv`.`position`, `cv`.`salary`, `cv`.`exp`, `cv`.`workplace`, `cv`.`birthday`";
+            $query[] = "FROM `{$this->table}` AS `cv`, `profilesaved` AS `s`, `user` AS `u`";
+            $query[] = "WHERE `cv`.`user_id` = `u`.`user_id` AND `cv`.`id` = `s`.`cv_id`";
+            $query[] = "AND `s`.`emp_id` = '" . $_SESSION['login']['idUser'] . "'";
         }
 
         $query      = implode(" ", $query);
@@ -128,23 +133,75 @@ class CandidateModel extends Model
         $this->query($query);
     }
 
-    public function ajaxUpdateStatusApply($arrParams){
+    public function ajaxUpdateStatusApply($arrParams)
+    {
         $query[]    = "SELECT `apply_id`, `introduction`, `action`";
         $query[]    = "FROM `apply_job`";
-        $query[]    = "WHERE `apply_id` = '".$arrParams['idApply']."'";
-        
+        $query[]    = "WHERE `apply_id` = '" . $arrParams['idApply'] . "'";
+
         $query      = implode(" ", $query);
         $result     = $this->singleRecord($query);
         return $result;
     }
 
-    public function checkApplied($arrParams){
+    public function checkApplied($arrParams)
+    {
         $query[]    = "SELECT `apply_id`, `cv_id`, `comp_id`";
         $query[]    = "FROM `apply_job`";
-        $query[]    = "WHERE `cv_id` = '".$arrParams['id']."' AND `comp_id` = '".$_SESSION['login']['idCompany']."'";
+        $query[]    = "WHERE `cv_id` = '" . $arrParams['id'] . "' AND `comp_id` = '" . $_SESSION['login']['idCompany'] . "'";
 
         $query      = implode(" ", $query);
         $result     = $this->listRecord($query);
         return $result;
+    }
+
+    public function saveProfile($arrParams, $option = 'save')
+    {
+        if ($option == 'save') {
+            $idCV     = $arrParams['id'];
+
+            // Truy vấn tìm cv đã được lưu
+            $queryCheck[]   = "SELECT *";
+            $queryCheck[]   = "FROM `profilesaved`";
+            $queryCheck[]   = "WHERE `cv_id` = '" . $idCV . "' AND `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
+            $queryCheck     = implode(" ", $queryCheck);
+
+            // Kiểm tra cv nếu được lưu
+            $result = ($this->isExist($queryCheck) == true) ? 'saved' : 'not';
+            if ($result == 'saved') {
+                $query = "DELETE FROM `profilesaved` WHERE `cv_id` = '" . $idCV . "' AND `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
+                $this->query($query);
+                // add class inactive
+            } elseif ($result == 'not') {
+                $query = "INSERT INTO `profilesaved`(`cv_id`, `emp_id`, `time_save`) VALUES ('" . $idCV . "', '" . $_SESSION['login']['idUser'] . "', '" . date('Y-m-d') . "')";
+                $this->query($query);
+                // add class active
+            }
+            return [$result, $idCV];
+
+            // return [$id, $status, URL::addLink('admin', 'post', 'changeStatus', ['status' => $status, 'pid' => $id])];
+        } elseif ($option == 'list') {
+            // Truy vấn tìm cv đã được lưu
+            $query[]   = "SELECT `cv_id`";
+            $query[]   = "FROM `profilesaved`";
+            $query[]   = "WHERE `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
+            $query     = implode(" ", $query);
+            $result     = $this->listRecord($query);
+            return $result;
+        }
+    }
+
+    public function deleteSaveProfile($arrParams)
+    {
+        $query = "DELETE FROM `profilesaved` WHERE `cv_id` = '" . $arrParams['id'] . "' AND `emp_id` = '" . $_SESSION['login']['idUser'] . "'";
+        $this->query($query);
+        $_SESSION['unsaveProfile'] = true;
+    }
+
+    public function totalSavedProfile(){
+        $query = "SELECT COUNT(`cv_id`) AS 'total' FROM `profilesaved` WHERE `emp_id` = '".$_SESSION['login']['idUser']."' GROUP BY `emp_id`";
+        $result = $this->singleRecord($query);
+        return $result;
+
     }
 }

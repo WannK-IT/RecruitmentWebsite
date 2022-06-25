@@ -1,6 +1,7 @@
 <?php
 $cv = $btnContactMail = '';
 $info = $this->infoProfile;
+$saved = array_column($this->saved, 'cv_id');
 
 // RENAME file cv to original name
 @$ext = '.' . pathinfo($info['fileCV'], PATHINFO_EXTENSION);
@@ -36,13 +37,17 @@ if (!empty($this->checkApplied)) {
 $info['soft_skl']   = (empty(trim($info['soft_skl']))) ? 'Chưa cập nhật' : $info['soft_skl'];
 $info['degree']     = (empty(trim($info['degree']))) ? 'Chưa cập nhật' : $info['degree'];
 
+$hrefSave   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'saveProfile', ['id' => $info['id']]);
+
+$classSaved = (in_array($info['id'], $saved)) ? 'fa-heart text-danger' : 'fa-heart text-secondary';
+
 $xhtml = '<div class="card-body mx-5">
     <div class="row">
         <div class="col-md-6">
             <div class="row mb-4">
                 <img src="' . $avatar . '" alt="logo_employee" class="circular-portrait">
                 <div class="pl-3">
-                    <p class="m-0 font-weight-bold h5">' . $info['user_fullname'] . '<span class="pl-3"><i style="font-size: 17px; cursor: pointer" class="far fa-bookmark"></i></span></p>
+                    <p class="m-0 font-weight-bold h5">' . $info['user_fullname'] . '<a href="javascript:saveProfile(\'' . $hrefSave . '\')" style="font-size: 17px; cursor: pointer" class="pl-2" id="status-profile-' . $info['id'] . '"><i class="fas ' . $classSaved . '"></i></a></p>
                     <p class="text-muted m-0">' . $info['position'] . '</p>
     
                     <p class="m-0" style="font-size: 14px;"><i class="fas fa-birthday-cake text-info pr-2"></i>Ngày sinh: ' . date('d/m/Y', strtotime($info['birthday'])) . '</p>
@@ -246,9 +251,9 @@ $xhtml = '<div class="card-body mx-5">
                 <span class="sr-only">Loading...</span>
             </div>
             <div class="row justify-content-center">
-            <strong class="text-white">Đang gửi...</strong>
+                <strong class="text-white">Đang gửi...</strong>
+            </div>
         </div>
-        </div>
-        
+
     </div>
 </div>
