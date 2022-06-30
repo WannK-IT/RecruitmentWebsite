@@ -5,13 +5,15 @@ $selectBoxTypeWork      = FormFrontEnd::selectBoxRow('type_work_search', $this->
 
 $list = $this->listCareers;
 $xhtml = '';
+
 if (!empty($list)) {
     foreach ($list as $infoCareer) {
-        $href   = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $infoCareer['post_id']]);
+        $imgLogo = (!empty($infoCareer['comp_logo'])) ? UPLOAD_URL_ADMIN . 'img/' . $infoCareer['emp_id'] . '/' . $infoCareer['comp_logo'] : IMG_URL_ADMIN . 'thumbnail_default.png';
+        $href   = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $infoCareer['post_id'], 'idComp' => $infoCareer['comp_id']]);
         $xhtml .= '<div class="card card-company-job rounded-0 p-2 shadow-sm ps-3 mb-2">
             <div class="row">
                 <div class="col-md-2 d-flex justify-content-center my-auto">
-                    <img src="' . UPLOAD_URL_ADMIN . 'img/' . $infoCareer['emp_id'] . '/' . $infoCareer['comp_logo'] . '" class="img-fluid" style="max-height: 100px;">
+                    <img src="' . $imgLogo . '" class="img-fluid" style="max-height: 100px;">
                 </div>
                 <div class="col-md-9">
                     <a class="company-job" href="' . $href . '">
@@ -33,13 +35,7 @@ if (!empty($list)) {
                         </div>
                     </a>
                 </div>
-                <div class="col-md-1">
-                    <button class="border-0 bg-white float-end">
-                        <span>
-                            <h5><i class="bi bi-bookmark"></i></h5>
-                        </span>
-                    </button>
-                </div>
+                
             </div>
         </div>';
     }

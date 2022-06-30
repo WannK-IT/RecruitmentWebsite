@@ -22,6 +22,8 @@ class IndexController extends Controller
 			}
 			$this->_view->avatarLogo = $avatar['user_avatar'];
 			$this->_view->fullNameDefault = $this->_model->getFullName();
+
+			
 		}
 	}
 
@@ -33,6 +35,10 @@ class IndexController extends Controller
 		
 		$this->_view->type_work = ['Loại công việc', 'Toàn thời gian tạm thời', 'Toàn thời gian cố định', 'Bán thời gian tạm thời', 'Bán thời gian cố định', 'Theo thỏa thuận hợp đồng', 'Khác'];
 		$this->_view->jobs = $this->_model->listItems();
+		$this->_view->top_emp = $this->_model->listEmp();
+		$this->_view->top_news = $this->_model->listNews();
+		$this->_view->recruitPlace = $this->_model->recruitPlace();
+		$this->_view->hotCareer = $this->_model->hotCareer();
 		$this->_view->render('index/index', true);
 	}
 

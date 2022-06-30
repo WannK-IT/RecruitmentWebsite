@@ -2,7 +2,7 @@
     <div class="container pb-2" style="max-width: 1160px;">
         <div class="col-md-12 col-12">
             <div class="row d-flex justify-content-center">
-                <p class="py-5 h2 text-center text-secondary">Đa dạng ngành nghề</p>
+                <p class="py-5 h2 text-center text-secondary fw-bold">Đa dạng ngành nghề</p>
             </div>
 
             <div class="row mb-5 d-flex justify-content-center" style="background: radial-gradient(rgba(13, 110, 253, .06), white);">

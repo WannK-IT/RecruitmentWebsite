@@ -1,13 +1,14 @@
 <?php
 $jobs = $this->jobs;
-$listJobs = '';
+$listJobs = $place = $career = '';
 if (!empty($jobs)) {
     foreach ($jobs as $value) {
-        $hrefCareer   = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $value['post_id']]);
+        $hrefCareer   = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $value['post_id'], 'idComp' => $value['comp_id']]);
+        $imgLogo = (!empty($value['comp_logo'])) ? UPLOAD_URL_ADMIN . 'img/' . $value['emp_id'] . '/' . $value['comp_logo'] : IMG_URL_ADMIN . 'thumbnail_default.png';
         $listJobs .= '<div class="card cs-card border-1 shadow-sm mt-2 mb-3">
                         <div class="row g-0">
                             <div class="col-md-3 logo-box d-flex align-items-center">
-                                <a href="' . $hrefCareer . '"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $value['emp_id'] . '/' . $value['comp_logo'] . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="box_Job"></a>
+                                <a href="' . $hrefCareer . '"><img src="' . $imgLogo . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="box_Job"></a>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -37,13 +38,7 @@ if (!empty($jobs)) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-1 p-2">
-                                <button class="border-0 bg-white float-end">
-                                    <span>
-                                        <h5><i class="bi bi-bookmark"></i></h5>
-                                    </span>
-                                </button>
-                            </div>
+                            
                         </div>
                     </div>';
     }
@@ -68,7 +63,7 @@ if (!empty($jobs)) {
 
                 <!-- Button view all posts -->
                 <div class="d-flex justify-content-end">
-                    <a href="<?= URL::addLink($this->arrParam['module'], 'career', 'index')?>" class="view-all">
+                    <a href="<?= URL::addLink($this->arrParam['module'], 'career', 'index') ?>" class="view-all">
                         <span>Xem tất cả công việc&nbsp;<i style="font-size: 13px;" class="fa-solid fa-arrow-right"></i></span>
                     </a>
                 </div>
@@ -79,42 +74,24 @@ if (!empty($jobs)) {
                 <!-- Location Job -->
                 <div class="card mx-3 border-1 shadow-sm" style="border: 1px solid rgba(0,185,242,.5); background-color: #f7fdff">
                     <div class="single-sidebar">
-                        <h5 class="card-header pt-3 ps-3 fw-bold"><span class="pe-2"><i class="fa-solid fa-city"></i></span>Các Khu Vực Tuyển Dụng</h5>
+                        <h5 class="card-header pt-3 ps-3 fw-bold"><span class="pe-2"><i class="fa-solid fa-city"></i></span>Khu Vực Tuyển Dụng Hot</h5>
                         <ul class="list-group pt-1 pb-4 px-3">
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Hồ Chí Minh</span>
-                                    <span>50</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Hà Nội</span>
-                                    <span>70</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Đà Nẵng</span>
-                                    <span>48</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Bình Dương</span>
-                                    <span>80</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Hải Phòng</span>
-                                    <span>27</span>
-                                </a>
-                            </li>
+                            <?php
+                            if (!empty($this->recruitPlace)) {
+                                foreach ($this->recruitPlace as $item) {
+                                    $href = URL::addLink($this->arrParam['module'], 'career', 'index', ['city_search' => $item['post_address_work']]);
+                                    $place .= '<li class="list-group-item border-light shadow-sm my-2 cs-list-location">
+                                        <a class="d-flex justify-content-between " href="' . $href . '">
+                                            <span>' . $item['post_address_work'] . '</span>
+                                            <span>' . $item['total'] . '</span>
+                                        </a>
+                                    </li>';
+                                }
+                            } else {
+                                $place = '<p class="fw-bold text-center">Chưa có công việc đăng tuyển</p>';
+                            }
+                            ?>
+                            <?= $place ?>
                         </ul>
                     </div>
                 </div>
@@ -162,47 +139,22 @@ if (!empty($jobs)) {
                     <div class="single-sidebar">
                         <h5 class="card-header pt-3 ps-3 fw-bold"><span class="pe-2"><i class="fa-solid fa-building-user"></i></span>Các ngành nghề hot</h5>
                         <ul class="list-group pt-1 pb-4 px-3">
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Công Nghệ</span>
-                                    <span>150</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Marketing</span>
-                                    <span>50</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Kinh Doanh</span>
-                                    <span>78</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2 cs-list-location">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Kỹ Thuật</span>
-                                    <span>93</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Kế Toán</span>
-                                    <span>29</span>
-                                </a>
-                            </li>
-
-                            <li class="list-group-item border-light shadow-sm my-2">
-                                <a class="d-flex justify-content-between " href="">
-                                    <span>Kinh Tế</span>
-                                    <span>43</span>
-                                </a>
-                            </li>
+                            <?php
+                            if (!empty($this->hotCareer)) {
+                                foreach ($this->hotCareer as $h_career) {
+                                    $hrefHcareer = URL::addLink($this->arrParam['module'], 'career', 'index', ['career_search' => $h_career['post_career']]);
+                                    $career .= '<li class="list-group-item border-light shadow-sm my-2">
+                                        <a class="d-flex justify-content-between " href="'.$hrefHcareer.'">
+                                            <span>'.$h_career['post_career'].'</span>
+                                            <span>'.$h_career['career'].'</span>
+                                        </a>
+                                    </li>';
+                                }
+                            } else {
+                                $career = '<p class="fw-bold text-center">Chưa có công việc đăng tuyển</p>';
+                            }
+                            ?>
+                            <?= $career ?>
                         </ul>
                     </div>
                 </div>

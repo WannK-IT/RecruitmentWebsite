@@ -23,15 +23,19 @@ class NewsController extends Controller
 			$this->_view->avatarLogo = $avatar['user_avatar'];
 			$this->_view->fullNameDefault = $this->_model->getFullName();
 		}
+
+		$this->_view->relatedNews = $this->_model->listNews($this->_arrParam, 'relate');
 	}
 
 	public function indexAction()
 	{
+		$this->_view->news = $this->_model->listNews($this->_arrParam, 'list');
 		$this->_view->render('news/index', true);
 	}
 
 	public function postAction()
 	{
+		$this->_view->post = $this->_model->listNews($this->_arrParam,'post');
 		$this->_view->render('news/post', true);
 	}
 }

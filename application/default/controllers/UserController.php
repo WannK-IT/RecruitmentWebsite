@@ -117,13 +117,19 @@ class UserController extends Controller
 		$this->redirect('default', 'user', 'uploadcv');
 	}
 
-	public function jobAppliedAction(){
-		$this->_view->render('user/jobApplied', true);
-	}
-
 	public function jobSavedAction(){
+		$this->_view->jobSaved = $this->_model->listJobSaved();
 		$this->_view->render('user/jobSaved', true);
 	}
 
+	public function jobAppliedAction(){
+		$this->_view->jobApply = $this->_model->listJobApply();
+		$this->_view->render('user/jobApplied', true);
+	}
+
+	public function checkMsgAction(){
+		$result = $this->_model->checkMsg($this->_arrParam);
+		echo json_encode($result);
+	}
 
 }

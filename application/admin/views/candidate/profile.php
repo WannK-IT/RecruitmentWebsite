@@ -184,7 +184,7 @@ $xhtml = '<div class="card-body mx-5">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <iframe src="<?= UPLOAD_URL_DEFAULT . 'cv/' . $info['user_id'] . DS . $info['fileCV'] ?> " height="700px"></iframe>
+            <iframe src="<?= UPLOAD_URL_DEFAULT . 'cv/' . $info['user_id'] . DS . $info['fileCV'] ?> " height="650px"></iframe>
         </div>
     </div>
 </div>

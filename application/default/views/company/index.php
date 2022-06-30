@@ -3,11 +3,18 @@ $list = $this->listCompanies;
 $xhtml = '';
 if (!empty($list)) {
     foreach ($list as $infoCompany) {
+
+        if(!empty($infoCompany['comp_logo'])){
+            $imgCompany = UPLOAD_URL_ADMIN . 'img/' . $infoCompany['emp_id'] . '/' . $infoCompany['comp_logo'];
+        }else{
+            $imgCompany = IMG_URL_ADMIN . 'thumbnail_default.png';
+        }
+
         $href   = URL::addLink($this->arrParam['module'], 'company', 'viewcompany', ['idCompany' => $infoCompany['comp_id']]);
         $xhtml .= '<div class="card card-company-job rounded-0 p-2 shadow-sm ps-3 mb-2">
             <div class="row">
                 <div class="col-md-2 d-flex justify-content-center my-auto">
-                    <img src="' . UPLOAD_URL_ADMIN . 'img/' . $infoCompany['emp_id'] . '/' . $infoCompany['comp_logo'] . '" class="img-fluid" style="max-height: 100px;">
+                    <img src="' . $imgCompany . '" class="img-fluid" style="max-height: 100px;">
                 </div>
                 <div class="col-md-9">
                     <a class="company-job" href="' . $href . '">

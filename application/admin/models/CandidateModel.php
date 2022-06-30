@@ -127,7 +127,7 @@ class CandidateModel extends Model
 
     public function updateStatusApply($arrParams)
     {
-        $query[]    = "UPDATE `apply_job` SET `action` = '" . $arrParams['statusApply'] . "', `introduction` = '" . $arrParams['introduction'] . "'";
+        $query[]    = "UPDATE `apply_job` SET `action` = '" . $arrParams['statusApply'] . "', `introduction` = '" . $arrParams['introduction'] . "', `date_approval` = '" . date('Y-m-d H:i:s') . "'";
         $query[]    = "WHERE `apply_id` = '" . $arrParams['apply_id'] . "'";
         $query      = implode(" ", $query);
         $this->query($query);
@@ -198,10 +198,10 @@ class CandidateModel extends Model
         $_SESSION['unsaveProfile'] = true;
     }
 
-    public function totalSavedProfile(){
-        $query = "SELECT COUNT(`cv_id`) AS 'total' FROM `profilesaved` WHERE `emp_id` = '".$_SESSION['login']['idUser']."' GROUP BY `emp_id`";
+    public function totalSavedProfile()
+    {
+        $query = "SELECT COUNT(`cv_id`) AS 'total' FROM `profilesaved` WHERE `emp_id` = '" . $_SESSION['login']['idUser'] . "' GROUP BY `emp_id`";
         $result = $this->singleRecord($query);
         return $result;
-
     }
 }

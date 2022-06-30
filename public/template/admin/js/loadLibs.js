@@ -110,19 +110,19 @@ $(document).ready(function () {
 
             post_work_description: {
                 required: "Vui lòng nhập mô tả công việc",
-                minlength: "Vui lòng nhập tối thiểu 50 ký tự"
+                minlength: "Vui lòng nhập tối thiểu 20 ký tự"
             },
             post_work_required: {
                 required: "Vui lòng nhập yêu cầu công việc",
-                minlength: "Vui lòng nhập tối thiểu 50 ký tự"
+                minlength: "Vui lòng nhập tối thiểu 20 ký tự"
             },
             post_work_benefit: {
                 required: "Vui lòng nhập quyền lợi của ứng viên",
-                minlength: "Vui lòng nhập tối thiểu 50 ký tự"
+                minlength: "Vui lòng nhập tối thiểu 20 ký tự"
             },
             post_work_apply: {
                 required: "Vui lòng nhập cách thức ứng tuyển",
-                minlength: "Vui lòng nhập tối thiểu 50 ký tự"
+                minlength: "Vui lòng nhập tối thiểu 20 ký tự"
             },
 
 

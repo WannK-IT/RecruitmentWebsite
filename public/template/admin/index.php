@@ -148,6 +148,15 @@
             toastr["success"]("Bỏ lưu hồ sơ thành công !")
           </script>';
     unset($_SESSION['unsaveProfile']);
+  }elseif (@$_SESSION['registerSuccess'] == true) {
+    echo '<script type="text/javascript">
+            toastr.options = {
+              "timeOut": "2500",
+              "positionClass": "toast-top-center"
+            };
+            toastr["success"]("Đăng ký tài khoản thành công !")
+          </script>';
+    unset($_SESSION['registerSuccess']);
   }
   ?>
 

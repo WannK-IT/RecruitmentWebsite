@@ -44,6 +44,7 @@ class CareerController extends Controller
 			$this->_view->infoCandidate 	= $this->_model->infoCandidate();
 			$this->_view->infoCV			= $this->_model->infoCV();
 			$this->_view->checkApply		= $this->_model->checkApply($this->_arrParam);
+			$this->_view->checkFollow		= $this->_model->checkFollow($this->_arrParam);
 			$check = $this->_view->checkApply;
 
 			if (isset($this->_arrParam['applyJob'])) {
@@ -92,4 +93,10 @@ class CareerController extends Controller
 		$this->_view->infoApply = $this->_model->infoApply($this->_arrParam);
 		$this->_view->render('career/success_apply', true);
 	}
+
+	public function followJobAction(){
+		$result = $this->_model->followJob($this->_arrParam);
+		echo json_encode($result);
+	}
+
 }

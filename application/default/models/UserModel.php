@@ -85,7 +85,7 @@ class UserModel extends Model
     {
         $query[] = "SELECT `user_avatar`";
         $query[] = "FROM `{$this->table}`";
-        $query[] = "WHERE `user_id` = '".$_SESSION['loginDefault']['idUser']."'";
+        $query[] = "WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
         $query        = implode(" ", $query);
         $result        = $this->singleRecord($query);
 
@@ -96,7 +96,7 @@ class UserModel extends Model
     {
         $query[]    = "SELECT `id`,`fileCV`";
         $query[]    = "FROM `cv`";
-        $query[]    = "WHERE `user_id` = '".$_SESSION['loginDefault']['idUser']."'";
+        $query[]    = "WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
         $query      = implode(" ", $query);
         $result     = $this->singleRecord($query);
 
@@ -133,7 +133,7 @@ class UserModel extends Model
     {
         $query[]    = "SELECT `user_fullname`";
         $query[]    = "FROM `user`";
-        $query[]    = "WHERE `user_id` = '".$_SESSION['loginDefault']['idUser']."'";
+        $query[]    = "WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
         $query      = implode(" ", $query);
         $result     = $this->singleRecord($query);
 
@@ -154,7 +154,8 @@ class UserModel extends Model
         $this->query($query);
     }
 
-    public function deleteCV(){
+    public function deleteCV()
+    {
         $oldCV = self::getFileCV();
         $linkDeleteOldCV = UPLOAD_PATH_DEFAULT . 'cv' . DS . $_SESSION['loginDefault']['idUser'];
         require_once LIBRARY_EXT_PATH . 'Upload.php';
@@ -163,5 +164,34 @@ class UserModel extends Model
 
         $query = "UPDATE `cv` SET `fileCV` = NULL WHERE `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
         $this->query($query);
+    }
+
+    public function listJobSaved()
+    {
+        $query[] = "SELECT `p`.`post_id`, `c`.`comp_id`, `p`.`post_position`, `c`.`comp_name`, `p`.`post_address_work`, `p`.`post_expired`, `j`.`saved_time`";
+        $query[] = "FROM `jobsaved` AS `j`, `post` AS `p`, `company` AS `c`";
+        $query[] = "WHERE `j`.`post_id` = `p`.`post_id` AND `j`.`comp_id` = `c`.`comp_id`";
+        $query[] = "AND `user_id` = '" . $_SESSION['loginDefault']['idUser'] . "'";
+        $query[] = "AND `p`.`post_expired` > CURRENT_DATE()";
+        $query = implode(' ', $query);
+        $result = $this->listRecord($query);
+        return $result;
+    }
+
+    public function listJobApply(){
+        $query[] = "SELECT `a`.*, `p`.`post_position`, `c`.`comp_name`, `p`.`post_address_work`, `a`.`action`, `a`.`date_apply`, `a`.`date_approval`";
+        $query[] = "FROM `apply_job` AS `a`, `post` AS `p`, `company` AS `c`, `user` AS `u`";
+        $query[] = "WHERE `a`.`post_id` = `p`.`post_id` AND `a`.`comp_id` = `c`.`comp_id` AND `a`.`user_id` = `u`.`user_id`";
+        $query[] = "AND `a`.`user_id` = '".$_SESSION['loginDefault']['idUser']."'";
+
+        $query = implode(' ', $query);
+        $result = $this->listRecord($query);
+        return $result;
+    }
+
+    public function checkMsg($arrParams){
+        $query = "SELECT `apply_id`, `introduction` FROM `apply_job` WHERE `apply_id` = '".$arrParams['id']."'";
+        $result = $this->singleRecord($query);
+        return $result;
     }
 }

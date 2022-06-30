@@ -34,7 +34,6 @@ class IndexModel extends Model
 		return $result;
 	}
 
-
 	public function getFullName(){
         $query[]    = "SELECT `user_fullname`";
         $query[]    = "FROM `user`";
@@ -44,4 +43,24 @@ class IndexModel extends Model
 
         return $result;
     }
+
+	public function listEmp(){
+		$query = "SELECT `c`.`comp_id`, `c`.`comp_name`, `c`.`comp_logo`, `e`.`emp_id` FROM `company` AS `c`, `employer` AS `e` WHERE `c`.`comp_id` = `e`.`comp_id` ORDER BY RAND() LIMIT 20";
+		return $this->listRecord($query);
+	}
+
+	public function listNews(){
+		$query = "SELECT `n`.`news_id`, `n`.`news_title`, `n`.`news_description`, `n`.`news_thumbnail`, `e`.`emp_id` FROM `news` AS `n`, `employer` AS `e` WHERE `n`.`emp_id` = `e`.`emp_id` AND `n`.`news_status` = 'active' ORDER BY RAND() LIMIT 4";
+		return $this->listRecord($query);
+	}
+
+	public function recruitPlace(){
+		$query = "SELECT `post_address_work`, COUNT(`post_address_work`) AS 'total' FROM `post` WHERE `post_isActive` = 'active' GROUP BY `post_address_work` ORDER BY 'total' DESC LIMIT 5";
+		return $this->listRecord($query);
+	}
+	
+	public function hotCareer(){
+		$query = "SELECT COUNT(`post_career`) AS 'career', `post_career`  FROM `post` WHERE `post_isActive` = 'active' GROUP BY `post_career` ORDER BY 'career' DESC LIMIT 6";
+		return $this->listRecord($query);
+	}
 }

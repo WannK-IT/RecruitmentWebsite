@@ -112,6 +112,16 @@ $('#change_password').click(function () {
     }
 })
 
+function ajaxCheckMsg(link){
+    $.get(link, function (data) {
+        $('p#textMsg').html(data['introduction']);
+      }, 'json')
+    
+      $('#modalCheckMsg').modal('show');
+}
+
+
+
 function toastMsg(icon, message) {
     Toast.fire({
         icon: icon,

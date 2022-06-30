@@ -92,10 +92,10 @@ if (!empty($item)) {
                 <p class="text-center font-weight-bold my-4 h5">Cập nhật trạng thái hồ sơ</p>
                 <div class="row">
                     <div class="col-md-4 pl-4">
-                        <div class="form-check">
-                            <input class="form-check-input" data-name="Chờ duyệt" type="radio" name="statusApply" id="statusApply1" value="Chờ duyệt">
+                        <!-- <div class="form-check">
+                            <input class="form-check-input" data-name="Chờ duyệt" type="radio" name="statusApply" id="statusApply1" value="Chờ duyệt" disabled>
                             <label class="form-check-label font-weight-bold" for="statusApply1">Chờ duyệt</label>
-                        </div>
+                        </div> -->
                         <div class="form-check">
                             <input class="form-check-input" data-name="Đã duyệt" type="radio" name="statusApply" id="statusApply2" value="Đã duyệt">
                             <label class="form-check-label font-weight-bold" for="statusApply2">Đã duyệt</label>

@@ -8,7 +8,7 @@ $selectBoxTypeWork      = FormFrontEnd::selectBoxRow('type_work_search', $this->
     <div class="shadow mt-5 p-5 text-dark text-center bg-hero-banner">
         <div id="search-form" style="width: 90%">
             <h1 class="pb-2 custom-title fw-bold">Cơ hội mới! Tương lai mới!</h1>
-            <h6 class="custom-title">Tìm việc làm và cơ hội nghề nghiệp của bạn ngay bây giờ !</h6>
+            <h6 class="custom-title fw-bold">Tìm việc làm và cơ hội nghề nghiệp của bạn ngay bây giờ !</h6>
             <form action="<?= URL::addLink('default', 'career', 'index')?>" method="GET" class="row p-3" id="formSearchJob">
                 <input type="hidden" name="module" value="default">
                 <input type="hidden" name="controller" value="career">

@@ -8,9 +8,6 @@ if($this->arrParam['taskNews'] == 'edit'){
     }else{
         $imgThumb = '<div class="mt-2 mb-4 font-weight-bold">Chưa có ảnh thumbnail</div>';
     }
-    echo '<pre style="color: blue;">';
-    print_r($data);
-    echo '</pre>';
 }
 
 $titleNews      = FormBackEnd::createInputField('Tiêu đề', 'text', 'news_title', 'news_title', @$data['news_title'], 'Nhập tiêu đề bài viết', true);

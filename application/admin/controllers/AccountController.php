@@ -33,6 +33,7 @@ class AccountController extends Controller
         $this->_view->setTitle('Đăng ký');
         if (@$this->_arrParam['token'] > 0) {
             $this->_model->register($this->_arrParam);
+            $_SESSION['registerSuccess'] = true;
             $this->redirect('admin', 'account', 'login');
         }
         $this->_view->render('account/register', true);

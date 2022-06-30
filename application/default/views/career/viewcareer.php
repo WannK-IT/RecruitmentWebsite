@@ -14,17 +14,30 @@ $checkLogin = ((Authentication::checkLoginDefault()) == false) ? 'notLogged' : '
 // Kiểm tra user cập nhật CV
 $profile = (!empty($infoCV['position'])) ? '<span class="float-end"><a href="' . URL::addLink($this->arrParam['module'], 'user', 'previewcv') . '">' . $infoCV['position'] . '</a></span>' : '<span class="float-end"><a class="text-danger fs-13 fst-italic" href="' . URL::addLink($this->arrParam['module'], 'user', 'profile') . '">Cập nhật hồ sơ ngay</a></span>';
 
+// check profile CV
 $CV = (!empty($infoCV['fileCV'])) ? '<span style="cursor:pointer" class="float-end btnViewCV">' . $newFilename . '</span>' : '<span class="float-end"><a class="text-danger fs-13 fst-italic" href="' . URL::addLink($this->arrParam['module'], 'user', 'uploadcv') . '">Upload CV ngay</a></span>';
 
-$btnChkApply = (@$this->checkApply == 'applied') ? '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold bg-gradient" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')" disabled' . '>Đã ứng tuyển</button>' : '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold bg-gradient" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')"' . '>Ứng tuyển</button>';
+// button apply job
+$btnChkApply = (@$this->checkApply == 'applied') ? '<p style="opacity: 0.65; cursor: default" class="btn btn-apply border-0 rounded w-50 my-2 fw-bold bg-gradient"' . '>Đã ứng tuyển</p>' : '<button class="btn btn-apply border-0 rounded w-50 my-2 fw-bold bg-gradient" id="apply_job" type="button" onClick="chkLogin(\'' . $checkLogin . '\')"' . '>Ứng tuyển</button>';
+
+// button follow & unfollow job
+if (@$this->checkFollow == 'saved') {
+    $txtFollow = '<i class="fa-solid fa-check pe-1"></i>Hủy theo dõi';
+} else {
+    $txtFollow = 'Theo dõi';
+}
+
+$btnChkFollow = '<a id="btn_follow_job" href="javascript:followJob(\'' . URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'followJob', ['idPost' => $info['post_id'], 'idComp' => $info['comp_id']]) . '\', \'' . $checkLogin . '\')" class="btn btn-share border-0 rounded w-50 fw-bold bg-gradient">' . $txtFollow . '</a>';
+
 
 if (!empty($info)) {
     $hrefCompany = URL::addLink($this->arrParam['module'], 'company', 'viewcompany', ['idCompany' => $info['comp_id']]);
     $expiredDate = HelperFrontEnd::calculateDate($info['post_expired'], 'days');
+    $imgLogo = (!empty($info['comp_logo'])) ? UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] : IMG_URL_ADMIN . 'thumbnail_default.png';
     $infoJob = '<div class="card border-0">
             <div class="row g-0 my-2">
                 <div class="col-md-3 logo-box d-flex align-items-center">
-                    <a href="' . $hrefCompany . '" class="d-flex justify-content-center"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="logo_company"></a>
+                    <a href="' . $hrefCompany . '" class="d-flex justify-content-center"><img src="' . $imgLogo . '" class="img-thumbnail border-0 rounded" style="max-height: 150px" alt="logo_company"></a>
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
@@ -53,13 +66,11 @@ if (!empty($info)) {
                 <div class="col-md-3 pe-5">
                     <div class="action-job mt-4 text-center">
                         <div class="button-apply py-2">
-                            <form action="" method="post">
                                 <div class="social mb-2 text-center">
                                     <p style="font-size: 14px">Hết hạn trong <span class="text-warning fw-bold">' . $expiredDate . '</span> ngày</p>
                                 </div>
                                 ' . $btnChkApply . '
-                                <input class="btn btn-share border-0 rounded w-50 fw-bold bg-gradient" id="follow_job" type="button" name="follow_job" value="Theo dõi">
-                            </form>
+                                ' . $btnChkFollow . '
                         </div>
                     </div>
                 </div>
@@ -100,7 +111,7 @@ if (!empty($info)) {
             <div class="card border-0 mb-2 p-3">
                 <div class="fs-5 fw-bold ps-3 pb-3">Địa Chỉ Công Ty</div>
                 <div>
-                    <iframe src="https://maps.google.com/maps?q=' . str_replace(' ', '+', $info['comp_address']) . '&output=embed" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://maps.google.com/maps?q=' . urlencode($info['comp_address']) . '&output=embed" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -111,7 +122,7 @@ if (!empty($info)) {
         <div class="card border-0 mb-2 p-3">
             <div>
                 <div class="d-flex justify-content-center">
-                    <a href="' . $hrefCompany . '"><img src="' . UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] . '" class="img-thumbnail border-0 rounded shadow" style="max-height: 200px" alt="logo_company"></a>
+                    <a href="' . $hrefCompany . '"><img src="' . $imgLogo . '" class="img-thumbnail border-0 rounded shadow" style="max-height: 200px" alt="logo_company"></a>
                 </div>
                 <div>
                     <div class="mt-3 fw-bold text-center" style="font-size: 17px;">' . $info['comp_name'] . '</div>
@@ -206,7 +217,7 @@ if (!empty($info)) {
 
     if (!empty($info['relatedJob'])) {
         foreach ($info['relatedJob'] as $value) {
-            $hrefJob   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewcareer', ['idPost' => $value['post_id']]);
+            $hrefJob   = URL::addLink($this->arrParam['module'], $this->arrParam['controller'], 'viewcareer', ['idPost' => $value['post_id'], 'idComp' => $value['comp_id']]);
             $sideInfo .= '<div class="similar-job p-2">
                         <a href="' . $hrefJob . '">
                             <div class="row g-0">

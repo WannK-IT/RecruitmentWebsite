@@ -15,7 +15,7 @@ $info = $this->infoApply;
                         <p class="mt-4 fw-bold">Nhà tuyển dụng sẽ liên hệ với bạn qua email hoặc số điện thoại nếu hồ sơ của bạn phù hợp.</p>
                         <p class="fw-bold">Hãy thường xuyên kiểm tra email và điện thoại của bạn nhé !</p>
 
-                        <a href="<?= URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $this->arrParam['idPost']]) ?>" class="btn bg-purple text-white mt-5" style="width: 300px;">Xác nhận</a>
+                        <a href="<?= URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $this->arrParam['idPost'], 'idComp' => $this->arrParam['idComp']]) ?>" class="btn bg-purple text-white mt-5" style="width: 300px;">Xác nhận</a>
                     </div>
                 </div>
             </div>

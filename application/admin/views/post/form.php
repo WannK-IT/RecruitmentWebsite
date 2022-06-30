@@ -53,16 +53,16 @@ $testWork       = FormBackEnd::createInputField('Thời hạn thử việc', 'te
 
 // ---------------- Text Area ----------------
 // Mô tả 
-$descriptionWork = FormBackEnd::createTextArea('Mô tả công việc', 'Thông tin cho vị trí công việc yêu cầu, trách nhiệm mà ứng viên có thể đảm nhận khi làm việc ở công ty', 'post_work_description', 'post_work_description', 50, @$data['post_work_description'], true);
+$descriptionWork = FormBackEnd::createTextArea('Mô tả công việc', 'Thông tin cho vị trí công việc yêu cầu, trách nhiệm mà ứng viên có thể đảm nhận khi làm việc ở công ty', 'post_work_description', 'post_work_description', 20, @$data['post_work_description'], true);
 
 // Yêu cầu
-$requiredWork   = FormBackEnd::createTextArea('Yêu cầu công việc', 'Kỹ năng chuyên môn hoặc kỹ năng mềm cần thiết với công việc mà ứng viên cần quan tâm', 'post_work_required', 'post_work_required', 50, @$data['post_work_required'], true);
+$requiredWork   = FormBackEnd::createTextArea('Yêu cầu công việc', 'Kỹ năng chuyên môn hoặc kỹ năng mềm cần thiết với công việc mà ứng viên cần quan tâm', 'post_work_required', 'post_work_required', 20, @$data['post_work_required'], true);
 
 // Quyền lợi
-$benefitWork    = FormBackEnd::createTextArea('Quyền lợi', 'Những quyền lợi, lợi ích với công việc cho ứng viên với vị trí đăng tuyển', 'post_work_benefit', 'post_work_benefit', 50, @$data['post_work_benefit'], true);
+$benefitWork    = FormBackEnd::createTextArea('Quyền lợi', 'Những quyền lợi, lợi ích với công việc cho ứng viên với vị trí đăng tuyển', 'post_work_benefit', 'post_work_benefit', 20, @$data['post_work_benefit'], true);
 
 // Cách thức ứng tuyển
-$applyWork      = FormBackEnd::createTextArea('Cách thức ứng tuyển', '', 'post_work_apply', 'post_work_apply', 50, @$data['post_work_apply'], true);
+$applyWork      = FormBackEnd::createTextArea('Cách thức ứng tuyển', '', 'post_work_apply', 'post_work_apply', 20, @$data['post_work_apply'], true);
 
 
 // ---------------- Contact ----------------

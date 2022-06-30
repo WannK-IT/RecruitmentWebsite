@@ -1,10 +1,16 @@
 <?php
 $infoCompany = $posts = '';
 $info = $this->infoCompany;
+
 if (!empty($info)) {
-    $infoCompany = '<div class="position-relative" style="margin-bottom: -70px;">
+    if(!empty($info['comp_logo'])){
+        $imgCompany = UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'];
+    }else{
+        $imgCompany = IMG_URL_ADMIN . 'thumbnail_default.png';
+    }
+    $infoCompany = '<div class="position-relative">
             <div class="cs-translate">
-                <img src="' . UPLOAD_URL_ADMIN . 'img/' . $info['emp_id'] . '/' . $info['comp_logo'] . '" class="img-fluid h-120 cs-rounded shadow border border-3 border-light" alt="...">
+                <img src="' . $imgCompany . '" class="img-fluid w-120 h-120 cs-rounded shadow border border-3 border-light" alt="...">
             </div>
 
             <div class="cs-translate-2">
@@ -13,6 +19,7 @@ if (!empty($info)) {
 
             </div>
 
+            <!-- 
             <div class="cs-translate-3">
                 <div class="btn-company pb-2">
                     <button class="btn btn-apply fw-bold bg-gradient"><i class="fa-solid fa-eye pe-1"></i>&nbsp;Theo dõi</button>
@@ -21,12 +28,12 @@ if (!empty($info)) {
                 <div class="btn-company">
                     <button class="btn btn-share fw-bold bg-gradient"><i class="fa-solid fa-link pe-1"></i>&nbsp;Chia sẻ</button>
                 </div>
-            </div>
+            </div> -->
         </div>';
 
     if (!empty($info['listPosts'])) {
         foreach ($info['listPosts'] as $value) {
-            $hrefJob = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $value['post_id']]);
+            $hrefJob = URL::addLink($this->arrParam['module'], 'career', 'viewcareer', ['idPost' => $value['post_id'], 'idComp' => $value['comp_id']]);
             $posts .= '<div class="card card-company-job rounded-0 p-2 shadow-sm my-2 ps-3">
                 <div class="row">
                     <div class="col-md-11">
@@ -48,16 +55,11 @@ if (!empty($info)) {
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-1">
-                        <button class="border-0 bg-white float-end">
-                            <span>
-                                <h5><i class="bi bi-bookmark"></i></h5>
-                            </span>
-                        </button>
-                    </div>
                 </div>
             </div>';
         }
+    }else{
+        $posts = '<p class="text-center fw-bold">Chưa có tin đăng tuyển !</p>';
     }
 
     $address = '<div class="pt-3 mb-4">
@@ -75,9 +77,9 @@ if (!empty($info)) {
                     <div class="fs-6 py-1"><i class="fa-solid fa-envelope"></i><span class="ps-1">' . $info['comp_email'] . '</span></div>
 
                     <div class="fs-6 py-1"><i class="fa-solid fa-map-location-dot fa-sm"></i><span class="ps-1"></span>' . $info['comp_address'] . '</div>
-
+                    
                     <div class="py-1">
-                        <iframe src="https://maps.google.com/maps?q=' . str_replace(' ', '+', $info['comp_address']) . '&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://maps.google.com/maps?q=' . urlencode($info['comp_address']) . '&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>';
 }
@@ -105,7 +107,7 @@ if (!empty($info)) {
 <section>
     <div class="container">
         <div class="mx-5">
-            <h3 class="fw-bold mb-3">Vị trí đang tuyển</h3>
+            <h3 class="fw-bold h4 mb-3">Vị trí đang tuyển</h3>
             <div class="row">
                 <div class="col-md-8 mb-5">
                     <?= $posts ?>

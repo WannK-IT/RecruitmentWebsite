@@ -48,6 +48,21 @@ class PostModel extends Model
 		return $result;
 	}
 
+	public function countApplyProfile(){
+		$query = "SELECT COUNT(`apply_id`) AS 'totalProfileApply' FROM `apply_job` WHERE `comp_id` = '".$_SESSION['login']['idCompany']."' GROUP BY 'totalProfileApply'";
+		return $this->singleRecord($query);
+	}
+
+	public function countSaveProfile(){
+		$query = "SELECT COUNT(`cv_id`) AS 'totalProfileSave' FROM `profilesaved` WHERE `emp_id` = '".$_SESSION['login']['idUser']."' GROUP BY 'totalProfileSave'";
+		return $this->singleRecord($query);
+	} 
+
+	public function countNews(){
+		$query = "SELECT COUNT(`news_id`) AS 'totalNews' FROM `news` WHERE `emp_id` = '".$_SESSION['login']['idUser']."' GROUP BY 'totalNews'";
+		return $this->singleRecord($query);
+	}
+
 	public function changeStatus($params)
 	{
 		$id 	= $params['pid'];

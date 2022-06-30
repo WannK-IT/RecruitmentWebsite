@@ -28,6 +28,9 @@ class PostController extends Controller
 	{
 		$this->_view->setTitle('Quản lý đăng tuyển');
 		$this->_view->listPost = $this->_model->listPosts();
+		$this->_view->countApplyProfile = $this->_model->countApplyProfile();
+		$this->_view->countSaveProfile = $this->_model->countSaveProfile();
+		$this->_view->countNews = $this->_model->countNews();
 		$this->_view->render('post/index', true);
 	}
 
@@ -65,6 +68,7 @@ class PostController extends Controller
 		}
 		$this->_view->render('post/form', true);
 	}
+
 
 	public function previewPostAction(){
 		$this->_view->setTitle('Quản lý đăng tuyển');

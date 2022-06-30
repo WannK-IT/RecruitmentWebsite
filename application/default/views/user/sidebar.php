@@ -22,7 +22,7 @@ $arrSide = [
         'label'         => HelperFrontEnd::labelSideBar('Việc làm của tôi', 'job-collapse'),
         'idCollapse'    => 'job-collapse',
         'link'          => HelperFrontEnd::linkSideBar([
-            'Việc làm đã lưu' => 'index.php?module=default&controller=user&action=jobSaved',
+            'Việc làm đã theo dõi' => 'index.php?module=default&controller=user&action=jobSaved',
             'Việc làm đã ứng tuyển' => 'index.php?module=default&controller=user&action=jobApplied'
         ])
     ],

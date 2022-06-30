@@ -49,8 +49,8 @@ class CompanyModel extends Model
 	public function infoItemCompany($arrParams){
 		// Info company
 		$query[] 	= "SELECT `c`.*, `e`.`emp_id`";
-		$query[] 	= "FROM `post` AS `p`, `company` AS `c`, `employer` AS `e`";
-		$query[] 	= "WHERE `e`.`emp_id` = `p`.`emp_id` AND `e`.`comp_id` = `c`.`comp_id`";
+		$query[] 	= "FROM `company` AS `c`, `employer` AS `e`";
+		$query[] 	= "WHERE `e`.`comp_id` = `c`.`comp_id`";
 		$query[] 	= "AND `c`.`comp_id` = '{$arrParams['idCompany']}'";
 
 		$query 		= implode(" ", $query);
@@ -61,6 +61,8 @@ class CompanyModel extends Model
 		$queryPosts[] 	= "FROM `post` AS `p`, `company` AS `c`, `employer` AS `e`";
 		$queryPosts[] 	= "WHERE `e`.`emp_id` = `p`.`emp_id` AND `e`.`comp_id` = `c`.`comp_id`";
 		$queryPosts[] 	= "AND `c`.`comp_id` = '{$arrParams['idCompany']}'";
+		$queryPosts[] 	= "AND `p`.`post_expired` > CURRENT_DATE()";
+		$queryPosts[] 	= "ORDER BY `p`.`post_expired`";
 		$queryPosts 	= implode(" ", $queryPosts);
 		$result['listPosts'] = $this->listRecord($queryPosts);
 

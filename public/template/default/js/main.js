@@ -39,6 +39,7 @@ $(document).ready(function () {
         e.preventDefault();
         $('#modalViewCV').modal('show');
     })
+    
 
 });
 
@@ -47,6 +48,23 @@ function chkLogin(check) {
         $('#modalLogin').modal('show');
     } else {
         $('#modalApply').modal('show');
+    }
+}
+
+function followJob(link, check){
+    if(check == 'notLogged'){
+        $('#modalLogin').modal('show');
+    }else{
+        $.get(link, function (data) {
+            if(data == 'saved'){
+                $('#btn_follow_job').html('<i class="fa-solid fa-check pe-1"></i>Hủy theo dõi');
+                toastMsg('success', 'Đã theo dõi');
+            }else{
+                $('#btn_follow_job').text('Theo dõi');
+                toastMsg('success', 'Đã hủy theo dõi');
+            }
+            
+        }, 'json')
     }
 }
 
